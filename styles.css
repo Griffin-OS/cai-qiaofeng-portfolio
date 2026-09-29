@@ -149,6 +149,7 @@ button { font: inherit; }
 .media-label { position: absolute; top: 18px; left: 18px; padding: 8px 10px; background: var(--accent); color: var(--ink); font: 700 10px/1 monospace; pointer-events: none; }
 .project-copy.compact { display: grid; grid-template-rows: auto minmax(2em, auto) minmax(3.4em, auto) auto; gap: 24px; padding: 36px; }
 .project-copy.compact h3 { margin: 0; font-size: clamp(1.8rem, 3vw, 3.2rem); }
+.project-copy.compact .project-meta { min-height: 30px; align-items: center; }
 .project-copy.compact > p, .project-copy.compact .tag-row { margin: 0; }
 .loop-visual { aspect-ratio: 4/3; color: white; background: var(--night); padding: 30px; }
 .loop-label { display: flex; justify-content: space-between; align-items: end; font: 600 11px/1 monospace; color: #87919a; }
@@ -180,9 +181,14 @@ button { font: inherit; }
 .experience-copy h3 { margin: 45px 0 20px; font-size: 35px; line-height: 1.15; }
 .experience-copy > p { color: #aab0b6; }
 .experience-list { margin-top: 36px; border-top: 1px solid rgba(255,255,255,.14); }
-.experience-list div { display: grid; grid-template-columns: 45px 1fr; gap: 12px; padding: 17px 0; border-bottom: 1px solid rgba(255,255,255,.14); }
-.experience-list b { color: var(--accent); font: 700 11px/1.5 monospace; }
-.experience-list span { font-size: 14px; }
+.experience-list div { position: relative; display: grid; grid-template-columns: 45px 1fr; gap: 12px; padding: 17px 0; border-bottom: 1px solid rgba(255,255,255,.14); cursor: default; outline: none; transition: color .35s ease, background .45s cubic-bezier(.22,.8,.22,1); }
+.experience-list div::after { content: ""; position: absolute; z-index: 1; right: -38px; bottom: -1px; left: -38px; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(255,176,0,.18) 12%, var(--accent) 28%, var(--accent) 72%, rgba(255,176,0,.18) 88%, transparent 100%); opacity: 0; transform: scaleX(.7); transform-origin: center; transition: opacity .3s ease, transform .52s cubic-bezier(.22,.8,.22,1); pointer-events: none; }
+.experience-list div:hover, .experience-list div:focus-visible { background: linear-gradient(90deg, rgba(255,176,0,.075), transparent 78%); }
+.experience-list div:hover::after, .experience-list div:focus-visible::after { opacity: 1; transform: scaleX(1); }
+.experience-list b { color: var(--accent); font: 700 11px/1.5 monospace; transition: color .35s ease, text-shadow .35s ease; }
+.experience-list span { font-size: 14px; transition: color .35s ease; }
+.experience-list div:hover b, .experience-list div:focus-visible b { color: white; text-shadow: 0 0 16px rgba(255,176,0,.55); }
+.experience-list div:hover span, .experience-list div:focus-visible span { color: var(--accent-soft); }
 
 .education-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch; }
 .school-card, .skill-card { min-height: 330px; padding: 34px; border: 1px solid var(--line); background: rgba(255,255,255,.3); transition: transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s; }
