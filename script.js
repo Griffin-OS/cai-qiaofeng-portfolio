@@ -1,4 +1,13 @@
 const reveals = document.querySelectorAll('.reveal');
+const photoTrigger = document.querySelector('.interest-trigger');
+const photoGallery = document.querySelector('#photo-gallery');
+if (photoTrigger && photoGallery) {
+  photoTrigger.addEventListener('click', () => {
+    const open = photoGallery.hidden;
+    photoGallery.hidden = !open;
+    photoTrigger.setAttribute('aria-expanded', String(open));
+  });
+}
 reveals.forEach((item) => {
   if (item.dataset.delay) item.style.setProperty('--delay', `${item.dataset.delay}ms`);
 });

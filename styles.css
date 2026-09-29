@@ -252,8 +252,13 @@ button { font: inherit; }
 .interest-label { font: 700 10px/1.45 monospace; letter-spacing: .08em; }
 .interest-label i { font-style: normal; }
 .interest-list { display: flex; flex-wrap: wrap; gap: 9px; }
-.interest-list span { padding: 8px 14px; border: 1px solid rgba(0,0,0,.32); background: rgba(255,255,255,.08); font-size: 13px; transition: transform .25s, background .25s; }
-.interest-list span:hover { transform: translateY(-3px); background: rgba(255,255,255,.3); }
+.interest-list span, .interest-list button, .interest-list a { padding: 8px 14px; border: 1px solid rgba(0,0,0,.32); background: rgba(255,255,255,.08); color: inherit; font: inherit; font-size: 13px; text-decoration: none; transition: transform .25s, background .25s; cursor: pointer; }
+.interest-list span:hover, .interest-list button:hover, .interest-list a:hover { transform: translateY(-3px); background: rgba(255,255,255,.3); }
+.photo-gallery { grid-column: 2; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 14px; }
+.photo-gallery figure { margin: 0; border: 1px solid rgba(0,0,0,.28); background: rgba(255,255,255,.12); overflow: hidden; animation: gallery-in .45s ease both; }
+.photo-gallery img { display: block; width: 100%; aspect-ratio: 1.45; object-fit: cover; }
+.photo-gallery figcaption { padding: 7px 9px; font: 10px/1.2 monospace; }
+@keyframes gallery-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
 .contact-section { padding: 130px 0 60px; }
 .contact-section h2 { margin: 20px 0 50px; max-width: 1000px; font-size: clamp(2.8rem, 6.5vw, 6.8rem); line-height: .95; letter-spacing: -.065em; }
@@ -344,6 +349,7 @@ button { font: inherit; }
   .communication-cards article { grid-template-columns: 1fr; }
   .communication-cards article > span { grid-row: auto; margin-bottom: 12px; }
   .interest-strip { grid-template-columns: 1fr; gap: 14px; }
+  .photo-gallery { grid-column: 1; grid-template-columns: repeat(2, 1fr); }
   .contact-section { padding-top: 90px; }
   .contact-section h2 { margin-bottom: 40px; }
   .contact-links { grid-template-columns: 1fr; }
