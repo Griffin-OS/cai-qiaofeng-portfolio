@@ -92,7 +92,7 @@ button { font: inherit; }
 .portrait-caption span { max-width: 170px; color: var(--accent-soft); }
 .portrait-caption i { color: var(--accent); font-style: normal; }
 .portrait-caption strong { font-size: 11px; }
-.telemetry-card { position: absolute; left: -12%; bottom: 10px; width: 62%; color: white; padding: 18px; background: rgba(9,12,15,.94); box-shadow: 0 24px 60px rgba(0,0,0,.22); backdrop-filter: blur(12px); }
+.telemetry-card { position: absolute; left: -12%; bottom: 76px; width: 62%; color: white; padding: 18px; background: rgba(9,12,15,.94); box-shadow: 0 24px 60px rgba(0,0,0,.22); backdrop-filter: blur(12px); }
 .telemetry-head, .telemetry-foot { display: flex; justify-content: space-between; font: 600 10px/1 monospace; letter-spacing: .08em; }
 .telemetry-head b { color: var(--accent); }
 .telemetry-card svg { width: 100%; margin: 14px 0; overflow: visible; }
