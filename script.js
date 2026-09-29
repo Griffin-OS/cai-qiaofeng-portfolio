@@ -2,6 +2,7 @@ const reveals = document.querySelectorAll('.reveal');
 const photoTrigger = document.querySelector('.interest-trigger');
 const photoGallery = document.querySelector('#photo-gallery');
 if (photoTrigger && photoGallery) {
+  photoGallery.hidden = true;
   photoTrigger.addEventListener('click', () => {
     const open = photoGallery.hidden;
     photoGallery.hidden = !open;
@@ -56,8 +57,8 @@ if (portraitStage && matchMedia('(pointer: fine)').matches && !matchMedia('(pref
     const box = portraitStage.getBoundingClientRect();
     const x = (event.clientX - box.left) / box.width - 0.5;
     const y = (event.clientY - box.top) / box.height - 0.5;
-    portrait.style.transform = `translate3d(${x * 16}px, ${y * 12}px, 0)`;
-    portraitType.style.transform = `translate3d(${x * -24}px, ${y * -18}px, 0)`;
+    portrait.style.transform = `translate3d(${x * 24}px, ${y * 18}px, 0)`;
+    portraitType.style.transform = `translate3d(${x * -36}px, ${y * -27}px, 0)`;
   });
   portraitStage.addEventListener('pointerleave', () => {
     portrait.style.transform = '';
