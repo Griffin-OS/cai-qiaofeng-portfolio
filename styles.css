@@ -97,9 +97,9 @@ button { font: inherit; }
 .telemetry-head b { color: var(--accent); }
 .telemetry-card svg { width: 100%; margin: 14px 0; overflow: visible; }
 .telemetry-card .grid { stroke: rgba(255,255,255,.08); fill: none; }
-.telemetry-card .signal { stroke: var(--accent); stroke-width: 2.5; fill: none; stroke-dasharray: 600; stroke-dashoffset: 600; animation: trace 2.2s ease .4s forwards; }
+.telemetry-card .signal { stroke: var(--accent); stroke-width: 2.5; fill: none; stroke-dasharray: 600; stroke-dashoffset: 600; animation: trace 4s ease-in-out .4s infinite; }
 .telemetry-foot { color: #8c959d; }
-@keyframes trace { to { stroke-dashoffset: 0; } }
+@keyframes trace { 0%, 14% { stroke-dashoffset: 600; } 64%, 100% { stroke-dashoffset: 0; } }
 @keyframes grid-drift { to { transform: translate(58px, 58px); } }
 @keyframes orbit-pulse { 50% { transform: scale(1.05); opacity: .72; } }
 
