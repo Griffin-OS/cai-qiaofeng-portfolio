@@ -100,7 +100,7 @@ button { font: inherit; }
 .telemetry-card .grid { stroke: rgba(255,255,255,.08); fill: none; }
 .telemetry-card .signal { stroke: var(--accent); stroke-width: 2.5; fill: none; stroke-dasharray: 600; stroke-dashoffset: 600; animation: trace 4s ease-in-out .4s infinite; }
 .telemetry-foot { color: #8c959d; }
-@keyframes trace { 0%, 14% { stroke-dashoffset: 600; } 64%, 100% { stroke-dashoffset: 0; } }
+@keyframes trace { 0%, 14% { stroke-dashoffset: 600; opacity: 0; } 18% { opacity: 1; } 64%, 82% { stroke-dashoffset: 0; opacity: 1; } 94%, 100% { stroke-dashoffset: 0; opacity: 0; } }
 @keyframes grid-drift { to { transform: translate(58px, 58px); } }
 @keyframes orbit-pulse { 50% { transform: scale(1.05); opacity: .72; } }
 
@@ -155,7 +155,7 @@ button { font: inherit; }
 .loop-grid { stroke: rgba(255,255,255,.08); fill: none; }
 .loop-target { stroke: #89939c; stroke-width: 2; stroke-dasharray: 7 5; fill: none; }
 .loop-response { stroke: var(--accent); stroke-width: 3; fill: none; stroke-dasharray: 720; stroke-dashoffset: 720; animation: response-trace 4.8s ease-in-out infinite; }
-@keyframes response-trace { 0%, 12% { stroke-dashoffset: 720; } 58%, 100% { stroke-dashoffset: 0; } }
+@keyframes response-trace { 0%, 12% { stroke-dashoffset: 720; opacity: 0; } 16% { opacity: 1; } 58%, 82% { stroke-dashoffset: 0; opacity: 1; } 94%, 100% { stroke-dashoffset: 0; opacity: 0; } }
 .loop-legend { display: flex; gap: 20px; color: #9aa2a9; font: 600 10px/1 monospace; }
 .loop-legend i { width: 12px; height: 2px; display: inline-block; margin-right: 7px; vertical-align: middle; }
 .target-dot { background: #89939c; }
