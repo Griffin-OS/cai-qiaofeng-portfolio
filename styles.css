@@ -262,6 +262,7 @@ button { font: inherit; }
 .photo-gallery[hidden] { display: none; }
 .photo-gallery figure { margin: 0; border: 1px solid rgba(0,0,0,.28); background: rgba(255,255,255,.12); overflow: hidden; animation: gallery-in .45s ease both; }
 .photo-gallery img { display: block; width: 100%; aspect-ratio: 1.45; object-fit: cover; }
+.photo-gallery figure { cursor: zoom-in; }
 .photo-gallery figcaption { padding: 7px 9px; font: 10px/1.2 monospace; }
 @keyframes gallery-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
@@ -277,7 +278,8 @@ button { font: inherit; }
 
 .certificate-dialog { width: min(1100px, calc(100% - 32px)); max-height: calc(100vh - 32px); padding: 0; border: 0; background: transparent; overflow: visible; }
 .certificate-dialog::backdrop { background: rgba(4,6,8,.88); backdrop-filter: blur(9px); }
-.certificate-dialog img { max-height: calc(100vh - 48px); margin: auto; object-fit: contain; box-shadow: 0 20px 80px rgba(0,0,0,.45); }
+.certificate-dialog img { max-width: min(1200px, calc(100vw - 48px)); max-height: calc(100vh - 48px); margin: auto; object-fit: contain; box-shadow: 0 20px 80px rgba(0,0,0,.45); animation: dialog-in .42s cubic-bezier(.22,.8,.22,1) both; }
+@keyframes dialog-in { from { opacity: 0; transform: translateY(-34px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
 .certificate-dialog img.is-rotated { transform: rotate(180deg); }
 .dialog-close { position: fixed; top: 18px; right: 22px; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; background: rgba(0,0,0,.35); color: white; font-size: 27px; cursor: pointer; }
 

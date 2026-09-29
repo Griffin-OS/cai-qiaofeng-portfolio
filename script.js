@@ -76,6 +76,14 @@ document.querySelectorAll('.award-card[data-image]').forEach((card) => {
     dialog.showModal();
   });
 });
+document.querySelectorAll('.photo-gallery figure img').forEach((image) => {
+  image.addEventListener('click', () => {
+    dialogImage.src = image.src;
+    dialogImage.alt = image.alt;
+    dialogImage.classList.remove('is-rotated');
+    dialog.showModal();
+  });
+});
 dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', (event) => {
   if (event.target === dialog) dialog.close();
