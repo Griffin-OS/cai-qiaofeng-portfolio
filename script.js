@@ -84,6 +84,14 @@ document.querySelectorAll('.photo-gallery figure img').forEach((image) => {
     dialog.showModal();
   });
 });
+document.querySelectorAll('.transcript-link[data-image]').forEach((link) => {
+  link.addEventListener('click', () => {
+    dialogImage.src = link.dataset.image;
+    dialogImage.alt = '成绩单预览';
+    dialogImage.classList.remove('is-rotated');
+    dialog.showModal();
+  });
+});
 dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', (event) => {
   if (event.target === dialog) dialog.close();
