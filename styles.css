@@ -195,6 +195,7 @@ button { font: inherit; }
 .school-ranks span { padding: 6px 8px; color: var(--accent-soft); border: 1px solid rgba(255,176,0,.42); font: 600 10px/1.2 sans-serif; }
 .school-card h3 { font-size: 31px; margin: 24px 0 34px; }
 .school-card h3 small { display: block; margin-top: 8px; color: #aeb4b9; font-size: 14px; font-weight: 500; letter-spacing: .05em; }
+.degree-focus { margin: -24px 0 30px; color: var(--muted); font-size: 14px; }
 .wust-brand { height: 42px; display: flex; align-items: center; margin-bottom: 13px; }
 .wust-brand img { width: 175px; max-height: 36px; object-fit: contain; object-position: left center; }
 .wust-name { margin: 0 !important; color: #525960 !important; font: 700 11px/1.4 monospace !important; letter-spacing: .05em !important; text-transform: none !important; }
