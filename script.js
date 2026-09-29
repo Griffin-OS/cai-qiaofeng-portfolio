@@ -46,8 +46,32 @@ const updateMeter = () => {
 addEventListener('scroll', updateMeter, { passive: true });
 updateMeter();
 
-const ticker = document.querySelector('.ticker div');
-ticker.textContent += ` ${ticker.textContent}`;
+const ticker = document.querySelector('.ticker');
+const tickerTrack = ticker?.querySelector('.ticker-track');
+const tickerGroup = tickerTrack?.querySelector('.ticker-group');
+if (ticker && tickerTrack && tickerGroup) {
+  let tickerFrame;
+  const buildTickerLoop = () => {
+    cancelAnimationFrame(tickerFrame);
+    tickerFrame = requestAnimationFrame(() => {
+      tickerTrack.querySelectorAll('[data-ticker-clone]').forEach((clone) => clone.remove());
+      const loopWidth = Math.ceil(tickerGroup.getBoundingClientRect().width);
+      if (!loopWidth) return;
+      const copies = Math.ceil(ticker.clientWidth / loopWidth) + 2;
+      for (let index = 0; index < copies; index += 1) {
+        const clone = tickerGroup.cloneNode(true);
+        clone.dataset.tickerClone = 'true';
+        clone.setAttribute('aria-hidden', 'true');
+        tickerTrack.append(clone);
+      }
+      tickerTrack.style.setProperty('--ticker-shift', `-${loopWidth}px`);
+    });
+  };
+  buildTickerLoop();
+  if ('ResizeObserver' in window) new ResizeObserver(buildTickerLoop).observe(ticker);
+  else addEventListener('resize', buildTickerLoop, { passive: true });
+  document.fonts?.ready?.then(buildTickerLoop);
+}
 
 const portraitStage = document.querySelector('.portrait-stage');
 if (portraitStage && matchMedia('(pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
