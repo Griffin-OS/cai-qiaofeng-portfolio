@@ -256,6 +256,7 @@ button { font: inherit; }
 .interest-list span:hover { color: var(--accent); background: rgba(255,255,255,.3); }
 .interest-list button:hover, .interest-list a:hover { transform: translateY(-3px); background: rgba(255,255,255,.3); }
 .interest-list button, .interest-list a { position: relative; }
+.interest-list button small, .interest-list a small { position: absolute; left: 50%; bottom: -22px; transform: translateX(-50%); color: rgba(0,0,0,.62); font: 700 8px/1 monospace; letter-spacing: .12em; white-space: nowrap; }
 .interest-list button::after, .interest-list a::after { content: ""; position: absolute; left: 50%; bottom: -9px; width: 24px; height: 4px; border-radius: 999px; background: var(--accent); transform: translateX(-50%) scaleX(.82); opacity: .82; box-shadow: 0 6px 0 -1px rgba(255,176,0,.42); transition: transform .25s, opacity .25s; }
 .interest-list button:hover::after, .interest-list a:hover::after { transform: translateX(-50%) scaleX(1); opacity: 1; }
 .photo-gallery { grid-column: 2; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 14px; }
