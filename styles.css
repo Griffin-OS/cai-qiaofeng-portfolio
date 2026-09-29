@@ -254,6 +254,9 @@ button { font: inherit; }
 .interest-list { display: flex; flex-wrap: wrap; gap: 9px; }
 .interest-list span, .interest-list button, .interest-list a { padding: 8px 14px; border: 1px solid rgba(0,0,0,.32); background: rgba(255,255,255,.08); color: inherit; font: inherit; font-size: 13px; text-decoration: none; transition: transform .25s, background .25s; cursor: pointer; }
 .interest-list span:hover, .interest-list button:hover, .interest-list a:hover { transform: translateY(-3px); background: rgba(255,255,255,.3); }
+.interest-list button, .interest-list a { position: relative; }
+.interest-list button::after, .interest-list a::after { content: ""; position: absolute; left: 50%; bottom: -9px; width: 24px; height: 4px; border-radius: 999px; background: var(--accent); transform: translateX(-50%) scaleX(.7); opacity: .72; transition: transform .25s, opacity .25s; }
+.interest-list button:hover::after, .interest-list a:hover::after { transform: translateX(-50%) scaleX(1); opacity: 1; }
 .photo-gallery { grid-column: 2; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 14px; }
 .photo-gallery[hidden] { display: none; }
 .photo-gallery figure { margin: 0; border: 1px solid rgba(0,0,0,.28); background: rgba(255,255,255,.12); overflow: hidden; animation: gallery-in .45s ease both; }
