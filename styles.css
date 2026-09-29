@@ -255,6 +255,7 @@ button { font: inherit; }
 .interest-list span, .interest-list button, .interest-list a { padding: 8px 14px; border: 1px solid rgba(0,0,0,.32); background: rgba(255,255,255,.08); color: inherit; font: inherit; font-size: 13px; text-decoration: none; transition: transform .25s, background .25s; cursor: pointer; }
 .interest-list span:hover, .interest-list button:hover, .interest-list a:hover { transform: translateY(-3px); background: rgba(255,255,255,.3); }
 .photo-gallery { grid-column: 2; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 14px; }
+.photo-gallery[hidden] { display: none; }
 .photo-gallery figure { margin: 0; border: 1px solid rgba(0,0,0,.28); background: rgba(255,255,255,.12); overflow: hidden; animation: gallery-in .45s ease both; }
 .photo-gallery img { display: block; width: 100%; aspect-ratio: 1.45; object-fit: cover; }
 .photo-gallery figcaption { padding: 7px 9px; font: 10px/1.2 monospace; }
