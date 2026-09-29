@@ -56,8 +56,8 @@ if (portraitStage && matchMedia('(pointer: fine)').matches && !matchMedia('(pref
     const box = portraitStage.getBoundingClientRect();
     const x = (event.clientX - box.left) / box.width - 0.5;
     const y = (event.clientY - box.top) / box.height - 0.5;
-    portrait.style.transform = `translate3d(${x * 8}px, ${y * 6}px, 0)`;
-    portraitType.style.transform = `translate3d(${x * -12}px, ${y * -9}px, 0)`;
+    portrait.style.transform = `translate3d(${x * 16}px, ${y * 12}px, 0)`;
+    portraitType.style.transform = `translate3d(${x * -24}px, ${y * -18}px, 0)`;
   });
   portraitStage.addEventListener('pointerleave', () => {
     portrait.style.transform = '';
