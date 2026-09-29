@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0d10">
+  <meta name="description" content="蔡峤峰的机器人控制、无人机系统、嵌入式开发与工程实践作品集。">
+  <title>蔡峤峰 Qiaofeng Cai｜机器人与控制作品集</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0d10'/%3E%3Cpath d='M14 38h12l6-20 7 28 5-16h7' fill='none' stroke='%23ffb000' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="scroll-meter" aria-hidden="true"><span></span></div>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="返回顶部">
+      <span class="brand-mark">QC</span>
+      <span>蔡峤峰 <i>Qiaofeng Cai</i><small>本网址由 AI 辅助生成</small></span>
+    </a>
+    <nav aria-label="页面导航">
+      <a href="#top">首页</a>
+      <a href="#projects">项目</a>
+      <a href="#experience">实习</a>
+      <a href="#education">教育</a>
+      <a href="#awards">本科荣誉</a>
+      <a href="#skills">综合能力</a>
+      <a href="#contact">联系</a>
+    </nav>
+    <a class="contact-link" href="mailto:cai.qiao@northeastern.edu">联系我</a>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="hero-copy reveal">
+        <p class="hero-name">蔡峤峰 <span>Qiaofeng Cai</span></p>
+        <p class="eyebrow"><span></span> ROBOTICS · CONTROL · SYSTEMS</p>
+        <h1>让机器<br><em>稳定地行动。</em></h1>
+        <p class="hero-lead">机械工程硕士，关注机器人控制与机电系统。喜欢把复杂问题拆清楚，在真实项目中连接想法、硬件与团队协作。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">查看项目</a>
+          <a class="button button-ghost" href="mailto:cai.qiao@northeastern.edu">cai.qiao@northeastern.edu</a>
+        </div>
+        <dl class="quick-facts">
+          <div><dt>3.68</dt><dd>Northeastern GPA</dd></div>
+          <div><dt>3</dt><dd>核心项目</dd></div>
+          <div><dt>2</dt><dd>国家级奖项</dd></div>
+        </dl>
+      </div>
+
+      <div class="hero-visual reveal" data-delay="120">
+        <div class="portrait-stage">
+          <div class="portrait-type" aria-hidden="true"><span>QIAOFENG</span><span>CAI</span></div>
+          <div class="portrait-grid" aria-hidden="true"></div>
+          <img class="portrait-cutout" src="assets/portrait-cutout.png" alt="蔡峤峰个人肖像" width="1536" height="1536">
+          <div class="portrait-caption"><span>MECHANICAL ENGINEERING · M.S.<br>MECHATRONICS</span><strong>Boston, MA</strong></div>
+        </div>
+        <div class="telemetry-card" aria-hidden="true">
+          <div class="telemetry-head"><span>CONTROL LOOP</span><b>ACTIVE</b></div>
+          <svg viewBox="0 0 320 104" role="img" aria-label="控制响应曲线示意">
+            <path class="grid" d="M0 26H320M0 52H320M0 78H320M64 0V104M128 0V104M192 0V104M256 0V104"/>
+            <path class="signal" d="M0 77 C20 77,24 16,44 20 S67 76,88 59 S111 35,132 48 S157 63,177 53 S202 44,222 50 S244 56,263 51 S287 48,320 51"/>
+          </svg>
+          <div class="telemetry-foot"><span>SETPOINT 0.00</span><span>Δ 0.03</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ticker" aria-label="技术关键词">
+      <div>控制系统 <span>•</span> 运动控制 <span>•</span> 传感器融合 <span>•</span> ROS 2 <span>•</span> PX4 <span>•</span> STM32 <span>•</span> MATLAB / SIMULINK <span>•</span> EKF <span>•</span> IMU <span>•</span> JETSON <span>•</span> REALSENSE <span>•</span> LINUX <span>•</span> 英文沟通 <span>•</span></div>
+    </section>
+
+    <section id="projects" class="section-shell content-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">SELECTED WORK / 01</p>
+        <h2>工程项目</h2>
+        <p>这些项目记录了我如何从想法出发，完成搭建、调试与验证。</p>
+      </div>
+
+      <article class="project project-featured reveal">
+        <div class="project-index">01</div>
+        <div class="project-copy">
+          <div class="project-meta"><span>硕士项目</span><span class="status-chip">进行中</span><span>2026.09 — 至今</span></div>
+          <h3>无人机自主室内飞行与视觉定位系统</h3>
+          <p>围绕室内无 GNSS 自主飞行，搭建无人机硬件与计算平台，正在推进视觉定位、状态估计与 PX4 飞控系统的连接。</p>
+          <ul class="project-points">
+            <li>规划视觉信息与 IMU 结合的定位方案</li>
+            <li>连接 ROS 2、PX4 与机载计算平台</li>
+            <li>为室内自主飞行测试做好系统准备</li>
+          </ul>
+          <div class="tag-row"><span>PX4</span><span>ROS 2</span><span>Jetson</span><span>RealSense</span><span>VIO</span><span>EKF</span></div>
+        </div>
+        <div class="system-map" aria-label="无人机系统链路图">
+          <div class="map-node map-camera"><small>PERCEPTION</small><strong>RealSense D435</strong><i>RGB-D / Visual Input</i></div>
+          <div class="map-link"><span></span></div>
+          <div class="map-node map-compute"><small>COMPUTE</small><strong>Jetson Orin Nano</strong><i>VIO · ROS 2 · Estimation</i></div>
+          <div class="map-link"><span></span></div>
+          <div class="map-node map-control"><small>CONTROL</small><strong>PX4 Flight Controller</strong><i>MAVLink · EKF · Actuation</i></div>
+        </div>
+      </article>
+
+      <div class="project-grid">
+        <article class="project project-media reveal">
+          <div class="media-frame">
+            <video controls muted playsinline preload="metadata" poster="assets/project-balance.jpg">
+              <source src="assets/balance-demo.mp4" type="video/mp4">
+            </video>
+            <span class="media-label">REAL HARDWARE / DEMO</span>
+          </div>
+          <div class="project-copy compact">
+            <div class="project-meta"><span>个人项目</span><span class="status-chip">进行中</span><span>02</span></div>
+            <h3>STM32 两轮自平衡机器人</h3>
+            <p>围绕自平衡、移动和避障逐步搭建整车，完成传感器、电机与控制程序的联调，并持续扩展自主导航能力。</p>
+            <div class="tag-row"><span>STM32</span><span>Kalman</span><span>PID</span><span>IMU</span></div>
+          </div>
+        </article>
+
+        <article class="project project-code reveal" data-delay="100">
+          <div class="loop-visual" aria-hidden="true">
+            <div class="loop-label"><span>REFERENCE</span><b>1200 rpm</b></div>
+            <svg viewBox="0 0 520 220">
+              <path class="loop-grid" d="M0 44H520M0 88H520M0 132H520M0 176H520M104 0V220M208 0V220M312 0V220M416 0V220"/>
+              <path class="loop-target" d="M0 156H84V62H520"/>
+              <path class="loop-response" d="M0 156H84 C100 156,100 32,129 38 S157 84,183 67 S215 53,244 61 S280 65,313 62 S360 61,520 62"/>
+            </svg>
+            <div class="loop-legend"><span><i class="target-dot"></i>目标</span><span><i class="response-dot"></i>响应</span></div>
+          </div>
+          <div class="project-copy compact">
+            <div class="project-meta"><span>课程项目</span><span>03</span></div>
+            <h3>直流电机闭环控制系统</h3>
+            <p>使用 Simulink 与 Arduino 完成电机控制实验，从系统建模、参数调整到软硬件联调，比较目标值与实际响应。</p>
+            <div class="tag-row"><span>Simulink</span><span>Arduino</span><span>PID</span><span>HIL</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience" class="experience-section">
+      <div class="section-shell">
+        <div class="section-heading light reveal">
+          <p class="eyebrow">INTERNSHIP / 02</p>
+          <h2>实习经历</h2>
+          <p><span class="experience-chip">工程实习</span> 南京未来脑科技有限公司 · 2025.05 — 08</p>
+        </div>
+        <div class="experience-layout">
+          <div class="experience-gallery reveal">
+            <figure class="gallery-main">
+              <img src="assets/internship-drone.jpg" alt="现场调试中的六旋翼无人机" loading="lazy">
+              <figcaption>多旋翼平台集成与地面测试</figcaption>
+            </figure>
+            <figure class="gallery-detail">
+              <img src="assets/internship-pixhawk.jpg" alt="Pixhawk 飞控与机载线路细节" loading="lazy">
+              <figcaption>Pixhawk 接口与线路检查</figcaption>
+            </figure>
+          </div>
+          <div class="experience-copy reveal" data-delay="120">
+            <h3>无人机与移动平台的集成测试</h3>
+            <p>参与太阳能板清洁无人机的集成与测试，并搭建移动机器人实验平台，完成飞行调试、传感器连接、数据采集和测试记录。</p>
+            <div class="experience-list">
+              <div><b>01</b><span>PX4 飞控与 PID 参数调试</span></div>
+              <div><b>02</b><span>IMU / 电机驱动 / 传感器联调</span></div>
+              <div><b>03</b><span>视觉边缘定位模块协助测试</span></div>
+              <div><b>04</b><span>系统功能验证与测试记录</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="section-shell content-section education-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">EDUCATION / 03</p>
+        <h2>教育与能力</h2>
+      </div>
+      <div class="education-grid">
+        <article class="school-card school-primary reveal">
+          <div class="school-brand"><img src="assets/northeastern-logo.png" alt="Northeastern University 标志"></div>
+          <p class="school-name-cn">美国东北大学 · Northeastern University</p>
+          <div class="school-ranks">
+            <span>U.S. News 2027 全美综合大学并列第 42</span>
+            <span>U.S. News 2026 工程学院研究生全美第 34</span>
+          </div>
+          <h3>机械工程硕士 <small>机电一体化方向</small></h3>
+          <div class="school-row"><span>2024 — 2026 · Boston, MA</span><strong>GPA 3.68</strong></div>
+          <div class="course-list">
+            <span>Control Systems Engineering</span>
+            <span>Robot Mechanics and Control</span>
+            <span>Mechatronic Systems</span>
+            <span>Math Methods for Mechanical Engineering</span>
+            <span>Mobile Robotics</span>
+            <span>Electric Drives</span>
+            <span class="course-current">Robotic Navigation &amp; Sensing <i>正在修读</i></span>
+          </div>
+        </article>
+        <article class="school-card reveal" data-delay="80">
+          <div class="wust-brand"><img src="assets/wust-logo.png" alt="武汉科技大学标志"></div>
+          <p class="wust-name">武汉科技大学 · Wuhan University of Science and Technology</p>
+          <h3>土木工程学士</h3>
+          <div class="school-row"><span>2019 — 2023 · Wuhan</span><strong>本科</strong></div>
+          <p class="school-note">本科阶段形成组织协调、团队协作与视觉表达能力，并持续延伸到工程项目推进与技术汇报。</p>
+          <div class="undergrad-roles" aria-label="本科组织经历">
+            <span>校电视台副台长</span><span>学院团总支宣传委员</span><span>班级组织委员</span>
+          </div>
+          <div class="undergrad-proof" aria-label="本科成果概览">
+            <div><strong>2</strong><span>国家级奖项</span></div>
+            <div><strong>2</strong><span>省级竞赛奖项</span></div>
+            <div><strong>2×</strong><span>优秀学生</span></div>
+            <div><strong>2×</strong><span>三等奖学金</span></div>
+          </div>
+          <div class="engagement-line">
+            <b>社会参与</b>
+            <span>2019 武汉女子半程马拉松志愿者 · 2021 “三下乡”社会实践 · 2023 武汉马拉松志愿者</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="awards" class="section-shell content-section awards-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">UNDERGRADUATE RECOGNITION / 04</p>
+        <h2>本科期间成果与荣誉</h2>
+        <p>本科期间的竞赛、奖学金与评优记录，作为组织能力和持续投入的补充证明。</p>
+      </div>
+      <div class="award-showcase">
+        <button class="award-card award-rotated reveal" data-image="assets/award-chuangqing.jpg" data-rotate="180" aria-label="查看创青春国家级铜奖证书">
+          <span class="certificate-frame"><img src="assets/award-chuangqing.jpg" alt="创青春国家级铜奖证书" loading="lazy"></span>
+          <span class="award-level">NATIONAL · 2023</span>
+          <h3>“创青春”中国青年创新创业大赛</h3>
+          <p>乡村振兴专项 · 国家级铜奖</p>
+        </button>
+        <button class="award-card reveal" data-image="assets/award-zhengda.jpg" aria-label="查看正大杯国家级三等奖证书">
+          <span class="certificate-frame"><img src="assets/award-zhengda.jpg" alt="正大杯全国总决赛三等奖证书" loading="lazy"></span>
+          <span class="award-level">NATIONAL · 2022</span>
+          <h3>“正大杯”市场调查与分析大赛</h3>
+          <p>全国总决赛三等奖</p>
+        </button>
+        <button class="award-card reveal" data-image="assets/award-challenge.jpg" aria-label="查看挑战杯湖北省银奖证书">
+          <span class="certificate-frame"><img src="assets/award-challenge.jpg" alt="挑战杯湖北省银奖证书" loading="lazy"></span>
+          <span class="award-level">PROVINCIAL · 2022</span>
+          <h3>“挑战杯”大学生创业计划竞赛</h3>
+          <p>湖北省银奖</p>
+        </button>
+        <button class="award-card reveal" data-image="assets/award-internet.jpg" aria-label="查看互联网加湖北省铜奖证书">
+          <span class="certificate-frame"><img src="assets/award-internet.jpg" alt="互联网加湖北省复赛铜奖证书" loading="lazy"></span>
+          <span class="award-level">PROVINCIAL · 2022</span>
+          <h3>中国国际“互联网+”创新创业大赛</h3>
+          <p>湖北省复赛铜奖</p>
+        </button>
+      </div>
+      <div class="honor-strip reveal">
+        <div><strong>2×</strong><span>武汉科技大学优秀学生</span></div>
+        <div><strong>2×</strong><span>优秀学生三等奖学金</span></div>
+        <div><strong>01</strong><span>优秀共青团员</span></div>
+        <div><strong>01</strong><span>社会实践先进个人</span></div>
+      </div>
+    </section>
+
+    <section id="skills" class="communication-section">
+      <div class="section-shell communication-grid">
+        <div class="communication-title reveal">
+          <p class="eyebrow">BEYOND ENGINEERING / 05</p>
+          <h2>表达、协作与创造，<br><em>也是我的一部分。</em></h2>
+        </div>
+        <div class="communication-cards reveal" data-delay="100">
+          <article><span>视觉设计<br>VISUAL</span><h3>高端 PPT 视觉设计与汇报</h3><p><mark class="soft-highlight">曾为央视财经频道设计 PPT</mark>，把复杂信息转化为正式、清晰的视觉表达。</p></article>
+          <article><span>组织领导<br>LEADERSHIP</span><h3>学生组织与团队推进</h3><p>曾任校电视台副台长、学院团总支宣传委员及班级组织委员，负责内容策划、沟通协调与任务推进。</p></article>
+          <article><span>团队协作<br>COLLABORATION</span><h3>竞赛与社会实践</h3><p>参与国家级、省级竞赛、“三下乡”社会实践及两届马拉松志愿服务，形成跨角色沟通和落地执行经验。</p></article>
+        </div>
+      </div>
+      <div class="section-shell interest-strip reveal">
+        <span class="interest-label">兴趣爱好<br><i>INTERESTS</i></span>
+        <div class="interest-list">
+          <span>摄影</span><span>羽毛球</span><span>排球</span><span>足球</span><span>音乐制作</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section section-shell">
+      <p class="eyebrow">LET'S CONNECT</p>
+      <h2>期待与您交流。</h2>
+      <div class="contact-links">
+        <a class="contact-email" href="mailto:cai.qiao@northeastern.edu"><small>EMAIL / 邮箱</small><strong>cai.qiao@northeastern.edu</strong></a>
+        <a href="tel:+18573302630"><small>UNITED STATES / 美国</small><strong>+1 (857) 330-2630</strong></a>
+        <a href="tel:+8613877580724"><small>CHINA / 中国</small><strong>+86 138 7758 0724</strong></a>
+        <div><small>LOCATION / 地址</small><strong>Boston, MA · 美国波士顿</strong></div>
+      </div>
+      <div class="contact-meta"><span>Available in the U.S. &amp; China</span><span>© 2026 Qiaofeng Cai · 蔡峤峰</span></div>
+    </section>
+  </main>
+
+  <dialog class="certificate-dialog" aria-label="证书预览">
+    <button class="dialog-close" aria-label="关闭证书预览">×</button>
+    <img src="" alt="奖项证书大图">
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
