@@ -113,6 +113,21 @@ if (mascotCard && matchMedia('(pointer: fine)').matches && !matchMedia('(prefers
   });
 }
 
+if (matchMedia('(max-width: 680px) and (pointer: coarse)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+  const mobilePulseObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        entry.target.classList.remove('is-mobile-pulsed');
+        return;
+      }
+      entry.target.classList.remove('is-mobile-pulsed');
+      void entry.target.offsetWidth;
+      entry.target.classList.add('is-mobile-pulsed');
+    });
+  }, { threshold: 0.42 });
+  [portraitStage, mascotCard].filter(Boolean).forEach((target) => mobilePulseObserver.observe(target));
+}
+
 const dialog = document.querySelector('.certificate-dialog');
 const dialogImage = dialog.querySelector('img');
 document.querySelectorAll('.award-card[data-image]').forEach((card) => {
