@@ -244,7 +244,7 @@ button { font: inherit; }
 .school-row { display: flex; justify-content: space-between; gap: 20px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; }
 .school-primary .school-row { border-color: rgba(255,255,255,.16); color: #abb1b7; }
 .school-primary .school-row strong { color: var(--accent); }
-.gpa-mark { display: inline-flex; align-items: center; gap: 10px; font-size: 1.08em; white-space: nowrap; }
+.gpa-mark { display: inline-flex; align-items: center; gap: 10px; margin-right: 16px; font-size: 1.08em; white-space: nowrap; }
 .transcript-link { margin-left: 0; }
 .course-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 18px; margin-top: 24px; }
 .course-list span { color: #aeb4b9; font-size: 14px; line-height: 1.45; }
@@ -293,8 +293,10 @@ button { font: inherit; }
 .communication-cards p { margin: 0; color: rgba(0,0,0,.64); }
 .soft-highlight { padding: 1px 4px 2px; color: var(--ink); background: rgba(255,255,255,.34); box-shadow: inset 0 -1px rgba(16,19,23,.18); font-weight: 650; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 .interest-strip { display: grid; grid-template-columns: 145px 1fr; gap: 20px; align-items: center; margin-top: 42px; padding-top: 24px; border-top: 1px solid rgba(0,0,0,.35); }
-.interest-label { font: 700 10px/1.45 monospace; letter-spacing: .08em; }
+.interest-label { position: relative; font: 700 10px/1.45 monospace; letter-spacing: .08em; }
 .interest-label i { font-style: normal; }
+.interest-label::after { content: "→"; position: absolute; top: 50%; left: calc(100% + 26px); color: #f25b57; font: 700 32px/1 sans-serif; transform: translateY(-50%); animation: interest-arrow-nudge 1.5s ease-in-out infinite; }
+@keyframes interest-arrow-nudge { 0%, 100% { margin-left: 0; } 50% { margin-left: 7px; } }
 .interest-list { display: flex; flex-wrap: wrap; gap: 9px; }
 .interest-list span, .interest-list button, .interest-list a { padding: 8px 14px; border: 1px solid rgba(0,0,0,.32); background: rgba(255,255,255,.08); color: inherit; font: inherit; font-size: 13px; text-decoration: none; transition: transform .25s, background .25s; cursor: pointer; }
 .interest-list span:hover { color: var(--accent); background: rgba(255,255,255,.3); }
