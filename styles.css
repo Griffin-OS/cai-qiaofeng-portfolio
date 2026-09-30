@@ -222,8 +222,8 @@ button { font: inherit; }
 .school-row { display: flex; justify-content: space-between; gap: 20px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; }
 .school-primary .school-row { border-color: rgba(255,255,255,.16); color: #abb1b7; }
 .school-primary .school-row strong { color: var(--accent); }
-.gpa-mark { font-size: 1.08em; }
-.transcript-link { margin-left: 10px; }
+.gpa-mark { display: inline-flex; align-items: center; gap: 10px; font-size: 1.08em; white-space: nowrap; }
+.transcript-link { margin-left: 0; }
 .course-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 18px; margin-top: 24px; }
 .course-list span { color: #aeb4b9; font-size: 14px; line-height: 1.45; }
 .course-list .course-current { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 5px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.13); color: white; }
