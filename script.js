@@ -90,6 +90,29 @@ if (portraitStage && matchMedia('(pointer: fine)').matches && !matchMedia('(pref
   });
 }
 
+const mascotCard = document.querySelector('.school-primary');
+if (mascotCard && matchMedia('(pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const mascot = mascotCard.querySelector('.education-mascot');
+  let mascotReset;
+  mascotCard.addEventListener('pointerenter', () => {
+    clearTimeout(mascotReset);
+    mascot.style.animation = '';
+    mascot.style.transform = '';
+    mascotCard.classList.add('is-mascot-breath');
+  });
+  mascotCard.addEventListener('pointerleave', () => {
+    mascotCard.classList.remove('is-mascot-breath');
+    mascot.style.animation = 'none';
+    mascot.style.transform = getComputedStyle(mascot).transform;
+    void mascot.offsetWidth;
+    requestAnimationFrame(() => { mascot.style.transform = 'scale(1)'; });
+    mascotReset = setTimeout(() => {
+      mascot.style.animation = '';
+      mascot.style.transform = '';
+    }, 1400);
+  });
+}
+
 const dialog = document.querySelector('.certificate-dialog');
 const dialogImage = dialog.querySelector('img');
 document.querySelectorAll('.award-card[data-image]').forEach((card) => {
