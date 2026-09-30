@@ -373,6 +373,10 @@ button { font: inherit; }
   .communication-cards article { grid-template-columns: 1fr; }
   .communication-cards article > span { grid-row: auto; margin-bottom: 12px; }
   .interest-strip { grid-template-columns: 1fr; gap: 14px; }
+  .interest-list button, .interest-list a { display: inline-flex; align-items: baseline; gap: 7px; padding: 9px 11px; }
+  .interest-list button small, .interest-list a small { position: static; transform: none; color: rgba(0,0,0,.64); font-size: 8px; line-height: 1; letter-spacing: .11em; }
+  .interest-list button small::before, .interest-list a small::before { content: ""; display: inline-block; width: 4px; height: 4px; margin: 0 4px 1px 0; border-radius: 50%; background: rgba(0,0,0,.58); vertical-align: middle; }
+  .interest-list button::after, .interest-list a::after { display: none; }
   .photo-gallery { grid-column: 1; grid-template-columns: repeat(2, 1fr); }
   .contact-section { padding-top: 90px; }
   .contact-section h2 { margin-bottom: 40px; }
