@@ -300,8 +300,8 @@ button { font: inherit; }
 .interest-list span, .interest-list button, .interest-list a { padding: 8px 14px; border: 1px solid rgba(0,0,0,.32); background: rgba(255,255,255,.08); color: inherit; font: inherit; font-size: 13px; text-decoration: none; transition: transform .25s, background .25s; cursor: pointer; }
 .interest-list span:hover { color: var(--accent); background: rgba(255,255,255,.3); }
 .interest-list button:hover, .interest-list a:hover { transform: translateY(-3px); background: rgba(255,255,255,.3); }
-.interest-list button, .interest-list a { position: relative; }
-.interest-list button::before, .interest-list a::before { content: "↗"; position: absolute; top: 5px; right: 5px; color: rgba(16,19,23,.72); font: 700 12px/1 sans-serif; line-height: 1; }
+.interest-list button, .interest-list a { position: relative; padding-right: 25px; }
+.interest-list button::before, .interest-list a::before { content: "↗"; position: absolute; top: 4px; right: 6px; color: rgba(16,19,23,.64); font: 700 9px/1 sans-serif; line-height: 1; }
 .interest-list button small, .interest-list a small { position: absolute; left: 50%; bottom: -22px; transform: translateX(-50%); color: rgba(0,0,0,.62); font: 700 8px/1 monospace; letter-spacing: .12em; white-space: nowrap; }
 .interest-list button::after, .interest-list a::after { content: ""; position: absolute; left: 50%; bottom: -9px; width: 24px; height: 4px; border-radius: 999px; background: var(--accent); transform: translateX(-50%) scaleX(.82); opacity: .82; box-shadow: 0 6px 0 -1px rgba(255,176,0,.42); transition: transform .25s, opacity .25s; }
 .interest-list button:hover::after, .interest-list a:hover::after { transform: translateX(-50%) scaleX(1); opacity: 1; }
@@ -322,8 +322,9 @@ button { font: inherit; }
 .contact-links small { color: var(--muted); font: 700 10px/1 monospace; letter-spacing: .1em; }
 .contact-links > a:hover small { color: var(--accent-soft); }
 .contact-links strong { font-size: clamp(1rem, 1.8vw, 1.45rem); font-weight: 600; }
-.contact-action-label { position: absolute; right: 24px; bottom: 21px; display: inline-flex; align-items: center; justify-content: center; padding: 4px 7px; border: 1px solid var(--accent); border-radius: 999px; color: var(--accent); background: rgba(255,176,0,.06); font: 700 10px/1 sans-serif; }
-.contact-links > a:hover .contact-action-label { color: var(--accent); border-color: var(--accent); }
+.contact-action-label { position: absolute; right: 24px; bottom: 21px; display: grid; width: 17px; height: 17px; place-items: center; border: 1px solid var(--accent); border-radius: 5px 2px 5px 2px; color: var(--accent); background: rgba(255,176,0,.06); box-shadow: 2px 2px 0 rgba(255,176,0,.13); transition: transform .25s, background .25s, box-shadow .25s; }
+.contact-action-label::before { content: "↗"; font: 700 10px/1 sans-serif; transform: translate(-.25px, .25px); }
+.contact-links > a:hover .contact-action-label { color: var(--accent); border-color: var(--accent); background: rgba(255,176,0,.16); box-shadow: 3px 3px 0 rgba(255,176,0,.22); transform: translate(1px, -1px); }
 .contact-meta { display: flex; justify-content: space-between; padding-top: 80px; margin-top: 100px; border-top: 1px solid var(--line); color: var(--muted); font: 600 11px/1 monospace; text-transform: uppercase; }
 
 .certificate-dialog { width: min(1100px, calc(100% - 32px)); max-height: calc(100vh - 32px); padding: 0; border: 0; background: transparent; overflow: visible; }
@@ -421,7 +422,7 @@ button { font: inherit; }
   .communication-cards article { grid-template-columns: 1fr; }
   .communication-cards article > span { grid-row: auto; margin-bottom: 12px; }
   .interest-strip { grid-template-columns: 1fr; gap: 14px; }
-  .interest-list button, .interest-list a { display: inline-flex; align-items: baseline; gap: 7px; padding: 9px 11px; }
+  .interest-list button, .interest-list a { display: inline-flex; align-items: baseline; gap: 7px; padding: 9px 22px 9px 11px; }
   .interest-list button small, .interest-list a small { position: static; transform: none; color: rgba(0,0,0,.64); font-size: 8px; line-height: 1; letter-spacing: .11em; }
   .interest-list button small::before, .interest-list a small::before { content: ""; display: inline-block; width: 4px; height: 4px; margin: 0 4px 1px 0; border-radius: 50%; background: rgba(0,0,0,.58); vertical-align: middle; }
   .interest-list button::after, .interest-list a::after { display: none; }
