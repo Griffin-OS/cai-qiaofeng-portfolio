@@ -431,6 +431,9 @@ button { font: inherit; }
   .contact-section h2 { margin-bottom: 40px; }
   .contact-links { grid-template-columns: 1fr; }
   .contact-action-label { top: 18px; right: 18px; bottom: auto; }
+  .school-website::after, .transcript-link::after { content: ""; font-size: 0; background: rgba(255,176,0,.08) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 13 13 3M7 3h6v6' fill='none' stroke='%23ffb000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 8px 8px no-repeat; }
+  .interest-list button::before, .interest-list a::before { content: ""; width: 9px; height: 9px; font-size: 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 13 13 3M7 3h6v6' fill='none' stroke='%23101317' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
+  .contact-action-label::before { content: ""; width: 10px; height: 10px; font-size: 0; transform: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 13 13 3M7 3h6v6' fill='none' stroke='%23ffb000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
   .contact-meta { margin-top: 70px; flex-direction: column; gap: 14px; }
 }
 
