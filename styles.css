@@ -228,6 +228,16 @@ button { font: inherit; }
 .school-card:not(.school-primary) h3 { margin: 31px 0 12px; font-size: clamp(2rem, 2.7vw, 2.45rem); }
 .school-card:not(.school-primary) h3 small { color: #6a7279; font-size: 13px; }
 .wust-degree-focus { margin: 0 0 28px; color: #7a8289; font: 600 12px/1.45 monospace; letter-spacing: .03em; }
+.school-undergrad h3 { margin-bottom: 24px !important; }
+.school-undergrad h3 { font-size: clamp(2.15rem, 2.9vw, 2.6rem) !important; }
+.school-undergrad .school-row { padding-top: 28px; }
+.school-undergrad .school-note { margin-top: 28px; font-size: 14.5px; line-height: 1.8; }
+.school-undergrad .undergrad-roles { margin-top: 26px; }
+.school-undergrad .undergrad-roles span { padding: 8px 10px; font-size: 11.5px; }
+.school-undergrad .undergrad-proof { margin-top: 24px; }
+.school-undergrad .undergrad-proof strong { font-size: 23px; }
+.school-undergrad .engagement-line { padding-top: 24px; }
+.school-undergrad .engagement-line span { font-size: 11.5px; }
 .wust-brand { height: 42px; display: flex; align-items: center; margin-bottom: 13px; }
 .wust-brand img { width: 175px; max-height: 36px; object-fit: contain; object-position: left center; }
 .wust-name { margin: 0 !important; color: #525960 !important; font: 700 11px/1.4 monospace !important; letter-spacing: .05em !important; text-transform: none !important; }
@@ -303,7 +313,7 @@ button { font: inherit; }
 
 .contact-section { padding: 130px 0 60px; }
 .contact-section h2 { margin: 20px 0 50px; max-width: 1000px; font-size: clamp(2.8rem, 6.5vw, 6.8rem); line-height: .95; letter-spacing: -.065em; }
-.contact-click-hints { display: flex; justify-content: space-between; margin: -31px 0 16px; color: var(--accent); font: 700 10px/1 monospace; letter-spacing: .12em; }
+.contact-click-hints { display: flex; justify-content: space-between; margin: -31px 0 16px; color: var(--accent); font: 700 12px/1 monospace; letter-spacing: .1em; }
 .contact-links { display: grid; grid-template-columns: 1.2fr .8fr; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
 .contact-links > * { min-height: 100px; padding: 22px 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: color .25s, background .25s; }
 .contact-links > a:hover { color: var(--paper); background: var(--ink); }
@@ -314,10 +324,17 @@ button { font: inherit; }
 
 .certificate-dialog { width: min(1100px, calc(100% - 32px)); max-height: calc(100vh - 32px); padding: 0; border: 0; background: transparent; overflow: visible; }
 .certificate-dialog::backdrop { background: rgba(4,6,8,.88); backdrop-filter: blur(9px); }
+.dialog-gallery { position: relative; display: grid; place-items: center; }
 .certificate-dialog img { max-width: min(1200px, calc(100vw - 48px)); max-height: calc(100vh - 48px); margin: auto; object-fit: contain; box-shadow: 0 20px 80px rgba(0,0,0,.45); animation: dialog-in .42s cubic-bezier(.22,.8,.22,1) both; }
 @keyframes dialog-in { from { opacity: 0; transform: translateY(-34px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
-.certificate-dialog img.is-rotated { transform: rotate(180deg); }
+.certificate-dialog img.is-rotated { animation: dialog-in-rotated .42s cubic-bezier(.22,.8,.22,1) both; }
+@keyframes dialog-in-rotated { from { opacity: 0; transform: translateY(-34px) scale(.97) rotate(180deg); } to { opacity: 1; transform: rotate(180deg); } }
 .dialog-close { position: fixed; top: 18px; right: 22px; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; background: rgba(0,0,0,.35); color: white; font-size: 27px; cursor: pointer; }
+.dialog-gallery-control { position: fixed; top: 50%; z-index: 2; width: 42px; height: 58px; border: 1px solid rgba(255,255,255,.34); background: rgba(0,0,0,.32); color: white; font-size: 42px; line-height: .8; cursor: pointer; transform: translateY(-50%); transition: background .2s ease, color .2s ease; }
+.dialog-gallery-control:hover, .dialog-gallery-control:focus-visible { background: var(--accent); color: var(--ink); outline: none; }
+.dialog-gallery-previous { left: 20px; }
+.dialog-gallery-next { right: 20px; }
+.dialog-gallery-count { position: fixed; bottom: 18px; left: 50%; margin: 0; padding: 6px 10px; color: var(--accent-soft); background: rgba(0,0,0,.42); font: 700 11px/1 monospace; letter-spacing: .09em; transform: translateX(-50%); }
 
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); transition-delay: var(--delay, 0ms); }
 .reveal.is-visible { opacity: 1; transform: none; }

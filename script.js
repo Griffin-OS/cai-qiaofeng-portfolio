@@ -130,29 +130,61 @@ if (matchMedia('(max-width: 680px) and (pointer: coarse)').matches && !matchMedi
 
 const dialog = document.querySelector('.certificate-dialog');
 const dialogImage = dialog.querySelector('img');
+const dialogPrevious = dialog.querySelector('.dialog-gallery-previous');
+const dialogNext = dialog.querySelector('.dialog-gallery-next');
+const dialogCount = dialog.querySelector('.dialog-gallery-count');
+let dialogItems = [];
+let dialogIndex = 0;
+
+function renderDialogItem() {
+  const item = dialogItems[dialogIndex];
+  if (!item) return;
+  dialogImage.classList.remove('is-rotated');
+  void dialogImage.offsetWidth;
+  dialogImage.src = item.src;
+  dialogImage.alt = item.alt;
+  if (item.rotate) dialogImage.classList.add('is-rotated');
+  const hasMultiple = dialogItems.length > 1;
+  dialogPrevious.hidden = !hasMultiple;
+  dialogNext.hidden = !hasMultiple;
+  dialogCount.textContent = hasMultiple ? `${dialogIndex + 1} / ${dialogItems.length}` : '';
+}
+
+function openDialog(items) {
+  dialogItems = items;
+  dialogIndex = 0;
+  renderDialogItem();
+  if (!dialog.open) dialog.showModal();
+}
+
 document.querySelectorAll('.award-card[data-image]').forEach((card) => {
   card.addEventListener('click', () => {
-    dialogImage.src = card.dataset.image;
-    dialogImage.alt = `${card.querySelector('h3').textContent}证书`;
-    dialogImage.classList.toggle('is-rotated', card.dataset.rotate === '180');
-    dialog.showModal();
+    const sources = (card.dataset.gallery || card.dataset.image).split('|');
+    const labels = (card.dataset.galleryLabels || '').split('|');
+    openDialog(sources.map((src, index) => ({
+      src,
+      alt: labels[index] || `${card.querySelector('h3').textContent}证书`,
+      rotate: index === 0 && card.dataset.rotate === '180'
+    })));
   });
 });
 document.querySelectorAll('.photo-gallery figure img').forEach((image) => {
   image.addEventListener('click', () => {
-    dialogImage.src = image.src;
-    dialogImage.alt = image.alt;
-    dialogImage.classList.remove('is-rotated');
-    dialog.showModal();
+    openDialog([{ src: image.src, alt: image.alt, rotate: false }]);
   });
 });
 document.querySelectorAll('.transcript-link[data-image]').forEach((link) => {
   link.addEventListener('click', () => {
-    dialogImage.src = link.dataset.image;
-    dialogImage.alt = '成绩单预览';
-    dialogImage.classList.remove('is-rotated');
-    dialog.showModal();
+    openDialog([{ src: link.dataset.image, alt: '成绩单预览', rotate: false }]);
   });
+});
+dialogPrevious.addEventListener('click', () => {
+  dialogIndex = (dialogIndex - 1 + dialogItems.length) % dialogItems.length;
+  renderDialogItem();
+});
+dialogNext.addEventListener('click', () => {
+  dialogIndex = (dialogIndex + 1) % dialogItems.length;
+  renderDialogItem();
 });
 dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', (event) => {

@@ -7,7 +7,7 @@
   <meta name="description" content="蔡峤峰的机器人控制、无人机系统、嵌入式开发与工程实践作品集。">
   <title>蔡峤峰 Qiaofeng Cai｜机器人与控制作品集</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0d10'/%3E%3Cpath d='M14 38h12l6-20 7 28 5-16h7' fill='none' stroke='%23ffb000' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css?v=20260930-51">
+  <link rel="stylesheet" href="styles.css?v=20260930-53">
 </head>
 <body>
   <div class="scroll-meter" aria-hidden="true"><span></span></div>
@@ -195,11 +195,10 @@
             <span class="course-current">Robotic Navigation &amp; Sensing <i>正在修读</i></span>
           </div>
         </article>
-        <article class="school-card reveal" data-delay="80">
+        <article class="school-card school-undergrad reveal" data-delay="80">
           <div class="wust-brand"><img src="assets/wust-logo.png" alt="武汉科技大学标志"></div>
           <p class="wust-name">武汉科技大学 · Wuhan University of Science and Technology</p>
           <h3>土木工程学士 <small>B.Eng. in Civil Engineering</small></h3>
-          <p class="wust-degree-focus">组织协调 · Communication &amp; Project Coordination</p>
           <div class="school-row"><span>2019 — 2023 · Wuhan</span><strong>本科</strong></div>
           <p class="school-note">本科阶段系统参与校园媒体、学院与班级组织工作，锻炼内容策划、跨团队沟通与项目推进能力；并将这些能力延伸到竞赛协作、志愿服务与工程技术汇报中。</p>
           <div class="undergrad-roles" aria-label="本科组织经历">
@@ -226,7 +225,7 @@
         <p>本科期间的竞赛、奖学金与评优记录，作为组织能力和持续投入的补充证明。</p>
       </div>
       <div class="award-showcase">
-        <button class="award-card award-rotated reveal" data-image="assets/award-chuangqing.jpg" data-rotate="180" aria-label="查看创青春国家级铜奖证书">
+        <button class="award-card award-rotated reveal" data-image="assets/award-chuangqing.jpg" data-gallery="assets/award-chuangqing.jpg|assets/award-chuangqing-proof-1.png" data-gallery-labels="“创青春”国家级铜奖证书|“创青春”参赛证明（成员证件号已隐去）" data-rotate="180" aria-label="查看创青春国家级铜奖证书与参赛证明">
           <span class="certificate-frame"><img src="assets/award-chuangqing.jpg" alt="创青春国家级铜奖证书" loading="lazy"></span>
           <span class="award-level">NATIONAL · 2023</span>
           <h3>“创青春”中国青年创新创业大赛</h3>
@@ -288,7 +287,7 @@
     <section id="contact" class="contact-section section-shell">
       <p class="eyebrow">LET'S CONNECT</p>
       <h2>期待与您交流。</h2>
-      <div class="contact-click-hints" aria-hidden="true"><span>点击联系</span><span>点击联系</span></div>
+      <div class="contact-click-hints" aria-hidden="true"><span>点击联系</span></div>
       <div class="contact-links">
         <a class="contact-email" href="mailto:cai.qiao@northeastern.edu"><small>EMAIL / 邮箱</small><strong>cai.qiao@northeastern.edu</strong></a>
         <a href="tel:+18573302630"><small>UNITED STATES / 美国</small><strong>+1 (857) 330-2630</strong></a>
@@ -301,9 +300,14 @@
 
   <dialog class="certificate-dialog" aria-label="图片预览">
     <button class="dialog-close" aria-label="关闭图片预览">×</button>
-    <img src="" alt="图片大图">
+    <div class="dialog-gallery">
+      <button class="dialog-gallery-control dialog-gallery-previous" type="button" aria-label="查看上一张">‹</button>
+      <img src="" alt="图片大图">
+      <button class="dialog-gallery-control dialog-gallery-next" type="button" aria-label="查看下一张">›</button>
+      <p class="dialog-gallery-count" aria-live="polite"></p>
+    </div>
   </dialog>
 
-  <script src="script.js?v=20260929-32"></script>
+  <script src="script.js?v=20260930-33"></script>
 </body>
 </html>
