@@ -384,6 +384,7 @@ button { font: inherit; }
   .school-card, .skill-card { padding: 26px; }
   .school-name-row { display: block; }
   .school-website { margin-top: 10px; }
+  .school-primary .school-website, .school-primary .transcript-link { color: var(--accent) !important; border-color: var(--accent) !important; font-weight: 700; }
   .undergrad-proof { grid-template-columns: 1fr 1fr; }
   .undergrad-proof div:nth-child(2) { border-right: 0; }
   .undergrad-proof div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
