@@ -360,8 +360,8 @@ button { font: inherit; }
   .hero-visual { min-height: 475px; }
   .portrait-stage { width: 95%; height: 455px; }
   .portrait-cutout { width: auto; height: 96%; right: -5%; bottom: -1%; }
-  .portrait-type { font-size: 4.2rem; }
-  .hero-school-mark { z-index: 4; top: 34px; left: 40px; opacity: .78; transform: translateZ(0); }
+  .portrait-type { top: 9%; left: 12%; font-size: 4.2rem; }
+  .hero-school-mark { z-index: 4; top: 18px; left: 20px; opacity: .78; transform: translateZ(0); }
   .telemetry-card { width: 78%; bottom: 0; }
   .content-section, .experience-section { padding: 88px 0; }
   .section-heading { display: block; margin-bottom: 40px; }
