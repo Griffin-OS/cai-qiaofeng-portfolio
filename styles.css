@@ -203,7 +203,7 @@ button { font: inherit; }
 .school-card:not(.school-primary) { display: flex; flex-direction: column; }
 .school-primary { position: relative; overflow: hidden; }
 .education-mascot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: .12; filter: grayscale(.25) contrast(1.05); pointer-events: none; transform: scale(1); transition: opacity .7s ease, filter .7s ease, transform 1.35s cubic-bezier(.22,.8,.22,1); }
-.school-primary.is-mobile-pulsed .education-mascot { animation: mobile-mascot-breathe 5.8s ease-in-out infinite; }
+.school-primary.is-mobile-pulsed .education-mascot { animation: mobile-mascot-breathe 8s ease-in-out infinite; }
 @keyframes mobile-mascot-breathe { 0%, 100% { transform: scale(1); opacity: .12; filter: grayscale(.25) contrast(1.05); } 50% { transform: scale(1.022); opacity: .145; filter: grayscale(.16) contrast(1.07) brightness(1.04); } }
 .school-primary.is-mascot-breath .education-mascot { opacity: .17; filter: grayscale(.16) contrast(1.07) brightness(1.05); animation: mascot-breathe 4.8s ease-in-out infinite; }
 @keyframes mascot-breathe { 0%, 100% { transform: scale(1.008); } 50% { transform: scale(1.038); } }
