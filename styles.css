@@ -80,9 +80,9 @@ button { font: inherit; }
 .button-primary { background: var(--accent); color: var(--ink); border-color: var(--accent) !important; }
 .button-primary:hover { background: var(--accent); color: var(--ink); }
 .button-ghost { border-color: rgba(255,255,255,.18); }
-.quick-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-top: 28px; margin: 40px 0 0; border-top: 1px solid rgba(255,255,255,.15); }
+.quick-facts { display: grid; grid-template-columns: max-content max-content max-content; justify-content: space-between; gap: 0; padding-top: 28px; margin: 40px 0 0; border-top: 1px solid rgba(255,255,255,.15); }
 .quick-facts div { min-width: 0; }
-.quick-facts dt { display: inline-block; min-width: 6.2ch; font: 700 30px/1 monospace; letter-spacing: -.04em; }
+.quick-facts dt { font: 700 30px/1 monospace; letter-spacing: -.04em; }
 .quick-facts dd { margin: 7px 0 0; color: #818b93; font-size: 12px; }
 
 .hero-visual { min-height: 610px; position: relative; }
@@ -94,8 +94,8 @@ button { font: inherit; }
 .hero-school-mark { position: absolute; z-index: 3; top: 18px; left: 20px; width: 150px; height: auto; opacity: .86; }
 .portrait-grid { position: absolute; inset: -58px; opacity: .25; background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px); background-size: 58px 58px; mask-image: linear-gradient(90deg, #000, transparent 80%); animation: grid-drift 14s linear infinite; }
 .portrait-cutout { position: absolute; z-index: 2; width: auto; max-width: none; height: 98%; right: -5%; bottom: -1%; filter: drop-shadow(-22px 22px 38px rgba(0,0,0,.38)); transition: transform .8s cubic-bezier(.22,.8,.22,1); will-change: transform; }
-.portrait-stage.is-mobile-pulsed .portrait-cutout { animation: mobile-portrait-split 2.35s cubic-bezier(.22,.8,.22,1) 1; }
-.portrait-stage.is-mobile-pulsed .portrait-type { animation: mobile-stage-countershift 2.35s cubic-bezier(.22,.8,.22,1) 1; }
+.portrait-stage.is-mobile-pulsed .portrait-cutout { animation: mobile-portrait-split 4.35s cubic-bezier(.22,.8,.22,1) .5s 1; }
+.portrait-stage.is-mobile-pulsed .portrait-type { animation: mobile-stage-countershift 4.35s cubic-bezier(.22,.8,.22,1) .5s 1; }
 @keyframes mobile-portrait-split { 0%, 100% { transform: translateX(0); } 48% { transform: translateX(13px); } }
 @keyframes mobile-stage-countershift { 0%, 100% { transform: translateX(0); } 48% { transform: translateX(-10px); } }
 .portrait-caption { position: absolute; z-index: 3; left: 22px; right: 22px; bottom: 18px; display: flex; justify-content: space-between; align-items: end; gap: 20px; color: white; font: 600 10px/1.25 monospace; letter-spacing: .08em; }
@@ -354,14 +354,14 @@ button { font: inherit; }
   .hero h1 em { display: block; margin-top: .12em; white-space: nowrap; }
   .hero-lead { font-size: 16px; }
   .button-ghost { width: 100%; font-size: 12px; }
-  .quick-facts { gap: 8px; }
-  .quick-facts dt { min-width: 6.2ch; font-size: 25px; }
+  .quick-facts { gap: 0; }
+  .quick-facts dt { font-size: 25px; }
   .quick-facts dd { line-height: 1.35; }
   .hero-visual { min-height: 475px; }
   .portrait-stage { width: 95%; height: 455px; }
   .portrait-cutout { width: auto; height: 96%; right: -5%; bottom: -1%; }
   .portrait-type { font-size: 4.2rem; }
-  .hero-school-mark { z-index: 4; opacity: .86; transform: translateZ(0); }
+  .hero-school-mark { z-index: 4; top: 34px; left: 40px; opacity: .78; transform: translateZ(0); }
   .telemetry-card { width: 78%; bottom: 0; }
   .content-section, .experience-section { padding: 88px 0; }
   .section-heading { display: block; margin-bottom: 40px; }
