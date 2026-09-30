@@ -194,7 +194,9 @@ button { font: inherit; }
 .school-card, .skill-card { min-height: 330px; padding: 34px; border: 1px solid var(--line); background: rgba(255,255,255,.3); transition: transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s; }
 .school-card:not(.school-primary) { display: flex; flex-direction: column; }
 .school-primary { position: relative; overflow: hidden; }
-.education-mascot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: .12; filter: grayscale(.25) contrast(1.05); pointer-events: none; }
+.education-mascot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: .12; filter: grayscale(.25) contrast(1.05); pointer-events: none; transform: scale(1); transition: opacity .45s ease, filter .45s ease; }
+.school-primary:hover .education-mascot { opacity: .19; filter: grayscale(.12) contrast(1.08) brightness(1.08); animation: mascot-breathe 2.15s ease-in-out infinite; }
+@keyframes mascot-breathe { 0%, 100% { transform: scale(1.025); } 50% { transform: scale(1.075); } }
 .school-card:hover, .skill-card:hover { transform: translateY(-4px); box-shadow: 0 20px 55px rgba(16,19,23,.08); }
 .school-primary { position: relative; overflow: hidden; color: white; background: var(--night-2); border-color: var(--night-2); }
 .school-card > p:first-child { margin: 0; color: var(--muted); font: 700 11px/1.3 monospace; letter-spacing: .08em; }
