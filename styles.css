@@ -378,7 +378,7 @@ button { font: inherit; }
   .hero-visual { min-height: 475px; }
   .portrait-stage { width: 95%; height: 455px; }
   .portrait-cutout { width: auto; height: 96%; right: -5%; bottom: -1%; }
-  .portrait-type { top: 9%; left: 12%; font-size: 4.2rem; }
+  .portrait-type { top: 9%; left: 9%; font-size: 4.2rem; }
   .hero-school-mark { z-index: 4; top: 15px; left: 15px; opacity: .73; transform: translateZ(0); }
   .telemetry-card { width: 78%; bottom: 0; }
   .content-section, .experience-section { padding: 88px 0; }
