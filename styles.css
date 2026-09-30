@@ -80,6 +80,10 @@ button { font: inherit; }
 .button-primary { background: var(--accent); color: var(--ink); border-color: var(--accent) !important; }
 .button-primary:hover { background: var(--accent); color: var(--ink); }
 .button-ghost { border-color: rgba(255,255,255,.18); }
+.hero-actions .button { position: relative; padding-right: 43px; }
+.hero-actions .button::after { content: ""; position: absolute; top: 50%; right: 17px; width: 12px; height: 12px; transform: translateY(-50%); background: center / contain no-repeat; }
+.hero-actions .button-primary::after { background-image: url("assets/arrow-up-right-ink.png?v=20260930-1"); }
+.hero-actions .button-ghost::after { background-image: url("assets/arrow-up-right-gold.png?v=20260930-1"); }
 .quick-facts { display: grid; grid-template-columns: max-content max-content max-content; justify-content: space-between; gap: 0; padding-top: 28px; margin: 40px 0 0; border-top: 1px solid rgba(255,255,255,.15); }
 .quick-facts div { min-width: 0; }
 .quick-facts dt { font: 700 30px/1 monospace; letter-spacing: -.04em; }
@@ -242,6 +246,7 @@ button { font: inherit; }
 .wust-brand { height: 42px; display: flex; align-items: center; margin-bottom: 13px; }
 .wust-brand img { width: 175px; max-height: 36px; object-fit: contain; object-position: left center; }
 .wust-name { margin: 0 !important; color: #525960 !important; font: 700 11px/1.4 monospace !important; letter-spacing: .05em !important; text-transform: none !important; }
+.wust-name span + span::before { content: " · "; }
 .school-row { display: flex; justify-content: space-between; gap: 20px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; }
 .school-primary .school-row { border-color: rgba(255,255,255,.16); color: #abb1b7; }
 .school-primary .school-row strong { color: var(--accent); }
@@ -302,7 +307,6 @@ button { font: inherit; }
 .interest-list button:hover, .interest-list a:hover { transform: translateY(-3px); background: rgba(255,255,255,.3); }
 .interest-list button, .interest-list a { position: relative; padding-right: 25px; }
 .interest-list button::before, .interest-list a::before { content: "↗"; position: absolute; top: 4px; right: 6px; color: rgba(16,19,23,.64); font: 700 9px/1 sans-serif; line-height: 1; }
-.interest-list button small, .interest-list a small { position: absolute; left: 50%; bottom: -22px; transform: translateX(-50%); color: rgba(0,0,0,.62); font: 700 8px/1 monospace; letter-spacing: .12em; white-space: nowrap; }
 .interest-list button::after, .interest-list a::after { content: ""; position: absolute; left: 50%; bottom: -9px; width: 24px; height: 4px; border-radius: 999px; background: var(--accent); transform: translateX(-50%) scaleX(.82); opacity: .82; box-shadow: 0 6px 0 -1px rgba(255,176,0,.42); transition: transform .25s, opacity .25s; }
 .interest-list button:hover::after, .interest-list a:hover::after { transform: translateX(-50%) scaleX(1); opacity: 1; }
 .photo-gallery { grid-column: 2; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 14px; }
@@ -408,6 +412,10 @@ button { font: inherit; }
   .school-name-row { display: block; }
   .school-website { margin-top: 10px; }
   .school-primary .school-website, .school-primary .transcript-link { color: var(--accent) !important; border-color: var(--accent) !important; font-weight: 700; }
+  .school-primary.is-mobile-pulsed .education-mascot, .school-primary.is-mascot-breath .education-mascot { animation-duration: 5.8s; }
+  .wust-name { font: 700 11px/1.55 sans-serif !important; letter-spacing: .02em !important; }
+  .wust-name span { display: block; }
+  .wust-name span + span::before { content: ""; }
   .undergrad-proof { grid-template-columns: 1fr 1fr; }
   .undergrad-proof div:nth-child(2) { border-right: 0; }
   .undergrad-proof div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
@@ -422,9 +430,7 @@ button { font: inherit; }
   .communication-cards article { grid-template-columns: 1fr; }
   .communication-cards article > span { grid-row: auto; margin-bottom: 12px; }
   .interest-strip { grid-template-columns: 1fr; gap: 14px; }
-  .interest-list button, .interest-list a { display: inline-flex; align-items: baseline; gap: 7px; padding: 9px 22px 9px 11px; }
-  .interest-list button small, .interest-list a small { position: static; transform: none; color: rgba(0,0,0,.64); font-size: 8px; line-height: 1; letter-spacing: .11em; }
-  .interest-list button small::before, .interest-list a small::before { content: ""; display: inline-block; width: 4px; height: 4px; margin: 0 4px 1px 0; border-radius: 50%; background: rgba(0,0,0,.58); vertical-align: middle; }
+  .interest-list button, .interest-list a { display: inline-flex; align-items: center; padding: 9px 22px 9px 11px; }
   .interest-list button::after, .interest-list a::after { display: none; }
   .photo-gallery { grid-column: 1; grid-template-columns: repeat(2, 1fr); }
   .contact-section { padding-top: 90px; }
