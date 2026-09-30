@@ -72,7 +72,7 @@ button { font: inherit; }
 .hero h1 em { -webkit-text-stroke-color: var(--accent); }
 .hero-lead { max-width: 650px; margin: 38px 0 0; font-size: 18px; color: #a4abb1; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
-.hero-interaction-hint { margin: 14px 0 -12px; color: var(--accent); font: 700 11px/1.45 monospace; letter-spacing: .045em; }
+.hero-interaction-hint { margin: 14px 0 -12px; color: var(--accent); font: 700 12px/1.45 monospace; letter-spacing: .045em; }
 .hero-interaction-hint span { display: inline-block; margin-right: 8px; padding: 1px 5px; border: 1px solid currentColor; font-size: .9em; line-height: 1.35; }
 .button { min-height: 48px; padding: 0 19px; display: inline-flex; align-items: center; gap: 28px; border: 1px solid var(--ink); font-size: 14px; transition: transform .2s, background .2s, color .2s; }
 .button:hover { transform: translateY(-2px); }
