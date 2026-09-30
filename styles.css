@@ -219,7 +219,8 @@ button { font: inherit; }
 .school-name-cn { margin: 0 !important; color: white !important; font: 700 15px/1.3 sans-serif !important; letter-spacing: .01em !important; text-transform: none !important; }
 .school-ranks { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 11px; }
 .school-ranks span { padding: 6px 8px; color: var(--accent-soft); border: 1px solid rgba(255,176,0,.42); font: 600 10px/1.2 sans-serif; }
-.school-website, .transcript-link { display: inline-flex; align-items: center; justify-content: center; padding: 4px 7px; border: 1px solid var(--accent); border-radius: 999px; background: transparent; color: var(--accent); font: 700 10px/1 sans-serif; text-decoration: none; cursor: pointer; transition: color .25s ease, background .25s ease, box-shadow .25s ease; }
+.school-website, .transcript-link { position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 4px 7px; border: 1px solid var(--accent); border-radius: 999px; background: transparent; color: var(--accent); font: 700 10px/1 sans-serif; text-decoration: none; cursor: pointer; transition: color .25s ease, background .25s ease, box-shadow .25s ease; }
+.school-website::after, .transcript-link::after { content: "↗"; position: absolute; left: calc(100% + 8px); top: 50%; display: grid; width: 12px; height: 12px; place-items: center; border: 1px solid currentColor; border-radius: 4px 1px 4px 1px; background: rgba(255,176,0,.08); color: var(--accent); font: 700 9px/1 sans-serif; line-height: 1; transform: translateY(-50%); }
 .school-website:hover, .school-website:focus-visible, .transcript-link:hover, .transcript-link:focus-visible { color: var(--ink); background: var(--accent); box-shadow: 0 5px 14px rgba(255,176,0,.22); outline: none; animation: entry-breathe .85s ease-in-out infinite alternate; }
 @keyframes entry-breathe { from { transform: translateY(-1px) scale(1.015); } to { transform: translateY(-2px) scale(1.065); } }
 .school-card h3 { font-size: 31px; margin: 24px 0 34px; }
@@ -295,8 +296,8 @@ button { font: inherit; }
 .interest-strip { display: grid; grid-template-columns: 145px 1fr; gap: 20px; align-items: center; margin-top: 42px; padding-top: 24px; border-top: 1px solid rgba(0,0,0,.35); }
 .interest-label { position: relative; font: 700 10px/1.45 monospace; letter-spacing: .08em; }
 .interest-label i { font-style: normal; }
-.interest-label::after { content: "→"; position: absolute; top: 50%; left: calc(100% + 26px); color: #f25b57; font: 700 32px/1 sans-serif; transform: translateY(-50%); animation: interest-arrow-nudge 1.5s ease-in-out infinite; }
-@keyframes interest-arrow-nudge { 0%, 100% { margin-left: 0; } 50% { margin-left: 7px; } }
+.interest-label::after { content: "↗"; position: absolute; top: 50%; left: 92px; display: grid; width: 26px; height: 19px; place-items: center; border: 1px solid rgba(16,19,23,.62); border-radius: 8px 1px 8px 1px; background: rgba(255,255,255,.1); box-shadow: 3px 3px 0 rgba(16,19,23,.08); color: var(--ink); font: 700 14px/1 sans-serif; transform: translateY(-50%); animation: interest-arrow-nudge 1.8s ease-in-out infinite; }
+@keyframes interest-arrow-nudge { 0%, 100% { transform: translateY(-50%) translateX(0); } 50% { transform: translateY(-50%) translateX(3px); } }
 .interest-list { display: flex; flex-wrap: wrap; gap: 9px; }
 .interest-list span, .interest-list button, .interest-list a { padding: 8px 14px; border: 1px solid rgba(0,0,0,.32); background: rgba(255,255,255,.08); color: inherit; font: inherit; font-size: 13px; text-decoration: none; transition: transform .25s, background .25s; cursor: pointer; }
 .interest-list span:hover { color: var(--accent); background: rgba(255,255,255,.3); }
