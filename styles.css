@@ -219,9 +219,17 @@ button { font: inherit; }
 .education-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch; }
 .school-card, .skill-card { min-height: 330px; padding: 34px; border: 1px solid var(--line); background: rgba(255,255,255,.3); transition: transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s; }
 .school-card:not(.school-primary) { display: flex; flex-direction: column; }
-.school-primary { position: relative; overflow: hidden; }
-.education-mascot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: .12; filter: grayscale(.25) contrast(1.05); pointer-events: none; transform: scale(1); transition: opacity .7s ease, filter .7s ease, transform 1.35s cubic-bezier(.22,.8,.22,1); }
+.school-primary { position: relative; isolation: isolate; overflow: hidden; }
+.education-mascot, .education-video { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center; pointer-events: none; }
+.education-mascot { z-index: 0; opacity: .12; filter: grayscale(.25) contrast(1.05); transform: scale(1); transition: opacity .7s ease, filter .7s ease, transform 1.35s cubic-bezier(.22,.8,.22,1); }
+.education-video { z-index: 1; opacity: 0; filter: saturate(.86) contrast(1.05) brightness(.9); transition: opacity .7s ease; }
+.school-primary::before { content: ""; position: absolute; z-index: 2; inset: 0; pointer-events: none; opacity: 0; background: linear-gradient(120deg, rgba(4,15,31,.78), rgba(4,15,31,.37) 70%), linear-gradient(0deg, rgba(9,12,15,.36), transparent 58%); transition: opacity .7s ease; }
+.school-primary > :not(.education-mascot):not(.education-video) { position: relative; z-index: 3; }
+.school-primary.is-education-video-ready .education-video { opacity: .38; }
+.school-primary.is-education-video-ready .education-mascot { opacity: 0; }
+.school-primary.is-education-video-ready::before { opacity: 1; }
 .school-primary.is-mobile-pulsed .education-mascot, .school-primary.is-mascot-breath .education-mascot { opacity: .17; filter: grayscale(.16) contrast(1.07) brightness(1.05); animation: mascot-breathe 3.8s ease-in-out infinite; }
+.school-primary.is-education-video-ready.is-mobile-pulsed .education-mascot, .school-primary.is-education-video-ready.is-mascot-breath .education-mascot { opacity: 0; animation: none; }
 @keyframes mascot-breathe { 0%, 100% { transform: scale(1.008); } 50% { transform: scale(1.052); } }
 .school-card:hover, .skill-card:hover { transform: translateY(-4px); box-shadow: 0 20px 55px rgba(16,19,23,.08); }
 .school-primary { position: relative; overflow: hidden; color: white; background: var(--night-2); border-color: var(--night-2); }
@@ -450,6 +458,7 @@ button { font: inherit; }
   .school-website { margin-top: 10px; }
   .school-primary .school-website, .school-primary .transcript-link { color: var(--accent) !important; border-color: var(--accent) !important; font-weight: 700; }
   .school-primary.is-mobile-pulsed .education-mascot, .school-primary.is-mascot-breath .education-mascot { animation-duration: 5.8s; }
+  .education-video, .school-primary::before { display: none; }
   .wust-name { font: 700 11px/1.55 sans-serif !important; letter-spacing: .02em !important; }
   .wust-name span { display: block; }
   .wust-name span + span::before { content: ""; }
@@ -471,17 +480,17 @@ button { font: inherit; }
   .interest-list button::after, .interest-list a::after { display: none; }
   .photo-gallery { grid-column: 1; grid-template-columns: repeat(2, 1fr); }
   .contact-video-stage { min-height: auto; background: #050709 url("assets/boston-contact-poster.jpg") center / cover no-repeat; }
-  .contact-video { display: none; }
+  .contact-video { display: block; }
   .contact-video-content { padding: 62px 0 42px; }
   .contact-video-stage::before { background: linear-gradient(180deg, rgba(5,8,11,.48), rgba(5,8,11,.16) 42%, rgba(5,8,11,.60)), linear-gradient(90deg, rgba(5,8,11,.44), transparent 20%, transparent 80%, rgba(5,8,11,.44)); }
   .contact-video-stage::after { border-inline-width: 6px; box-shadow: inset 8px 0 20px rgba(0,0,0,.42), inset -8px 0 20px rgba(0,0,0,.42), inset 0 0 0 1px rgba(255,255,255,.045); }
   .contact-heading { gap: 28px; margin-bottom: 32px; }
   .contact-section h2 { max-width: 100%; font-size: clamp(3.05rem, 12vw, 4.5rem); }
   .contact-affiliations { width: 100%; min-height: 0; }
-  .contact-logo-rail { grid-template-columns: .85fr 1fr; min-height: 0; }
-  .contact-logo { min-height: 48px; padding-inline: 10px; }
+  .contact-logo-rail { grid-template-columns: .72fr 1fr 1.15fr; min-height: 0; }
+  .contact-logo { min-height: 48px; padding-inline: clamp(5px, 2vw, 10px); }
   .contact-logo-meet { border-left: 0; }
-  .contact-logo-wust { grid-column: 1 / -1; border-left: 0; border-top: 1px solid rgba(255,255,255,.2); }
+  .contact-logo-wust { grid-column: auto; border-left: 1px solid rgba(255,255,255,.24); border-top: 0; }
   .contact-logo-meet img { width: 52px; }
   .contact-logo-northeastern img, .contact-logo-wust img { width: 75px; }
   .contact-links { grid-template-columns: 1fr; }
@@ -494,9 +503,9 @@ button { font: inherit; }
 }
 
 @media (max-width: 360px) {
-  .contact-logo-rail { grid-template-columns: 1fr; }
-  .contact-logo, .contact-logo-wust { grid-column: auto; border-left: 0; border-top: 1px solid rgba(255,255,255,.2); }
-  .contact-logo:first-child { border-top: 0; }
+  .contact-logo-rail { grid-template-columns: .68fr 1fr 1.18fr; }
+  .contact-logo, .contact-logo-wust { grid-column: auto; border-top: 0; }
+  .contact-logo:not(:first-child) { border-left: 1px solid rgba(255,255,255,.24); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -505,4 +514,5 @@ button { font: inherit; }
   .reveal { opacity: 1; transform: none; }
   .contact-video-stage { background: var(--night) url("assets/boston-contact-poster.jpg") center / cover no-repeat; }
   .contact-video { display: none; }
+  .education-video, .school-primary::before { display: none; }
 }

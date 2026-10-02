@@ -2,14 +2,43 @@ const reveals = document.querySelectorAll('.reveal');
 const photoTrigger = document.querySelector('.interest-trigger');
 const photoGallery = document.querySelector('#photo-gallery');
 const contactVideo = document.querySelector('.contact-video[data-src]');
+const educationVideo = document.querySelector('.education-video[data-src]');
+
+const requestInlineVideoPlayback = (video) => {
+  if (!video) return;
+  const play = () => {
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.setAttribute('muted', '');
+    const playAttempt = video.play();
+    playAttempt?.catch(() => {});
+  };
+  video.setAttribute('playsinline', '');
+  video.setAttribute('webkit-playsinline', 'true');
+  video.setAttribute('x5-playsinline', 'true');
+  video.setAttribute('x5-video-player-type', 'h5');
+  video.setAttribute('x5-video-player-fullscreen', 'false');
+  video.addEventListener('loadedmetadata', play, { once: true });
+  video.addEventListener('loadeddata', play, { once: true });
+  video.addEventListener('canplay', play, { once: true });
+  document.addEventListener('WeixinJSBridgeReady', play, { once: true });
+  document.addEventListener('YixinJSBridgeReady', play, { once: true });
+  document.addEventListener('touchstart', play, { once: true });
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) play();
+  });
+  if ('WeixinJSBridge' in window) play();
+  play();
+};
 
 const loadContactVideo = () => {
   if (!contactVideo || contactVideo.dataset.loaded === 'true') return;
-  if (matchMedia('(max-width: 680px), (prefers-reduced-motion: reduce)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   contactVideo.dataset.loaded = 'true';
   contactVideo.src = contactVideo.dataset.src;
   contactVideo.load();
-  contactVideo.play().catch(() => {});
+  requestInlineVideoPlayback(contactVideo);
 };
 
 if (contactVideo) {
@@ -26,9 +55,38 @@ if (contactVideo) {
   } else {
     loadContactVideo();
   }
-  const desktopVideoQuery = matchMedia('(min-width: 681px)');
-  desktopVideoQuery.addEventListener?.('change', (event) => {
-    if (event.matches) loadContactVideo();
+}
+
+const loadEducationVideo = () => {
+  if (!educationVideo || educationVideo.dataset.loaded === 'true') return;
+  if (matchMedia('(max-width: 680px), (prefers-reduced-motion: reduce)').matches) return;
+  const educationCard = educationVideo.closest('.school-primary');
+  const revealEducationVideo = () => educationCard?.classList.add('is-education-video-ready');
+  educationVideo.dataset.loaded = 'true';
+  educationVideo.addEventListener('canplay', revealEducationVideo, { once: true });
+  educationVideo.src = educationVideo.dataset.src;
+  educationVideo.load();
+  const playAttempt = educationVideo.play();
+  playAttempt?.then(revealEducationVideo).catch(() => {});
+};
+
+if (educationVideo) {
+  const educationCard = educationVideo.closest('.school-primary');
+  if ('IntersectionObserver' in window && educationCard) {
+    const educationVideoObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        loadEducationVideo();
+        educationVideoObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: '250px 0px' });
+    educationVideoObserver.observe(educationCard);
+  } else {
+    loadEducationVideo();
+  }
+  const desktopEducationVideoQuery = matchMedia('(min-width: 681px)');
+  desktopEducationVideoQuery.addEventListener?.('change', (event) => {
+    if (event.matches) loadEducationVideo();
   });
 }
 
