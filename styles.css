@@ -236,8 +236,10 @@ button { font: inherit; }
 .school-card > p:first-child { margin: 0; color: var(--muted); font: 700 11px/1.3 monospace; letter-spacing: .08em; }
 .school-brand { display: flex; align-items: center; }
 .school-brand img { width: 190px; height: auto; padding: 8px 10px; object-fit: contain; background: white; }
+.school-primary .school-brand img { opacity: .80; }
 .school-name-row { display: flex; align-items: center; justify-content: flex-start; gap: 12px; margin-top: 17px; }
 .school-name-cn { margin: 0 !important; color: white !important; font: 700 15px/1.3 sans-serif !important; letter-spacing: .01em !important; text-transform: none !important; }
+.school-primary .school-name-cn { color: rgba(255,255,255,.82) !important; text-shadow: 0 1px 8px rgba(0,0,0,.34); }
 .school-ranks { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 11px; }
 .school-ranks span { padding: 6px 8px; color: var(--accent-soft); border: 1px solid rgba(255,176,0,.42); font: 600 10px/1.2 sans-serif; }
 .school-website, .transcript-link { position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 4px 7px; border: 1px solid var(--accent); border-radius: 999px; background: transparent; color: var(--accent); font: 700 10px/1 sans-serif; text-decoration: none; cursor: pointer; transition: color .25s ease, background .25s ease, box-shadow .25s ease; }
@@ -245,6 +247,7 @@ button { font: inherit; }
 .school-website:hover, .school-website:focus-visible, .transcript-link:hover, .transcript-link:focus-visible { color: var(--ink); background: var(--accent); box-shadow: 0 5px 14px rgba(255,176,0,.22); outline: none; animation: entry-breathe .85s ease-in-out infinite alternate; }
 @keyframes entry-breathe { from { transform: translateY(-1px) scale(1.015); } to { transform: translateY(-2px) scale(1.065); } }
 .school-card h3 { font-size: 31px; margin: 24px 0 34px; }
+.school-primary h3 { color: rgba(255,255,255,.86); text-shadow: 0 2px 12px rgba(0,0,0,.42); }
 .school-card h3 small { display: block; margin-top: 8px; color: #aeb4b9; font-size: 14px; font-weight: 500; letter-spacing: .05em; }
 .degree-focus { margin: -24px 0 30px; color: var(--muted); font-size: 14px; }
 .school-card:not(.school-primary) h3 { margin: 31px 0 12px; font-size: clamp(2rem, 2.7vw, 2.45rem); }
@@ -461,6 +464,9 @@ button { font: inherit; }
   .school-name-row { display: block; }
   .school-website { margin-top: 10px; }
   .school-primary .school-website, .school-primary .transcript-link { color: var(--accent) !important; border-color: var(--accent) !important; font-weight: 700; }
+  .school-primary .school-brand img { opacity: .84; }
+  .school-primary .school-name-cn { color: rgba(255,255,255,.86) !important; }
+  .school-primary h3 { color: rgba(255,255,255,.90); }
   .school-primary.is-mobile-pulsed .education-mascot, .school-primary.is-mascot-breath .education-mascot { animation-duration: 5.8s; }
   .education-video, .school-primary::before { display: block; }
   .wust-name { font: 700 11px/1.55 sans-serif !important; letter-spacing: .02em !important; }
