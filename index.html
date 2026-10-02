@@ -7,13 +7,13 @@
   <meta name="description" content="蔡峤峰的机器人控制、无人机系统、嵌入式开发与工程实践作品集。">
   <title>蔡峤峰 | Cai, Qiaofeng</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0d10'/%3E%3Cpath d='M14 38h12l6-20 7 28 5-16h7' fill='none' stroke='%23ffb000' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css?v=20261001-65">
+  <link rel="stylesheet" href="styles.css?v=20261001-66">
 </head>
 <body>
   <div class="scroll-meter" aria-hidden="true"><span></span></div>
   <header class="topbar">
     <a class="brand" href="#top" aria-label="返回顶部">
-      <span>蔡峤峰 <i>Cai, Qiaofeng</i><small>本网址由 AI 辅助生成</small></span>
+      <span><b class="brand-name">蔡峤峰</b><i>Cai, Qiaofeng</i><small>本网址由 AI 辅助生成</small></span>
     </a>
     <nav aria-label="页面导航">
       <a href="#top">首页</a>
@@ -67,7 +67,7 @@
 
     <section class="ticker" aria-label="技术关键词">
       <div class="ticker-track">
-        <div class="ticker-group">控制系统 <span>•</span> 运动控制 <span>•</span> 传感器融合 <span>•</span> SLAM基础 <span>•</span> ROS 2 <span>•</span> PX4 <span>•</span> STM32 <span>•</span> MATLAB / SIMULINK <span>•</span> EKF <span>•</span> IMU <span>•</span> 英文沟通 <span>•</span> 团队协作 <span>•</span> 高端 PPT 视觉设计 <span>•</span></div>
+        <div class="ticker-group">控制系统 <span>•</span> 运动控制 <span>•</span> 传感器融合 <span>•</span> SLAM基础 <span>•</span> ROS 2 <span>•</span> ArduPilot <span>•</span> STM32 <span>•</span> MATLAB / SIMULINK <span>•</span> EKF <span>•</span> IMU <span>•</span> 英文沟通 <span>•</span> 团队协作 <span>•</span> 高端 PPT 视觉设计 <span>•</span></div>
       </div>
     </section>
 
@@ -83,20 +83,20 @@
         <div class="project-copy">
           <div class="project-meta"><span>硕士项目</span><span class="status-chip">进行中</span><span>2026.09 — 至今</span></div>
           <h3>无人机自主室内飞行与视觉定位系统</h3>
-          <p>围绕室内无 GNSS 自主飞行，搭建无人机硬件与计算平台，正在推进视觉定位、状态估计与 PX4 飞控系统的连接。</p>
+          <p>围绕室内无 GNSS 自主飞行，搭建无人机硬件与计算平台，正在推进视觉定位、状态估计，并通过 MAVLink 接入 RADIX-2 HD / ArduPilot 飞控。</p>
           <ul class="project-points">
-            <li>规划视觉信息与 IMU 结合的定位方案</li>
-            <li>连接 ROS 2、PX4 与机载计算平台</li>
+            <li>规划视觉信息与 IMU 融合的定位方案</li>
+            <li>通过 USB/UART 建立 Jetson Orin Nano 与 RADIX-2 HD 的 MAVLink 链路</li>
             <li>为室内自主飞行测试做好系统准备</li>
           </ul>
-          <div class="tag-row"><span>PX4</span><span>ROS 2</span><span>Jetson</span><span>RealSense</span><span>VIO</span><span>EKF</span></div>
+          <div class="tag-row"><span>ArduPilot</span><span>RADIX-2 HD</span><span>MAVLink</span><span>Jetson</span><span>RealSense</span><span>VIO</span><span>EKF</span></div>
         </div>
         <div class="system-map" aria-label="无人机系统链路图">
           <div class="map-node map-camera"><small>PERCEPTION</small><strong>RealSense D435</strong><i>RGB-D / Visual Input</i></div>
           <div class="map-link"><span></span></div>
-          <div class="map-node map-compute"><small>COMPUTE</small><strong>Jetson Orin Nano</strong><i>VIO · ROS 2 · Estimation</i></div>
+          <div class="map-node map-compute"><small>COMPUTE</small><strong>Jetson Orin Nano</strong><i>VIO · V-SLAM · Estimation</i></div>
           <div class="map-link"><span></span></div>
-          <div class="map-node map-control"><small>CONTROL</small><strong>PX4 Flight Controller</strong><i>MAVLink · EKF · Actuation</i></div>
+          <div class="map-node map-control"><small>CONTROL / RADIX-2 HD</small><strong>ArduPilot Flight Controller</strong><i>MAVLink · EKF · Position Control</i></div>
         </div>
       </article>
 
@@ -158,7 +158,7 @@
             <h3>无人机与移动平台的集成测试</h3>
             <p>参与太阳能板清洁无人机的集成与测试，并搭建移动机器人实验平台，完成飞行调试、传感器连接、数据采集和测试记录。</p>
             <div class="experience-list">
-              <div tabindex="0"><b>01</b><span>PX4 飞控与 PID 参数调试</span></div>
+              <div tabindex="0"><b>01</b><span>ArduPilot 飞控与 PID 参数调试</span></div>
               <div tabindex="0"><b>02</b><span>IMU / 电机驱动 / 传感器联调</span></div>
               <div tabindex="0"><b>03</b><span>视觉边缘定位模块协助测试</span></div>
               <div tabindex="0"><b>04</b><span>系统功能验证与测试记录</span></div>
