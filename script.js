@@ -59,15 +59,14 @@ if (contactVideo) {
 
 const loadEducationVideo = () => {
   if (!educationVideo || educationVideo.dataset.loaded === 'true') return;
-  if (matchMedia('(max-width: 680px), (prefers-reduced-motion: reduce)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const educationCard = educationVideo.closest('.school-primary');
   const revealEducationVideo = () => educationCard?.classList.add('is-education-video-ready');
   educationVideo.dataset.loaded = 'true';
-  educationVideo.addEventListener('canplay', revealEducationVideo, { once: true });
+  educationVideo.addEventListener('playing', revealEducationVideo, { once: true });
   educationVideo.src = educationVideo.dataset.src;
   educationVideo.load();
-  const playAttempt = educationVideo.play();
-  playAttempt?.then(revealEducationVideo).catch(() => {});
+  requestInlineVideoPlayback(educationVideo);
 };
 
 if (educationVideo) {

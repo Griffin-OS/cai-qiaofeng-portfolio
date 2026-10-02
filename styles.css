@@ -458,7 +458,7 @@ button { font: inherit; }
   .school-website { margin-top: 10px; }
   .school-primary .school-website, .school-primary .transcript-link { color: var(--accent) !important; border-color: var(--accent) !important; font-weight: 700; }
   .school-primary.is-mobile-pulsed .education-mascot, .school-primary.is-mascot-breath .education-mascot { animation-duration: 5.8s; }
-  .education-video, .school-primary::before { display: none; }
+  .education-video, .school-primary::before { display: block; }
   .wust-name { font: 700 11px/1.55 sans-serif !important; letter-spacing: .02em !important; }
   .wust-name span { display: block; }
   .wust-name span + span::before { content: ""; }
