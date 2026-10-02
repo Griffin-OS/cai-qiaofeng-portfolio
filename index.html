@@ -7,7 +7,7 @@
   <meta name="description" content="蔡峤峰的机器人控制、无人机系统、嵌入式开发与工程实践作品集。">
   <title>蔡峤峰 | Cai, Qiaofeng</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0d10'/%3E%3Cpath d='M14 38h12l6-20 7 28 5-16h7' fill='none' stroke='%23ffb000' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css?v=20261001-67">
+  <link rel="stylesheet" href="styles.css?v=20261002-contact-preview-12">
 </head>
 <body>
   <div class="scroll-meter" aria-hidden="true"><span></span></div>
@@ -84,6 +84,7 @@
           <div class="project-meta"><span>硕士项目</span><span class="status-chip">进行中</span><span>2026.09 — 至今</span></div>
           <h3>无人机自主室内飞行与视觉定位系统</h3>
           <p>围绕室内无 GNSS 自主飞行，搭建无人机硬件与计算平台，正在推进视觉定位、状态估计，并通过 MAVLink 接入 RADIX-2 HD / ArduPilot 飞控。</p>
+          <p class="project-advisor">指导教师 | <a class="advisor-link" href="https://coe.northeastern.edu/people/yazicioglu-yasin/" target="_blank" rel="noopener" aria-label="查看 Prof. Yasin Yazicioglu 的东北大学教师主页">Prof. Yasin Yazicioglu, Northeastern University<span class="advisor-action-label" aria-hidden="true"></span></a></p>
           <ul class="project-points">
             <li>规划视觉信息与 IMU 融合的定位方案</li>
             <li>通过 USB/UART 建立 Jetson Orin Nano 与 RADIX-2 HD 的 MAVLink 链路</li>
@@ -158,7 +159,7 @@
             <h3>无人机与移动平台的集成测试</h3>
             <p>参与太阳能板清洁无人机的集成与测试，并搭建移动机器人实验平台，完成飞行调试、传感器连接、数据采集和测试记录。</p>
             <div class="experience-list">
-              <div tabindex="0"><b>01</b><span>ArduPilot 飞控与 PID 参数调试</span></div>
+              <div tabindex="0"><b>01</b><span>PX4 飞控及 PID 参数调试</span></div>
               <div tabindex="0"><b>02</b><span>IMU / 电机驱动 / 传感器联调</span></div>
               <div tabindex="0"><b>03</b><span>视觉边缘定位模块协助测试</span></div>
               <div tabindex="0"><b>04</b><span>系统功能验证与测试记录</span></div>
@@ -222,7 +223,10 @@
       <div class="section-heading reveal">
         <p class="eyebrow">UNDERGRADUATE RECOGNITION / 04</p>
         <h2>本科期间成<span class="accent-char">果</span>与荣誉</h2>
-        <p>本科期间的竞赛、奖学金与评优记录，作为组织能力和持续投入的补充证明。</p>
+        <div class="awards-summary">
+          <span class="leadership-marker">LEADERSHIP / 领导力</span>
+          <p>本科期间的竞赛、奖学金与评优记录，作为组织能力和持续投入的补充证明。</p>
+        </div>
       </div>
       <div class="award-showcase">
         <button class="award-card award-rotated reveal" data-image="assets/award-chuangqing.jpg" data-gallery="assets/award-chuangqing.jpg|assets/award-chuangqing-proof-privacy.png?v=20260930-3" data-gallery-labels="“创青春”国家级铜奖证书|“创青春”参赛证明（其他成员信息已打码）" data-rotate="180" aria-label="查看创青春国家级铜奖证书与参赛证明">
@@ -284,17 +288,33 @@
       </div>
     </section>
 
-    <section id="contact" class="contact-section section-shell">
-      <p class="eyebrow">LET'S CONNECT</p>
-      <h2>期待与您交流。</h2>
-      <div class="contact-click-hints" aria-hidden="true"><span>点击下方联系</span></div>
-      <div class="contact-links">
-        <a class="contact-email" href="mailto:cai.qiao@northeastern.edu"><small>EMAIL / 邮箱</small><strong>cai.qiao@northeastern.edu</strong><span class="contact-action-label" aria-hidden="true"></span></a>
-        <a href="tel:+18573302630"><small>UNITED STATES / 美国</small><strong>+1 (857) 330-2630</strong><span class="contact-action-label" aria-hidden="true"></span></a>
-        <a href="tel:+8613877580724"><small>CHINA / 中国</small><strong>+86 138 7758 0724</strong><span class="contact-action-label" aria-hidden="true"></span></a>
-        <a class="contact-location" href="https://www-boston-gov.translate.goog/visiting-boston?_x_tr_sl=en&amp;_x_tr_tl=zh-CN&amp;_x_tr_hl=en" target="_blank" rel="noopener"><small>LOCATION / 地址</small><strong>Boston, MA · 美国波士顿</strong><span class="contact-action-label" aria-hidden="true"></span></a>
+    <section id="contact" class="contact-section">
+      <div class="contact-video-stage">
+        <video class="contact-video" autoplay muted loop playsinline preload="none" poster="assets/boston-contact-poster.jpg" aria-hidden="true" tabindex="-1" data-src="assets/boston-contact-fhd-clean.mp4"></video>
+        <div class="contact-video-content section-shell">
+          <div class="contact-heading">
+            <div class="contact-heading-copy">
+              <p class="eyebrow">LET'S CONNECT</p>
+              <h2>期待与您交流。</h2>
+              <div class="contact-click-hints" aria-hidden="true"><span>点击下方联系</span></div>
+            </div>
+            <aside class="contact-affiliations" aria-label="波士顿与院校标识">
+              <div class="contact-logo-rail">
+                <span class="contact-logo contact-logo-meet"><img src="assets/meet-boston-logo.svg" alt="Meet Boston"></span>
+                <span class="contact-logo contact-logo-northeastern"><img src="assets/northeastern-logo.png" alt="Northeastern University"></span>
+                <span class="contact-logo contact-logo-wust"><img src="assets/wust-logo.png" alt="Wuhan University of Science and Technology"></span>
+              </div>
+            </aside>
+          </div>
+          <div class="contact-links">
+            <a class="contact-email" href="mailto:cai.qiao@northeastern.edu"><small>EMAIL / 邮箱</small><strong>cai.qiao@northeastern.edu</strong><span class="contact-action-label" aria-hidden="true"></span></a>
+            <a href="tel:+18573302630"><small>UNITED STATES / 美国</small><strong>+1 (857) 330-2630</strong><span class="contact-action-label" aria-hidden="true"></span></a>
+            <a href="tel:+8613877580724"><small>CHINA / 中国</small><strong>+86 138 7758 0724</strong><span class="contact-action-label" aria-hidden="true"></span></a>
+            <a class="contact-location" href="https://www-boston-gov.translate.goog/visiting-boston?_x_tr_sl=en&amp;_x_tr_tl=zh-CN&amp;_x_tr_hl=en" target="_blank" rel="noopener"><small>LOCATION / 地址</small><strong>Boston, MA · 美国波士顿</strong><span class="contact-action-label" aria-hidden="true"></span></a>
+          </div>
+          <div class="contact-meta"><span>Available in the U.S. &amp; China</span><span class="contact-signature">© 2026 Cai, Qiaofeng · 蔡峤峰</span></div>
+        </div>
       </div>
-      <div class="contact-meta"><span>Available in the U.S. &amp; China</span><span>© 2026 Qiaofeng Cai · 蔡峤峰</span></div>
     </section>
   </main>
 
@@ -308,6 +328,6 @@
     </div>
   </dialog>
 
-  <script src="script.js?v=20260930-33"></script>
+  <script src="script.js?v=20261002-contact-preview-1"></script>
 </body>
 </html>

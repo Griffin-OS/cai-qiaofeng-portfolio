@@ -142,6 +142,13 @@ button { font: inherit; }
 @keyframes status-pulse { 50% { box-shadow: 0 0 0 8px rgba(255,176,0,0); } }
 .project-copy h3 { margin: 28px 0 24px; max-width: 700px; font-size: clamp(2rem, 4.2vw, 4.5rem); line-height: 1; letter-spacing: -.055em; }
 .project-copy > p { color: #484f55; max-width: 680px; }
+.project-copy .project-advisor { max-width: none; margin: 17px 0 -2px; padding-left: 10px; border-left: 2px solid var(--accent); color: #667078; font: 600 11px/1.45 monospace; letter-spacing: .025em; }
+.advisor-link { color: var(--accent); border-bottom: 1px solid currentColor; font-weight: 800; text-shadow: 0 1px 0 rgba(16,19,23,.16); transition: color .22s, border-color .22s; }
+.advisor-action-label { position: relative; display: inline-block; width: 12px; height: 12px; margin-left: 5px; border: 1px solid currentColor; border-radius: 2px; color: inherit; vertical-align: -1px; transition: transform .22s, background-color .22s; }
+.advisor-action-label::before { content: ""; position: absolute; top: 2px; right: 2px; width: 4px; height: 4px; border-top: 1.25px solid currentColor; border-right: 1.25px solid currentColor; }
+.advisor-action-label::after { content: ""; position: absolute; bottom: 2px; left: 2px; width: 7px; height: 1.25px; background: currentColor; transform: rotate(-45deg); transform-origin: left center; }
+.advisor-link:hover, .advisor-link:focus-visible { color: #714f00; outline: none; }
+.advisor-link:hover .advisor-action-label, .advisor-link:focus-visible .advisor-action-label { background: rgba(255,176,0,.14); transform: translate(1px, -1px); }
 .project-points { padding: 20px 0 0; margin: 22px 0; border-top: 1px solid var(--line); list-style: none; }
 .project-points li { position: relative; padding: 7px 0 7px 20px; }
 .project-points li::before { content: "+"; position: absolute; left: 0; color: #9b6e00; font-family: monospace; }
@@ -226,7 +233,7 @@ button { font: inherit; }
 .school-ranks { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 11px; }
 .school-ranks span { padding: 6px 8px; color: var(--accent-soft); border: 1px solid rgba(255,176,0,.42); font: 600 10px/1.2 sans-serif; }
 .school-website, .transcript-link { position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 4px 7px; border: 1px solid var(--accent); border-radius: 999px; background: transparent; color: var(--accent); font: 700 10px/1 sans-serif; text-decoration: none; cursor: pointer; transition: color .25s ease, background .25s ease, box-shadow .25s ease; }
-.school-website::after, .transcript-link::after { content: "↗"; position: absolute; left: calc(100% + 8px); top: 50%; display: grid; width: 12px; height: 12px; place-items: center; border: 1px solid currentColor; border-radius: 4px 1px 4px 1px; background: rgba(255,176,0,.08); color: var(--accent); font: 700 9px/1 sans-serif; line-height: 1; transform: translateY(-50%); }
+.school-website::after, .transcript-link::after { content: ""; position: absolute; left: calc(100% + 8px); top: 50%; display: grid; width: 12px; height: 12px; place-items: center; border: 1px solid currentColor; border-radius: 4px 1px 4px 1px; background: rgba(255,176,0,.08) url("assets/arrow-up-right-gold.png?v=20260930-1") center / 8px 8px no-repeat; color: var(--accent); transform: translateY(-50%); }
 .school-website:hover, .school-website:focus-visible, .transcript-link:hover, .transcript-link:focus-visible { color: var(--ink); background: var(--accent); box-shadow: 0 5px 14px rgba(255,176,0,.22); outline: none; animation: entry-breathe .85s ease-in-out infinite alternate; }
 @keyframes entry-breathe { from { transform: translateY(-1px) scale(1.015); } to { transform: translateY(-2px) scale(1.065); } }
 .school-card h3 { font-size: 31px; margin: 24px 0 34px; }
@@ -274,10 +281,14 @@ button { font: inherit; }
 
 .award-showcase { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 .awards-section .section-heading h2 { font-size: clamp(2.8rem, 4.4vw, 4.8rem); }
+.awards-section .section-heading .eyebrow { display: block; }
+.awards-summary { align-self: end; }
+.awards-summary p { margin: 12px 0 0; color: var(--muted); }
+.leadership-marker { display: block; color: #9a6b00; font: 800 12px/1.2 monospace; letter-spacing: .105em; white-space: nowrap; }
 .award-card { padding: 12px 12px 24px; text-align: left; color: var(--ink); background: rgba(255,255,255,.5); border: 1px solid var(--line); cursor: pointer; position: relative; transition: background .25s, transform .25s, box-shadow .25s; }
-.award-card::after { content: ""; position: absolute; top: 14px; right: 14px; z-index: 2; width: 17px; height: 17px; border: 1px solid rgba(16,19,23,.22); border-radius: 5px 2px 5px 2px; background: rgba(255,255,255,.9) url("assets/arrow-up-right-ink.png?v=20260930-1") center / 9px 9px no-repeat; opacity: .72; transition: opacity .25s, transform .25s, border-color .25s; }
+.award-card::after { content: ""; position: absolute; top: 13px; right: 13px; z-index: 2; width: 21px; height: 21px; border: 1px solid var(--accent); border-radius: 5px 2px 5px 2px; background: rgba(255,255,255,.94) url("assets/arrow-up-right-gold.png?v=20260930-1") center / 10px 10px no-repeat; box-shadow: 2px 2px 0 rgba(255,176,0,.20); opacity: 1; transition: opacity .25s, transform .25s, border-color .25s, background .25s, box-shadow .25s; }
 .award-card:hover { background: white; transform: translateY(-3px); box-shadow: 0 18px 45px rgba(16,19,23,.09); }
-.award-card:hover::after { opacity: 1; transform: translate(1px, -1px); border-color: rgba(16,19,23,.44); }
+.award-card:hover::after { opacity: 1; transform: translate(1px, -1px); border-color: var(--accent); background: rgba(255,176,0,.18) url("assets/arrow-up-right-ink.png?v=20260930-1") center / 10px 10px no-repeat; box-shadow: 3px 3px 0 rgba(255,176,0,.28); }
 .award-card:hover .certificate-frame img { transform: scale(1.025); }
 .award-card.award-rotated:hover .certificate-frame img { transform: rotate(180deg) scale(1.025); }
 .certificate-frame { height: 180px; padding: 13px; margin-bottom: 22px; display: grid; place-items: center; overflow: hidden; background: white; border: 1px solid rgba(16,19,23,.1); box-shadow: inset 0 0 32px rgba(16,19,23,.035); }
@@ -310,7 +321,7 @@ button { font: inherit; }
 .interest-list span:hover { color: var(--accent); background: rgba(255,255,255,.3); }
 .interest-list button:hover, .interest-list a:hover { transform: translateY(-3px); background: rgba(255,255,255,.3); }
 .interest-list button, .interest-list a { position: relative; padding-right: 25px; }
-.interest-list button::before, .interest-list a::before { content: "↗"; position: absolute; top: 4px; right: 6px; color: rgba(16,19,23,.64); font: 700 9px/1 sans-serif; line-height: 1; }
+.interest-list button::before, .interest-list a::before { content: ""; position: absolute; top: 4px; right: 6px; width: 9px; height: 9px; background: url("assets/arrow-up-right-ink.png?v=20260930-1") center / contain no-repeat; }
 .interest-list button::after, .interest-list a::after { content: ""; position: absolute; left: 50%; bottom: -9px; width: 24px; height: 4px; border-radius: 999px; background: var(--accent); transform: translateX(-50%) scaleX(.82); opacity: .82; box-shadow: 0 6px 0 -1px rgba(255,176,0,.42); transition: transform .25s, opacity .25s; }
 .interest-list button:hover::after, .interest-list a:hover::after { transform: translateX(-50%) scaleX(1); opacity: 1; }
 .photo-gallery { grid-column: 2; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 14px; }
@@ -323,19 +334,36 @@ button { font: inherit; }
 .photo-gallery figcaption { padding: 7px 9px; font: 10px/1.2 monospace; }
 @keyframes gallery-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
-.contact-section { padding: 130px 0 60px; }
-.contact-section h2 { margin: 20px 0 50px; max-width: 1000px; font-size: clamp(2.8rem, 6.5vw, 6.8rem); line-height: .95; letter-spacing: -.065em; }
-.contact-click-hints { display: flex; justify-content: space-between; margin: -31px 0 16px; color: var(--accent); font: 600 18px/1.1 Georgia, "Noto Serif SC", "Songti SC", STSong, serif; letter-spacing: .08em; }
-.contact-links { display: grid; grid-template-columns: 1.2fr .8fr; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-.contact-links > * { position: relative; min-height: 100px; padding: 22px 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: color .25s, background .25s; }
-.contact-links > a:hover { color: var(--paper); background: var(--ink); }
-.contact-links small { color: var(--muted); font: 700 10px/1 monospace; letter-spacing: .1em; }
-.contact-links > a:hover small { color: var(--accent-soft); }
-.contact-links strong { font-size: clamp(1rem, 1.8vw, 1.45rem); font-weight: 600; }
-.contact-action-label { position: absolute; right: 24px; bottom: 21px; display: grid; width: 17px; height: 17px; place-items: center; border: 1px solid var(--accent); border-radius: 5px 2px 5px 2px; color: var(--accent); background: rgba(255,176,0,.06); box-shadow: 2px 2px 0 rgba(255,176,0,.13); transition: transform .25s, background .25s, box-shadow .25s; }
-.contact-action-label::before { content: "↗"; font: 700 10px/1 sans-serif; transform: translate(-.25px, .25px); }
-.contact-links > a:hover .contact-action-label { color: var(--accent); border-color: var(--accent); background: rgba(255,176,0,.16); box-shadow: 3px 3px 0 rgba(255,176,0,.22); transform: translate(1px, -1px); }
-.contact-meta { display: flex; justify-content: space-between; padding-top: 80px; margin-top: 100px; border-top: 1px solid var(--line); color: var(--muted); font: 600 11px/1 monospace; text-transform: uppercase; }
+.contact-section { margin: 0; padding: 0; color: var(--white); background: var(--night); }
+.contact-video-stage { position: relative; isolation: isolate; display: grid; min-height: clamp(670px, 55vw, 850px); overflow: hidden; align-items: center; padding: 0; color: var(--white); background: #050709; border-block: 1px solid rgba(255,255,255,.13); }
+.contact-video { position: absolute; z-index: 0; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center; filter: brightness(.94) saturate(.96) contrast(1.03); }
+.contact-video-stage::before { content: ""; position: absolute; z-index: 1; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(5,8,11,.88) 0%, rgba(5,8,11,.50) 10%, rgba(5,8,11,.14) 32%, rgba(5,8,11,.12) 68%, rgba(5,8,11,.50) 90%, rgba(5,8,11,.88) 100%), linear-gradient(180deg, rgba(5,8,11,.32), rgba(5,8,11,.03) 34%, rgba(5,8,11,.46)); }
+.contact-video-stage::after { content: ""; position: absolute; z-index: 2; inset: 0; pointer-events: none; border-inline: 12px solid #050709; box-shadow: inset 18px 0 34px rgba(0,0,0,.55), inset -18px 0 34px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.045); }
+.contact-video-content { position: relative; z-index: 3; padding: clamp(72px, 8vw, 118px) 0 58px; }
+.contact-heading { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(370px, .7fr); gap: clamp(32px, 5vw, 68px); align-items: end; margin-bottom: 44px; }
+.contact-section .eyebrow { margin-bottom: 17px; color: rgba(229,234,237,.74); }
+.contact-section h2 { max-width: 760px; margin: 0; color: rgba(255,255,255,.92); font-size: clamp(2.8rem, 5.7vw, 6.45rem); line-height: .95; letter-spacing: -.065em; text-shadow: 0 2px 22px rgba(0,0,0,.38); }
+.contact-click-hints { display: flex; justify-content: space-between; margin: 18px 0 0; color: var(--accent); font: 600 18px/1.1 Georgia, "Noto Serif SC", "Songti SC", STSong, serif; letter-spacing: .08em; opacity: .9; }
+.contact-affiliations { align-self: stretch; display: grid; align-items: center; min-height: 124px; }
+.contact-logo-rail { display: grid; grid-template-columns: .82fr 1.09fr 1.09fr; align-items: center; min-height: 124px; }
+.contact-logo { display: grid; min-width: 0; min-height: 72px; padding-inline: clamp(12px, 1.4vw, 18px); border-left: 1px solid rgba(255,255,255,.24); place-items: center; }
+.contact-logo:first-child { border-left: 0; }
+.contact-logo img { width: auto; max-width: 100%; max-height: none; object-fit: contain; object-position: center; opacity: .82; }
+.contact-logo:not(.contact-logo-meet) img { filter: grayscale(1) brightness(0) invert(1); }
+.contact-logo-meet img { width: 62px; }
+.contact-logo-northeastern img, .contact-logo-wust img { width: 89px; }
+.contact-links { display: grid; grid-template-columns: 1.2fr .8fr; border-top: 1px solid rgba(255,255,255,.31); border-left: 1px solid rgba(255,255,255,.31); }
+.contact-links > * { position: relative; min-height: 116px; padding: 22px 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; border-right: 1px solid rgba(255,255,255,.31); border-bottom: 1px solid rgba(255,255,255,.31); background: rgba(6,9,12,.28); backdrop-filter: blur(14px) saturate(125%); -webkit-backdrop-filter: blur(14px) saturate(125%); transition: color .25s, background .25s, border-color .25s, transform .25s; }
+.contact-links small { color: rgba(220,228,233,.69); font: 700 10px/1 monospace; letter-spacing: .1em; }
+.contact-links strong { color: rgba(255,255,255,.93); font-size: clamp(1rem, 1.8vw, 1.45rem); font-weight: 600; text-shadow: 0 1px 18px rgba(0,0,0,.42); }
+.contact-action-label { position: absolute; right: 24px; bottom: 21px; display: grid; width: 17px; height: 17px; place-items: center; border: 1px solid var(--accent); border-radius: 5px 2px 5px 2px; color: var(--accent); background: rgba(255,176,0,.10); box-shadow: 2px 2px 0 rgba(255,176,0,.20); transition: transform .25s, color .25s, border-color .25s, background .25s, box-shadow .25s; }
+.contact-action-label::before { content: ""; width: 10px; height: 10px; background: url("assets/arrow-up-right-gold.png?v=20260930-1") center / contain no-repeat; }
+.contact-links > a:is(:hover, :focus-visible) { color: var(--night); background: var(--accent); border-color: var(--accent); outline: 0; transform: translateY(-2px); }
+.contact-links > a:is(:hover, :focus-visible) :is(small, strong) { color: var(--night); text-shadow: none; }
+.contact-links > a:is(:hover, :focus-visible) .contact-action-label { color: var(--night); border-color: rgba(9,12,15,.58); background: rgba(255,255,255,.2); box-shadow: 3px 3px 0 rgba(9,12,15,.24); transform: translate(1px, -1px); }
+.contact-links > a:is(:hover, :focus-visible) .contact-action-label::before { background-image: url("assets/arrow-up-right-ink.png?v=20260930-1"); }
+.contact-meta { display: flex; justify-content: space-between; padding-top: 44px; margin-top: 70px; border-top: 1px solid rgba(255,255,255,.24); color: rgba(220,228,233,.62); font: 600 11px/1 monospace; text-transform: uppercase; }
+.contact-signature { letter-spacing: .03em; text-transform: none; }
 
 .certificate-dialog { width: min(1100px, calc(100% - 32px)); max-height: calc(100vh - 32px); padding: 0; border: 0; background: transparent; overflow: visible; }
 .certificate-dialog::backdrop { background: rgba(4,6,8,.88); backdrop-filter: blur(9px); }
@@ -373,6 +401,9 @@ button { font: inherit; }
   .experience-layout, .communication-grid { grid-template-columns: 1fr; }
   .education-grid { grid-template-columns: 1fr 1fr; }
   .award-showcase { grid-template-columns: 1fr 1fr; }
+  .contact-video-content { padding: 78px 0 54px; }
+  .contact-heading { grid-template-columns: 1fr; gap: 30px; }
+  .contact-affiliations { width: min(100%, 650px); }
 }
 
 @media (max-width: 680px) {
@@ -439,18 +470,39 @@ button { font: inherit; }
   .interest-list button, .interest-list a { display: inline-flex; align-items: center; padding: 9px 22px 9px 11px; }
   .interest-list button::after, .interest-list a::after { display: none; }
   .photo-gallery { grid-column: 1; grid-template-columns: repeat(2, 1fr); }
-  .contact-section { padding-top: 90px; }
-  .contact-section h2 { margin-bottom: 40px; }
+  .contact-video-stage { min-height: auto; background: #050709 url("assets/boston-contact-poster.jpg") center / cover no-repeat; }
+  .contact-video { display: none; }
+  .contact-video-content { padding: 62px 0 42px; }
+  .contact-video-stage::before { background: linear-gradient(180deg, rgba(5,8,11,.48), rgba(5,8,11,.16) 42%, rgba(5,8,11,.60)), linear-gradient(90deg, rgba(5,8,11,.44), transparent 20%, transparent 80%, rgba(5,8,11,.44)); }
+  .contact-video-stage::after { border-inline-width: 6px; box-shadow: inset 8px 0 20px rgba(0,0,0,.42), inset -8px 0 20px rgba(0,0,0,.42), inset 0 0 0 1px rgba(255,255,255,.045); }
+  .contact-heading { gap: 28px; margin-bottom: 32px; }
+  .contact-section h2 { max-width: 100%; font-size: clamp(3.05rem, 12vw, 4.5rem); }
+  .contact-affiliations { width: 100%; min-height: 0; }
+  .contact-logo-rail { grid-template-columns: .85fr 1fr; min-height: 0; }
+  .contact-logo { min-height: 48px; padding-inline: 10px; }
+  .contact-logo-meet { border-left: 0; }
+  .contact-logo-wust { grid-column: 1 / -1; border-left: 0; border-top: 1px solid rgba(255,255,255,.2); }
+  .contact-logo-meet img { width: 52px; }
+  .contact-logo-northeastern img, .contact-logo-wust img { width: 75px; }
   .contact-links { grid-template-columns: 1fr; }
   .contact-action-label { top: 18px; right: 18px; bottom: auto; }
   .school-website::after, .transcript-link::after { content: ""; font-size: 0; background: rgba(255,176,0,.08) url("assets/arrow-up-right-gold.png?v=20260930-1") center / 8px 8px no-repeat; }
   .interest-list button::before, .interest-list a::before { content: ""; width: 9px; height: 9px; font-size: 0; background: url("assets/arrow-up-right-ink.png?v=20260930-1") center / contain no-repeat; }
   .contact-action-label::before { content: ""; width: 10px; height: 10px; font-size: 0; transform: none; background: url("assets/arrow-up-right-gold.png?v=20260930-1") center / contain no-repeat; }
-  .contact-meta { margin-top: 70px; flex-direction: column; gap: 14px; }
+  .contact-links > a:is(:hover, :focus-visible, :active) .contact-action-label::before { background-image: url("assets/arrow-up-right-ink.png?v=20260930-1"); }
+  .contact-meta { margin-top: 48px; padding-top: 28px; flex-direction: column; gap: 14px; }
+}
+
+@media (max-width: 360px) {
+  .contact-logo-rail { grid-template-columns: 1fr; }
+  .contact-logo, .contact-logo-wust { grid-column: auto; border-left: 0; border-top: 1px solid rgba(255,255,255,.2); }
+  .contact-logo:first-child { border-top: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
+  .contact-video-stage { background: var(--night) url("assets/boston-contact-poster.jpg") center / cover no-repeat; }
+  .contact-video { display: none; }
 }

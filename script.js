@@ -1,6 +1,37 @@
 const reveals = document.querySelectorAll('.reveal');
 const photoTrigger = document.querySelector('.interest-trigger');
 const photoGallery = document.querySelector('#photo-gallery');
+const contactVideo = document.querySelector('.contact-video[data-src]');
+
+const loadContactVideo = () => {
+  if (!contactVideo || contactVideo.dataset.loaded === 'true') return;
+  if (matchMedia('(max-width: 680px), (prefers-reduced-motion: reduce)').matches) return;
+  contactVideo.dataset.loaded = 'true';
+  contactVideo.src = contactVideo.dataset.src;
+  contactVideo.load();
+  contactVideo.play().catch(() => {});
+};
+
+if (contactVideo) {
+  const videoStage = contactVideo.closest('.contact-video-stage');
+  if ('IntersectionObserver' in window && videoStage) {
+    const contactVideoObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        loadContactVideo();
+        contactVideoObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: '260px 0px' });
+    contactVideoObserver.observe(videoStage);
+  } else {
+    loadContactVideo();
+  }
+  const desktopVideoQuery = matchMedia('(min-width: 681px)');
+  desktopVideoQuery.addEventListener?.('change', (event) => {
+    if (event.matches) loadContactVideo();
+  });
+}
+
 if (photoTrigger && photoGallery) {
   photoGallery.hidden = true;
   photoTrigger.addEventListener('click', () => {
