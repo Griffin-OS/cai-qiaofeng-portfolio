@@ -482,7 +482,7 @@ button { font: inherit; }
   .contact-video-stage { min-height: auto; background: #050709 url("assets/boston-contact-poster.jpg") center / cover no-repeat; }
   .contact-video { display: block; }
   .contact-video-content { padding: 62px 0 42px; }
-  .contact-video-stage::before { background: linear-gradient(180deg, rgba(5,8,11,.48), rgba(5,8,11,.16) 42%, rgba(5,8,11,.60)), linear-gradient(90deg, rgba(5,8,11,.44), transparent 20%, transparent 80%, rgba(5,8,11,.44)); }
+  .contact-video-stage::before { background: linear-gradient(180deg, rgba(5,8,11,.34), rgba(5,8,11,.07) 42%, rgba(5,8,11,.42)), linear-gradient(90deg, rgba(5,8,11,.30), transparent 20%, transparent 80%, rgba(5,8,11,.30)); }
   .contact-video-stage::after { border-inline-width: 6px; box-shadow: inset 8px 0 20px rgba(0,0,0,.42), inset -8px 0 20px rgba(0,0,0,.42), inset 0 0 0 1px rgba(255,255,255,.045); }
   .contact-heading { gap: 28px; margin-bottom: 32px; }
   .contact-section h2 { max-width: 100%; font-size: clamp(3.05rem, 12vw, 4.5rem); }
@@ -493,13 +493,24 @@ button { font: inherit; }
   .contact-logo-wust { grid-column: auto; border-left: 1px solid rgba(255,255,255,.24); border-top: 0; }
   .contact-logo-meet img { width: 52px; }
   .contact-logo-northeastern img, .contact-logo-wust img { width: 75px; }
-  .contact-links { grid-template-columns: 1fr; }
+  .contact-links { grid-template-columns: 1fr; border-color: rgba(255,255,255,.38); }
+  .contact-links > * { min-height: 104px; padding: 19px 22px; gap: 12px; border-color: rgba(255,255,255,.38); background: linear-gradient(105deg, rgba(5,8,11,.30) 0%, rgba(5,8,11,.18) 62%, rgba(5,8,11,.10) 100%); backdrop-filter: blur(5px) saturate(110%); -webkit-backdrop-filter: blur(5px) saturate(110%); box-shadow: inset 0 1px 0 rgba(255,255,255,.10), 0 8px 22px rgba(0,0,0,.08); }
+  .contact-links small { color: rgba(239,245,248,.84); text-shadow: 0 1px 8px rgba(0,0,0,.76); }
+  .contact-links strong { color: rgba(255,255,255,.98); font-weight: 700; text-shadow: 0 2px 14px rgba(0,0,0,.88), 0 0 3px rgba(0,0,0,.74); }
+  .contact-links > a:is(:hover, :focus-visible) { color: var(--white); background: linear-gradient(105deg, rgba(5,8,11,.30) 0%, rgba(5,8,11,.18) 62%, rgba(5,8,11,.10) 100%); border-color: rgba(255,255,255,.55); outline: 0; transform: none; }
+  .contact-links > a:is(:hover, :focus-visible) small { color: rgba(239,245,248,.84); text-shadow: 0 1px 8px rgba(0,0,0,.76); }
+  .contact-links > a:is(:hover, :focus-visible) strong { color: rgba(255,255,255,.98); text-shadow: 0 2px 14px rgba(0,0,0,.88), 0 0 3px rgba(0,0,0,.74); }
+  .contact-links > a:is(:hover, :focus-visible) .contact-action-label { color: var(--accent); border-color: var(--accent); background: rgba(255,176,0,.10); box-shadow: 2px 2px 0 rgba(255,176,0,.20); transform: none; }
+  .contact-links > a:is(:hover, :focus-visible) .contact-action-label::before { background-image: url("assets/arrow-up-right-gold.png?v=20260930-1"); }
+  .contact-links > a:active { background: linear-gradient(105deg, rgba(255,176,0,.18), rgba(5,8,11,.14)); border-color: var(--accent); }
+  .contact-links > a:active .contact-action-label { background: rgba(255,176,0,.24); box-shadow: 2px 2px 0 rgba(255,176,0,.28); }
+  .contact-links > a:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
   .contact-action-label { top: 18px; right: 18px; bottom: auto; }
   .school-website::after, .transcript-link::after { content: ""; font-size: 0; background: rgba(255,176,0,.08) url("assets/arrow-up-right-gold.png?v=20260930-1") center / 8px 8px no-repeat; }
   .interest-list button::before, .interest-list a::before { content: ""; width: 9px; height: 9px; font-size: 0; background: url("assets/arrow-up-right-ink.png?v=20260930-1") center / contain no-repeat; }
   .contact-action-label::before { content: ""; width: 10px; height: 10px; font-size: 0; transform: none; background: url("assets/arrow-up-right-gold.png?v=20260930-1") center / contain no-repeat; }
   .contact-links > a:is(:hover, :focus-visible, :active) .contact-action-label::before { background-image: url("assets/arrow-up-right-ink.png?v=20260930-1"); }
-  .contact-meta { margin-top: 48px; padding-top: 28px; flex-direction: column; gap: 14px; }
+  .contact-meta { margin-top: 36px; padding-top: 28px; flex-direction: column; gap: 14px; }
 }
 
 @media (max-width: 360px) {
