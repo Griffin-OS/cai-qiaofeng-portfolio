@@ -143,6 +143,7 @@ button { font: inherit; }
 .project-copy h3 { margin: 28px 0 24px; max-width: 700px; font-size: clamp(2rem, 4.2vw, 4.5rem); line-height: 1; letter-spacing: -.055em; }
 .project-copy > p { color: #484f55; max-width: 680px; }
 .project-copy .project-advisor { max-width: none; margin: 17px 0 -2px; padding-left: 10px; border-left: 2px solid var(--accent); color: #667078; font: 600 11px/1.45 monospace; letter-spacing: .025em; }
+.advisor-label { margin-right: 8px; }
 .advisor-link { color: var(--accent); border-bottom: 1px solid currentColor; font-weight: 800; text-shadow: 0 1px 0 rgba(16,19,23,.16); transition: color .22s, border-color .22s; }
 .advisor-action-label { position: relative; display: inline-block; width: 12px; height: 12px; margin-left: 5px; border: 1px solid currentColor; border-radius: 2px; color: inherit; vertical-align: -1px; transition: transform .22s, background-color .22s; }
 .advisor-action-label::before { content: ""; position: absolute; top: 2px; right: 2px; width: 4px; height: 4px; border-top: 1.25px solid currentColor; border-right: 1.25px solid currentColor; }
@@ -452,6 +453,9 @@ button { font: inherit; }
   .project-featured { padding: 25px 20px; display: block; }
   .project-index { margin-bottom: 24px; }
   .project-copy h3 { font-size: 2.3rem; }
+  .project-copy .project-advisor { display: block; }
+  .project-copy .advisor-label { display: block; margin: 0 0 5px; }
+  .project-copy .advisor-link { display: inline; max-width: none; line-height: 1.45; }
   .system-map { margin-top: 35px; }
   .project-grid { grid-template-columns: 1fr; }
   .project-copy.compact { padding: 27px 22px; }
