@@ -370,11 +370,13 @@ button { font: inherit; }
 .contact-links strong { color: rgba(255,255,255,.98); font-size: clamp(1rem, 1.8vw, 1.45rem); font-weight: 700; text-shadow: 0 2px 14px rgba(0,0,0,.88), 0 0 3px rgba(0,0,0,.74); }
 .contact-action-label { position: absolute; right: 24px; bottom: 21px; display: grid; width: 17px; height: 17px; place-items: center; border: 1px solid var(--accent); border-radius: 5px 2px 5px 2px; color: var(--accent); background: rgba(255,176,0,.10); box-shadow: 2px 2px 0 rgba(255,176,0,.20); transition: transform .25s, color .25s, border-color .25s, background .25s, box-shadow .25s; }
 .contact-action-label::before { content: ""; width: 10px; height: 10px; background: url("assets/arrow-up-right-gold.png?v=20260930-1") center / contain no-repeat; }
-.contact-links > a:is(:hover, :focus-visible) { color: var(--white); background: linear-gradient(105deg, rgba(5,8,11,.30) 0%, rgba(5,8,11,.18) 62%, rgba(5,8,11,.10) 100%); border-color: rgba(255,255,255,.55); outline: 0; transform: none; }
-.contact-links > a:is(:hover, :focus-visible) small { color: rgba(239,245,248,.84); text-shadow: 0 1px 8px rgba(0,0,0,.76); }
-.contact-links > a:is(:hover, :focus-visible) strong { color: rgba(255,255,255,.98); text-shadow: 0 2px 14px rgba(0,0,0,.88), 0 0 3px rgba(0,0,0,.74); }
-.contact-links > a:is(:hover, :focus-visible) .contact-action-label { color: var(--accent); border-color: var(--accent); background: rgba(255,176,0,.10); box-shadow: 2px 2px 0 rgba(255,176,0,.20); transform: none; }
-.contact-links > a:is(:hover, :focus-visible) .contact-action-label::before { background-image: url("assets/arrow-up-right-gold.png?v=20260930-1"); }
+@media (hover: hover) and (pointer: fine) {
+  .contact-links > a:hover { color: var(--ink); background: linear-gradient(105deg, rgba(255,176,0,.98), rgba(255,196,62,.88)); border-color: var(--accent); transform: translateY(-1px); }
+  .contact-links > a:hover small { color: rgba(16,19,23,.72); text-shadow: none; }
+  .contact-links > a:hover strong { color: var(--ink); text-shadow: none; }
+  .contact-links > a:hover .contact-action-label { color: var(--ink); border-color: var(--ink); background: rgba(255,255,255,.28); box-shadow: 2px 2px 0 rgba(16,19,23,.18); transform: translate(1px, -1px); }
+  .contact-links > a:hover .contact-action-label::before { background-image: url("assets/arrow-up-right-ink.png?v=20260930-1"); }
+}
 .contact-links > a:active { background: linear-gradient(105deg, rgba(255,176,0,.18), rgba(5,8,11,.14)); border-color: var(--accent); }
 .contact-links > a:active .contact-action-label { background: rgba(255,176,0,.24); box-shadow: 2px 2px 0 rgba(255,176,0,.28); }
 .contact-links > a:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
