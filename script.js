@@ -450,6 +450,13 @@ document.querySelectorAll('.transcript-link[data-image]').forEach((link) => {
     openDialog([{ src: link.dataset.image, alt: '成绩单预览', rotate: false }]);
   });
 });
+document.querySelectorAll('[data-project-photo]').forEach((photo) => {
+  photo.addEventListener('click', () => {
+    const image = photo.querySelector('img');
+    if (!image) return;
+    openDialog([{ src: image.currentSrc || image.src, alt: image.alt || '项目实拍图', rotate: false }]);
+  });
+});
 const motorEvidenceItems = [...document.querySelectorAll('[data-motor-evidence]')];
 const motorEvidenceGallery = motorEvidenceItems.map((item) => {
   const image = item.querySelector('img');
