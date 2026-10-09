@@ -501,6 +501,10 @@ button { font: inherit; }
   .contact-heading { grid-template-columns: 1fr; gap: 30px; }
   .contact-affiliations { width: min(100%, 650px); }
   .ppt-slide-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .project-code .project-copy.compact h3 { min-height: calc(2.2em + 108px); }
+  .motor-evidence { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; }
+  .motor-evidence-label { grid-column: 1 / -1; }
+  .motor-evidence-thumb { aspect-ratio: 16 / 9; }
 }
 
 @media (max-width: 680px) {
