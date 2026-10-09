@@ -216,6 +216,134 @@ if (matchMedia('(max-width: 680px) and (pointer: coarse)').matches && !matchMedi
   [portraitStage, mascotCard].filter(Boolean).forEach((target) => mobilePulseObserver.observe(target));
 }
 
+const pptDialogs = [...document.querySelectorAll('.ppt-dialog')];
+const pptDialogControllers = new Map();
+
+const setupPptDialog = (pptDialog) => {
+  const pptSlideGrid = pptDialog.querySelector('.ppt-slide-grid');
+  const pptSlides = [...pptDialog.querySelectorAll('.ppt-slide-grid .ppt-slide[data-slide]')];
+  const pptStage = pptDialog.querySelector('.ppt-dialog-stage');
+  const pptStageImage = pptStage?.querySelector('img');
+  const pptStageNumber = pptStage?.querySelector('.ppt-stage-number');
+  const pptBackButton = pptDialog.querySelector('.ppt-dialog-back');
+  const pptCloseButtons = [...pptDialog.querySelectorAll('.ppt-dialog-close, .ppt-slide-grid-close')];
+  let activePptSlide = null;
+  let pptReturnFocus = null;
+  let pptTransitionTimer;
+
+  const getSlideImage = (slide) => {
+    const thumbnail = slide.querySelector('img');
+    return {
+      src: slide.dataset.image || slide.dataset.src || thumbnail?.currentSrc || thumbnail?.src || '',
+      alt: slide.dataset.alt || thumbnail?.alt || slide.textContent.trim() || 'PPT 幻灯片预览'
+    };
+  };
+
+  const setPptThumbnailAvailability = (isFocused) => {
+    pptSlides.forEach((slide) => {
+      slide.tabIndex = isFocused ? -1 : 0;
+      slide.setAttribute('aria-hidden', String(isFocused));
+      slide.setAttribute('aria-current', String(slide === activePptSlide));
+    });
+  };
+
+  const setPptView = (view, { focusSlide = false } = {}) => {
+    const isFocused = view === 'slide';
+    pptDialog.classList.toggle('is-grid-view', !isFocused);
+    pptDialog.classList.toggle('is-slide-focused', isFocused);
+    pptSlideGrid?.setAttribute('aria-hidden', String(isFocused));
+    pptStage?.setAttribute('aria-hidden', String(!isFocused));
+    if (pptBackButton) {
+      pptBackButton.tabIndex = isFocused ? 0 : -1;
+      pptBackButton.setAttribute('aria-hidden', String(!isFocused));
+    }
+    setPptThumbnailAvailability(isFocused);
+
+    if (focusSlide && activePptSlide) activePptSlide.focus({ preventScroll: true });
+  };
+
+  const showPptSlide = (slide) => {
+    if (!pptStageImage) return;
+    const image = getSlideImage(slide);
+    if (!image.src) return;
+    activePptSlide = slide;
+    clearTimeout(pptTransitionTimer);
+    pptDialog.classList.remove('is-switching');
+    void pptDialog.offsetWidth;
+    pptDialog.classList.add('is-switching');
+    pptStageImage.src = image.src;
+    pptStageImage.alt = image.alt;
+    if (pptStageNumber) pptStageNumber.textContent = `SLIDE ${String(pptSlides.indexOf(slide) + 1).padStart(2, '0')}`;
+    setPptView('slide');
+    pptTransitionTimer = setTimeout(() => pptDialog.classList.remove('is-switching'), 380);
+    requestAnimationFrame(() => pptBackButton?.focus({ preventScroll: true }));
+  };
+
+  const openPptGallery = (opener) => {
+    pptReturnFocus = opener;
+    pptDialog.classList.remove('is-switching');
+    setPptView('grid');
+    if (!pptDialog.open) pptDialog.showModal();
+    requestAnimationFrame(() => {
+      pptDialog.classList.add('is-open');
+      pptSlides[0]?.focus({ preventScroll: true });
+    });
+  };
+
+  pptSlides.forEach((slide) => {
+    slide.addEventListener('click', () => showPptSlide(slide));
+  });
+
+  pptSlideGrid?.addEventListener('keydown', (event) => {
+    const currentIndex = pptSlides.indexOf(document.activeElement);
+    if (currentIndex < 0) return;
+    let nextIndex = currentIndex;
+    if (event.key === 'Home') nextIndex = 0;
+    if (event.key === 'End') nextIndex = pptSlides.length - 1;
+    if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = (currentIndex + 1) % pptSlides.length;
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIndex = (currentIndex - 1 + pptSlides.length) % pptSlides.length;
+    if (nextIndex === currentIndex) return;
+    event.preventDefault();
+    pptSlides[nextIndex]?.focus();
+  });
+
+  pptBackButton?.addEventListener('click', () => setPptView('grid', { focusSlide: true }));
+  pptStage?.addEventListener('click', () => setPptView('grid', { focusSlide: true }));
+  pptCloseButtons.forEach((button) => button.addEventListener('click', () => pptDialog.close()));
+  pptDialog.addEventListener('click', (event) => {
+    if (event.target === pptDialog) pptDialog.close();
+  });
+  pptDialog.addEventListener('close', () => {
+    clearTimeout(pptTransitionTimer);
+    pptDialog.classList.remove('is-open', 'is-switching', 'is-slide-focused');
+    pptDialog.classList.add('is-grid-view');
+    setPptThumbnailAvailability(false);
+    pptStage?.setAttribute('aria-hidden', 'true');
+    pptSlideGrid?.setAttribute('aria-hidden', 'false');
+    if (pptBackButton) {
+      pptBackButton.tabIndex = -1;
+      pptBackButton.setAttribute('aria-hidden', 'true');
+    }
+    if (pptReturnFocus?.isConnected) pptReturnFocus.focus({ preventScroll: true });
+    pptReturnFocus = null;
+    activePptSlide = null;
+  });
+
+  return { open: openPptGallery };
+};
+
+pptDialogs.forEach((pptDialog) => {
+  const galleryKey = pptDialog.dataset.pptGallery || pptDialog.id.replace(/^ppt-gallery-dialog-/, 'ppt-');
+  if (galleryKey) pptDialogControllers.set(galleryKey, setupPptDialog(pptDialog));
+});
+
+document.querySelectorAll('[data-ppt-gallery-open]').forEach((opener) => {
+  const galleryKey = opener.dataset.pptGalleryOpen;
+  const controller = pptDialogControllers.get(galleryKey);
+  if (!controller) return;
+  opener.addEventListener('click', () => controller.open(opener));
+});
+
 const dialog = document.querySelector('.certificate-dialog');
 const dialogImage = dialog.querySelector('img');
 const dialogPrevious = dialog.querySelector('.dialog-gallery-previous');

@@ -7,13 +7,13 @@
   <meta name="description" content="蔡峤峰的机器人控制、无人机系统、嵌入式开发与工程实践作品集。">
   <title>蔡峤峰 | Cai, Qiaofeng</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0d10'/%3E%3Cpath d='M14 38h12l6-20 7 28 5-16h7' fill='none' stroke='%23ffb000' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css?v=20261004-contact-hover-yellow-21">
+  <link rel="stylesheet" href="styles.css?v=20261009-resume-pdf-24">
 </head>
 <body>
   <div class="scroll-meter" aria-hidden="true"><span></span></div>
   <header class="topbar">
     <a class="brand" href="#top" aria-label="返回顶部">
-      <span><b class="brand-name">蔡峤峰</b><i>Cai, Qiaofeng</i><small>本网址由 AI 辅助生成</small></span>
+      <span><b class="brand-name">蔡峤峰</b><i>Cai, Qiaofeng</i></span>
     </a>
     <nav aria-label="页面导航">
       <a href="#top">首页</a>
@@ -38,6 +38,7 @@
           <a class="button button-primary" href="#projects">查看项目</a>
           <a class="button button-ghost" href="mailto:cai.qiao@northeastern.edu">cai.qiao@northeastern.edu</a>
         </div>
+        <a class="resume-download" href="assets/cai-qiaofeng-resume.pdf" download aria-label="下载蔡峤峰简历 PDF"><span>简历 / RESUME</span><b>下载 PDF</b></a>
         <p class="hero-interaction-hint"><span>提示</span>点击探索页面可交互内容，查看更多细节</p>
         <dl class="quick-facts">
           <div><dt>3.68 / 4</dt><dd>Northeastern GPA</dd></div>
@@ -83,21 +84,21 @@
         <div class="project-copy">
           <div class="project-meta"><span>硕士项目</span><span class="status-chip">进行中</span><span>2026.09 — 至今</span></div>
           <h3>无人机自主室内飞行与视觉定位系统</h3>
-          <p>围绕室内无 GNSS 自主飞行，搭建无人机硬件与计算平台，正在推进视觉定位、状态估计，并通过 MAVLink 接入 RADIX-2 HD / ArduPilot 飞控。</p>
+          <p>围绕室内无 GNSS 自主飞行，搭建无人机硬件与计算平台，正在推进视觉定位、状态估计，并计划通过 MAVLink 接入 RADIX-2 HD / ArduPilot 飞控。</p>
           <p class="project-advisor"><span class="advisor-label">指导教师 <span aria-hidden="true">|</span></span><a class="advisor-link" href="https://coe.northeastern.edu/people/yazicioglu-yasin/" target="_blank" rel="noopener" aria-label="查看 Prof. Yasin Yazicioglu 的东北大学教师主页">Prof. Yasin Yazicioglu, Northeastern University<span class="advisor-action-label" aria-hidden="true"></span></a></p>
           <ul class="project-points">
             <li>规划视觉信息与 IMU 融合的定位方案</li>
-            <li>通过 USB/UART 建立 Jetson Orin Nano 与 RADIX-2 HD 的 MAVLink 链路</li>
+            <li>计划通过 USB/UART 建立 Jetson Orin Nano 与 RADIX-2 HD 的 MAVLink 链路</li>
             <li>为室内自主飞行测试做好系统准备</li>
           </ul>
           <div class="tag-row"><span>ArduPilot</span><span>RADIX-2 HD</span><span>MAVLink</span><span>Jetson</span><span>RealSense</span><span>VIO</span><span>EKF</span></div>
         </div>
         <div class="system-map" aria-label="无人机系统链路图">
-          <div class="map-node map-camera"><small>PERCEPTION</small><strong>RealSense D435</strong><i>RGB-D / Visual Input</i></div>
+          <div class="map-node map-camera"><div class="map-node-head"><small>PERCEPTION</small></div><strong>RealSense D435</strong><i>RGB-D / Visual Input</i></div>
           <div class="map-link"><span></span></div>
-          <div class="map-node map-compute"><small>COMPUTE</small><strong>Jetson Orin Nano</strong><i>VIO · V-SLAM · Estimation</i></div>
+          <div class="map-node map-compute"><div class="map-node-head"><small>COMPUTE</small></div><strong>Jetson Orin Nano</strong><i>VIO · V-SLAM · Estimation</i></div>
           <div class="map-link"><span></span></div>
-          <div class="map-node map-control"><small>CONTROL / RADIX-2 HD</small><strong>ArduPilot Flight Controller</strong><i>MAVLink · EKF · Position Control</i></div>
+          <div class="map-node map-control"><div class="map-node-head"><small>CONTROL / RADIX-2 HD</small></div><strong>ArduPilot Flight Controller</strong><i>MAVLink 计划接入 · EKF · Position Control</i></div>
         </div>
       </article>
 
@@ -112,8 +113,8 @@
           <div class="project-copy compact">
             <div class="project-meta"><span>个人项目</span><span class="status-chip">进行中</span><span>02</span></div>
             <h3>STM32 两轮自平衡<br>机器人</h3>
-            <p>围绕自平衡、移动和避障逐步搭建整车，完成传感器、电机与控制程序的联调，并持续扩展自主导航能力。</p>
-            <div class="tag-row"><span>STM32</span><span>Kalman</span><span>PID</span><span>IMU</span></div>
+            <p>基于 WHEELTEC B585 两轮自平衡平台，研究直立 PD、速度 PI 与转向控制，通过真机参数调试分析平衡稳定性及残余振荡，并计划进一步开展 Kalman 状态估计与自主导航功能拓展。</p>
+            <div class="tag-row"><span>STM32 / B585</span><span>PD / PI</span><span>转向控制</span><span>Kalman（计划）</span></div>
           </div>
         </article>
 
@@ -270,7 +271,27 @@
           <h2>表达、协作与创造，<br><em>也是我的一部分。</em></h2>
         </div>
         <div class="communication-cards reveal" data-delay="100">
-          <article><span>视觉设计<br>VISUAL</span><h3>高端 PPT 视觉设计与汇报</h3><p><mark class="soft-highlight">曾为央视财经频道设计 PPT</mark>，把复杂信息转化为正式、清晰的视觉表达。</p></article>
+          <article class="communication-ppt">
+            <span>视觉设计<br>VISUAL</span>
+            <h3>高端 PPT 视觉设计与汇报</h3>
+            <p>曾为央视财经频道选手设计 PPT，把复杂信息转化为正式、清晰的视觉表达。<a class="cctv-credit-link" href="https://tv.cctv.com/2020/12/25/VIDEB2uKulIHW8Iu65laqCeZ201225.shtml" target="_blank" rel="noopener noreferrer" aria-label="在新标签页观看央视财经频道选手相关节目">央视选手 PPT<span aria-hidden="true"></span></a></p>
+            <div class="ppt-samples" aria-label="PPT 作品案例">
+              <button class="ppt-sample ppt-sample-ready" type="button" data-ppt-gallery-open="ppt-1" aria-haspopup="dialog" aria-controls="ppt-gallery-dialog-1">
+                <img src="assets/ppt-ev-bike-01.png" alt="EV Bikes PPT 首页预览" loading="lazy">
+                <span class="ppt-sample-index">PPT SAMPLE 01</span>
+                <strong>EV Bikes<br>产品设计汇报</strong>
+                <small>11 页 · 点击浏览</small>
+                <i aria-hidden="true"></i>
+              </button>
+              <button class="ppt-sample ppt-sample-ready ppt-sample-twitter" type="button" data-ppt-gallery-open="ppt-2" aria-haspopup="dialog" aria-controls="ppt-gallery-dialog-2">
+                <img src="assets/ppt-twitter-ftc-01.png" alt="Twitter 与 FTC Ethics PPT 页面预览" loading="lazy">
+                <span class="ppt-sample-index">PPT SAMPLE 02</span>
+                <strong>Twitter / FTC<br>Ethics Presentation</strong>
+                <small>10 页 · 点击浏览</small>
+                <i aria-hidden="true"></i>
+              </button>
+            </div>
+          </article>
           <article><span>组织领导<br>LEADERSHIP</span><h3>学生组织与团队推进（本科）</h3><p>曾任校电视台副台长、学院团总支宣传委员及班级组织委员，负责内容策划、沟通协调与任务推进。</p></article>
           <article><span>团队协作<br>COLLABORATION</span><h3>竞赛与社会实践（本科）</h3><p>参与国家级、省级竞赛、“三下乡”社会实践及两届马拉松志愿服务，形成跨角色沟通和落地执行经验。</p></article>
         </div>
@@ -313,7 +334,13 @@
             <a href="tel:+8613877580724"><small>CHINA / 中国</small><strong>+86 138 7758 0724</strong><span class="contact-action-label" aria-hidden="true"></span></a>
             <a class="contact-location" href="https://www-boston-gov.translate.goog/visiting-boston?_x_tr_sl=en&amp;_x_tr_tl=zh-CN&amp;_x_tr_hl=en" target="_blank" rel="noopener"><small>LOCATION / 地址</small><strong>Boston, MA · 美国波士顿</strong><span class="contact-action-label" aria-hidden="true"></span></a>
           </div>
-          <div class="contact-meta"><span>Available in the U.S. &amp; China</span><span class="contact-signature">© 2026 Cai, Qiaofeng · 蔡峤峰</span></div>
+          <div class="contact-meta">
+            <span class="contact-availability">AVAILABLE IN THE U.S. &amp; CHINA</span>
+            <div class="contact-meta-right">
+              <span class="contact-credit"><span>设计：蔡峤峰 · AI 辅助开发</span><span>DESIGNED BY QIAOFENG · DEVELOPED WITH AI ASSISTANCE</span></span>
+              <span class="contact-signature">© 2026 Cai, Qiaofeng · 蔡峤峰</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -329,6 +356,75 @@
     </div>
   </dialog>
 
-  <script src="script.js?v=20261002-mobile-education-4"></script>
+  <dialog class="ppt-dialog is-grid-view" id="ppt-gallery-dialog-1" aria-labelledby="ppt-dialog-title-1">
+    <div class="ppt-dialog-shell">
+      <header class="ppt-dialog-header">
+        <div>
+          <p>PPT SAMPLE 01 / 11 SLIDES</p>
+          <h2 id="ppt-dialog-title-1">EV Bikes · 产品设计汇报</h2>
+        </div>
+        <div class="ppt-dialog-actions">
+          <button class="ppt-dialog-back" type="button">返回平铺</button>
+          <button class="ppt-dialog-close" type="button" aria-label="关闭 PPT 预览">×</button>
+        </div>
+      </header>
+      <div class="ppt-dialog-canvas">
+        <div class="ppt-slide-grid" aria-label="PPT 页面平铺">
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-ev-bike-01.png" data-slide-alt="EV Bikes 产品设计汇报，第 1 页"><img src="assets/ppt-ev-bike-01.png" alt="EV Bikes 产品设计汇报，第 1 页" loading="lazy"><span>01</span></button>
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-ev-bike-02.png" data-slide-alt="EV Bikes 产品设计汇报，第 2 页"><img src="assets/ppt-ev-bike-02.png" alt="EV Bikes 产品设计汇报，第 2 页" loading="lazy"><span>02</span></button>
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-ev-bike-03.png" data-slide-alt="EV Bikes 产品设计汇报，第 3 页"><img src="assets/ppt-ev-bike-03.png" alt="EV Bikes 产品设计汇报，第 3 页" loading="lazy"><span>03</span></button>
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-ev-bike-04.png" data-slide-alt="EV Bikes 产品设计汇报，第 4 页"><img src="assets/ppt-ev-bike-04.png" alt="EV Bikes 产品设计汇报，第 4 页" loading="lazy"><span>04</span></button>
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-ev-bike-05.png" data-slide-alt="EV Bikes 产品设计汇报，第 5 页"><img src="assets/ppt-ev-bike-05.png" alt="EV Bikes 产品设计汇报，第 5 页" loading="lazy"><span>05</span></button>
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-ev-bike-06.png" data-slide-alt="EV Bikes 产品设计汇报，第 6 页"><img src="assets/ppt-ev-bike-06.png" alt="EV Bikes 产品设计汇报，第 6 页" loading="lazy"><span>06</span></button>
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-ev-bike-07.png" data-slide-alt="EV Bikes 产品设计汇报，第 7 页"><img src="assets/ppt-ev-bike-07.png" alt="EV Bikes 产品设计汇报，第 7 页" loading="lazy"><span>07</span></button>
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-ev-bike-08.png" data-slide-alt="EV Bikes 产品设计汇报，第 8 页"><img src="assets/ppt-ev-bike-08.png" alt="EV Bikes 产品设计汇报，第 8 页" loading="lazy"><span>08</span></button>
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-ev-bike-09.png" data-slide-alt="EV Bikes 产品设计汇报，第 9 页"><img src="assets/ppt-ev-bike-09.png" alt="EV Bikes 产品设计汇报，第 9 页" loading="lazy"><span>09</span></button>
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-ev-bike-10.png" data-slide-alt="EV Bikes 产品设计汇报，第 10 页"><img src="assets/ppt-ev-bike-10.png" alt="EV Bikes 产品设计汇报，第 10 页" loading="lazy"><span>10</span></button>
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-ev-bike-11.png" data-slide-alt="EV Bikes 产品设计汇报，第 11 页"><img src="assets/ppt-ev-bike-11.png" alt="EV Bikes 产品设计汇报，第 11 页" loading="lazy"><span>11</span></button>
+        </div>
+        <figure class="ppt-dialog-stage" aria-live="polite">
+          <img src="" alt="">
+          <figcaption><span class="ppt-stage-number"></span><span>点击图片返回平铺</span></figcaption>
+        </figure>
+      </div>
+      <p class="ppt-dialog-hint">平铺浏览 · 点击任意页面放大</p>
+    </div>
+  </dialog>
+
+  <dialog class="ppt-dialog is-grid-view" id="ppt-gallery-dialog-2" aria-labelledby="ppt-dialog-title-2">
+    <div class="ppt-dialog-shell">
+      <header class="ppt-dialog-header">
+        <div>
+          <p>PPT SAMPLE 02 / 10 SLIDES</p>
+          <h2 id="ppt-dialog-title-2">Twitter / FTC · Ethics Presentation</h2>
+        </div>
+        <div class="ppt-dialog-actions">
+          <button class="ppt-dialog-back" type="button">返回平铺</button>
+          <button class="ppt-dialog-close" type="button" aria-label="关闭 PPT 预览">×</button>
+        </div>
+      </header>
+      <div class="ppt-dialog-canvas">
+        <div class="ppt-slide-grid" aria-label="PPT 页面平铺">
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-twitter-ftc-01.png" data-slide-alt="Twitter 与 FTC Ethics Presentation，第 1 页"><img src="assets/ppt-twitter-ftc-01.png" alt="Twitter 与 FTC Ethics Presentation，第 1 页" loading="lazy"><span>01</span></button>
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-twitter-ftc-02.png" data-slide-alt="Twitter 与 FTC Ethics Presentation，第 2 页"><img src="assets/ppt-twitter-ftc-02.png" alt="Twitter 与 FTC Ethics Presentation，第 2 页" loading="lazy"><span>02</span></button>
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-twitter-ftc-03.png" data-slide-alt="Twitter 与 FTC Ethics Presentation，第 3 页"><img src="assets/ppt-twitter-ftc-03.png" alt="Twitter 与 FTC Ethics Presentation，第 3 页" loading="lazy"><span>03</span></button>
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-twitter-ftc-04.png" data-slide-alt="Twitter 与 FTC Ethics Presentation，第 4 页"><img src="assets/ppt-twitter-ftc-04.png" alt="Twitter 与 FTC Ethics Presentation，第 4 页" loading="lazy"><span>04</span></button>
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-twitter-ftc-05.png" data-slide-alt="Twitter 与 FTC Ethics Presentation，第 5 页"><img src="assets/ppt-twitter-ftc-05.png" alt="Twitter 与 FTC Ethics Presentation，第 5 页" loading="lazy"><span>05</span></button>
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-twitter-ftc-06.png" data-slide-alt="Twitter 与 FTC Ethics Presentation，第 6 页"><img src="assets/ppt-twitter-ftc-06.png" alt="Twitter 与 FTC Ethics Presentation，第 6 页" loading="lazy"><span>06</span></button>
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-twitter-ftc-07.png" data-slide-alt="Twitter 与 FTC Ethics Presentation，第 7 页"><img src="assets/ppt-twitter-ftc-07.png" alt="Twitter 与 FTC Ethics Presentation，第 7 页" loading="lazy"><span>07</span></button>
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-twitter-ftc-08.png" data-slide-alt="Twitter 与 FTC Ethics Presentation，第 8 页"><img src="assets/ppt-twitter-ftc-08.png" alt="Twitter 与 FTC Ethics Presentation，第 8 页" loading="lazy"><span>08</span></button>
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-twitter-ftc-09.png" data-slide-alt="Twitter 与 FTC Ethics Presentation，第 9 页"><img src="assets/ppt-twitter-ftc-09.png" alt="Twitter 与 FTC Ethics Presentation，第 9 页" loading="lazy"><span>09</span></button>
+          <button class="ppt-slide" type="button" data-slide="assets/ppt-twitter-ftc-10.png" data-slide-alt="Twitter 与 FTC Ethics Presentation，第 10 页"><img src="assets/ppt-twitter-ftc-10.png" alt="Twitter 与 FTC Ethics Presentation，第 10 页" loading="lazy"><span>10</span></button>
+        </div>
+        <figure class="ppt-dialog-stage" aria-live="polite">
+          <img src="" alt="">
+          <figcaption><span class="ppt-stage-number"></span><span>点击图片返回平铺</span></figcaption>
+        </figure>
+      </div>
+      <p class="ppt-dialog-hint">平铺浏览 · 点击任意页面放大</p>
+    </div>
+  </dialog>
+
+  <script src="script.js?v=20261009-content-gallery-23"></script>
 </body>
 </html>
