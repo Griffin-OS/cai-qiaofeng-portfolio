@@ -1,26 +1,29 @@
 # 高清简历 PDF 生成器
 
-这是当前简历版式的自定义渲染流程，不调用 PowerPoint 的 PDF 导出器。
+这是当前简历的保真流程：PowerPoint 只负责按原页面渲染一张 600dpi PNG，PDF 则由独立脚本封装并添加可点击链接。它不使用 PowerPoint 的 PDF 导出器，因此不会触发其低清或深色特效兼容问题，同时保留原有字体、字距、排版、阴影和发光。
 
-它会从 PPTX 中读取原始 PNG 与版式清单，在 600dpi 画布上合成文字、阴影、发光和图片，再把无损页面写入 PDF，同时保留二维码及 “Learn More” 的可点击链接。
+原生渲染脚本会按源幻灯片的尺寸输出，可复用于单页简历；当前的 `link_regions.json` 是这份简历的链接坐标。运行环境需要 Windows 和已安装的桌面版 PowerPoint。
 
 ## 使用
 
-先安装依赖：
+先安装 Python 依赖：
 
 ```powershell
 pip install -r requirements.txt
 ```
 
-然后执行：
+渲染 600dpi 原生页面：
 
 ```powershell
-python build_highres_resume.py --source "简历Resume.pptx" --pdf "蔡峤峰_高清简历.pdf"
+powershell -ExecutionPolicy Bypass -File .\render_pptx_600dpi.ps1 -SourcePath "简历Resume.pptx" -OutputPath "resume-600dpi.png"
 ```
 
-默认会同时生成一个同名 PNG 中间稿，用于检查清晰度；需要指定位置时可加 `--png`。默认输出为 600dpi，也可用 `--dpi 300` 先快速预览。
+再封装带链接的 PDF：
 
-## 版式说明
+```powershell
+python package_linked_pdf.py --png "resume-600dpi.png" --pdf "蔡峤峰_高清简历.pdf" --dpi 600
+python verify_output.py "蔡峤峰_高清简历.pdf"
+```
 
-`templates/cai_qiaofeng_resume_manifest.json` 是当前简历版式的源级绘制清单。它适用于这份单页简历的同一结构；如果以后大改 PPT 的形状、分组或链接位置，应同步更新清单后再生成。
+`link_regions.json` 保存二维码和两段引导文字的 PDF 链接区域；版式变动后只需更新其中的坐标和目标地址。
 

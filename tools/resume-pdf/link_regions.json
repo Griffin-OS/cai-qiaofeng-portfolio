@@ -1,0 +1,26 @@
+[
+  {
+    "label": "QR code",
+    "url": "https://griffin-os.github.io/cai-qiaofeng-portfolio/",
+    "x": 386.088,
+    "y_top": 25.063,
+    "width": 48.061,
+    "height": 48.061
+  },
+  {
+    "label": "Chinese call to action",
+    "url": "https://griffin-os.github.io/cai-qiaofeng-portfolio/",
+    "x": 376.152,
+    "y_top": 70.391,
+    "width": 67.932,
+    "height": 14.541
+  },
+  {
+    "label": "Learn More",
+    "url": "https://griffin-os.github.io/cai-qiaofeng-portfolio/",
+    "x": 385.997,
+    "y_top": 77.662,
+    "width": 48.242,
+    "height": 14.541
+  }
+]
