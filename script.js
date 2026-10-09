@@ -225,11 +225,15 @@ const setupPptDialog = (pptDialog) => {
   const pptStage = pptDialog.querySelector('.ppt-dialog-stage');
   const pptStageImage = pptStage?.querySelector('img');
   const pptStageNumber = pptStage?.querySelector('.ppt-stage-number');
+  const pptStagePrevious = pptStage?.querySelector('.ppt-stage-previous');
+  const pptStageNext = pptStage?.querySelector('.ppt-stage-next');
   const pptBackButton = pptDialog.querySelector('.ppt-dialog-back');
   const pptCloseButtons = [...pptDialog.querySelectorAll('.ppt-dialog-close, .ppt-slide-grid-close')];
   let activePptSlide = null;
   let pptReturnFocus = null;
   let pptTransitionTimer;
+  let pptPointerStart = null;
+  let suppressPptStageClick = false;
 
   const getSlideImage = (slide) => {
     const thumbnail = slide.querySelector('img');
@@ -253,6 +257,10 @@ const setupPptDialog = (pptDialog) => {
     pptDialog.classList.toggle('is-slide-focused', isFocused);
     pptSlideGrid?.setAttribute('aria-hidden', String(isFocused));
     pptStage?.setAttribute('aria-hidden', String(!isFocused));
+    [pptStagePrevious, pptStageNext].filter(Boolean).forEach((button) => {
+      button.tabIndex = isFocused ? 0 : -1;
+      button.setAttribute('aria-hidden', String(!isFocused));
+    });
     if (pptBackButton) {
       pptBackButton.tabIndex = isFocused ? 0 : -1;
       pptBackButton.setAttribute('aria-hidden', String(!isFocused));
@@ -262,21 +270,30 @@ const setupPptDialog = (pptDialog) => {
     if (focusSlide && activePptSlide) activePptSlide.focus({ preventScroll: true });
   };
 
-  const showPptSlide = (slide) => {
+  const showPptSlide = (slide, { direction = 0, focusBack = true } = {}) => {
     if (!pptStageImage) return;
     const image = getSlideImage(slide);
     if (!image.src) return;
     activePptSlide = slide;
     clearTimeout(pptTransitionTimer);
-    pptDialog.classList.remove('is-switching');
+    pptDialog.classList.remove('is-switching', 'is-moving-next', 'is-moving-previous');
     void pptDialog.offsetWidth;
     pptDialog.classList.add('is-switching');
+    if (direction > 0) pptDialog.classList.add('is-moving-next');
+    if (direction < 0) pptDialog.classList.add('is-moving-previous');
     pptStageImage.src = image.src;
     pptStageImage.alt = image.alt;
     if (pptStageNumber) pptStageNumber.textContent = `SLIDE ${String(pptSlides.indexOf(slide) + 1).padStart(2, '0')}`;
     setPptView('slide');
-    pptTransitionTimer = setTimeout(() => pptDialog.classList.remove('is-switching'), 380);
-    requestAnimationFrame(() => pptBackButton?.focus({ preventScroll: true }));
+    pptTransitionTimer = setTimeout(() => pptDialog.classList.remove('is-switching', 'is-moving-next', 'is-moving-previous'), 420);
+    if (focusBack) requestAnimationFrame(() => pptBackButton?.focus({ preventScroll: true }));
+  };
+
+  const showAdjacentPptSlide = (direction) => {
+    if (!pptSlides.length) return;
+    const currentIndex = Math.max(0, pptSlides.indexOf(activePptSlide));
+    const nextIndex = (currentIndex + direction + pptSlides.length) % pptSlides.length;
+    showPptSlide(pptSlides[nextIndex], { direction, focusBack: false });
   };
 
   const openPptGallery = (opener) => {
@@ -308,18 +325,57 @@ const setupPptDialog = (pptDialog) => {
   });
 
   pptBackButton?.addEventListener('click', () => setPptView('grid', { focusSlide: true }));
-  pptStage?.addEventListener('click', () => setPptView('grid', { focusSlide: true }));
+  pptStagePrevious?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    showAdjacentPptSlide(-1);
+  });
+  pptStageNext?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    showAdjacentPptSlide(1);
+  });
+  pptStage?.addEventListener('pointerdown', (event) => {
+    if (event.target.closest('.ppt-stage-nav')) return;
+    pptPointerStart = { x: event.clientX, y: event.clientY };
+  });
+  pptStage?.addEventListener('pointerup', (event) => {
+    if (!pptPointerStart) return;
+    const dx = event.clientX - pptPointerStart.x;
+    const dy = event.clientY - pptPointerStart.y;
+    pptPointerStart = null;
+    if (Math.abs(dx) < 44 || Math.abs(dx) <= Math.abs(dy) * 1.25) return;
+    suppressPptStageClick = true;
+    showAdjacentPptSlide(dx < 0 ? 1 : -1);
+  });
+  pptStage?.addEventListener('pointercancel', () => { pptPointerStart = null; });
+  pptStage?.addEventListener('click', (event) => {
+    if (event.target.closest('.ppt-stage-nav')) return;
+    if (suppressPptStageClick) {
+      suppressPptStageClick = false;
+      return;
+    }
+    setPptView('grid', { focusSlide: true });
+  });
+  pptDialog.addEventListener('keydown', (event) => {
+    if (!pptDialog.classList.contains('is-slide-focused')) return;
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    showAdjacentPptSlide(event.key === 'ArrowLeft' ? -1 : 1);
+  });
   pptCloseButtons.forEach((button) => button.addEventListener('click', () => pptDialog.close()));
   pptDialog.addEventListener('click', (event) => {
     if (event.target === pptDialog) pptDialog.close();
   });
   pptDialog.addEventListener('close', () => {
     clearTimeout(pptTransitionTimer);
-    pptDialog.classList.remove('is-open', 'is-switching', 'is-slide-focused');
+    pptDialog.classList.remove('is-open', 'is-switching', 'is-moving-next', 'is-moving-previous', 'is-slide-focused');
     pptDialog.classList.add('is-grid-view');
     setPptThumbnailAvailability(false);
     pptStage?.setAttribute('aria-hidden', 'true');
     pptSlideGrid?.setAttribute('aria-hidden', 'false');
+    [pptStagePrevious, pptStageNext].filter(Boolean).forEach((button) => {
+      button.tabIndex = -1;
+      button.setAttribute('aria-hidden', 'true');
+    });
     if (pptBackButton) {
       pptBackButton.tabIndex = -1;
       pptBackButton.setAttribute('aria-hidden', 'true');
@@ -366,9 +422,9 @@ function renderDialogItem() {
   dialogCount.textContent = hasMultiple ? `${dialogIndex + 1} / ${dialogItems.length}` : '';
 }
 
-function openDialog(items) {
+function openDialog(items, initialIndex = 0) {
   dialogItems = items;
-  dialogIndex = 0;
+  dialogIndex = Math.max(0, Math.min(initialIndex, items.length - 1));
   renderDialogItem();
   if (!dialog.open) dialog.showModal();
 }
@@ -393,6 +449,18 @@ document.querySelectorAll('.transcript-link[data-image]').forEach((link) => {
   link.addEventListener('click', () => {
     openDialog([{ src: link.dataset.image, alt: '成绩单预览', rotate: false }]);
   });
+});
+const motorEvidenceItems = [...document.querySelectorAll('[data-motor-evidence]')];
+const motorEvidenceGallery = motorEvidenceItems.map((item) => {
+  const image = item.querySelector('img');
+  return {
+    src: image?.currentSrc || image?.src || '',
+    alt: item.dataset.evidenceTitle || image?.alt || '直流电机控制实验图',
+    rotate: false
+  };
+});
+motorEvidenceItems.forEach((item, index) => {
+  item.addEventListener('click', () => openDialog(motorEvidenceGallery, index));
 });
 dialogPrevious.addEventListener('click', () => {
   dialogIndex = (dialogIndex - 1 + dialogItems.length) % dialogItems.length;
