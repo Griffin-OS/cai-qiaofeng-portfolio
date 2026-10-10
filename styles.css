@@ -67,6 +67,9 @@ button { font: inherit; }
 .hero { min-height: calc(100vh - 84px); display: grid; grid-template-columns: 1.02fr .98fr; gap: 70px; align-items: center; padding: 70px 0 90px; color: white; background: var(--night); box-shadow: 0 0 0 100vmax var(--night); clip-path: inset(0 -100vmax); }
 .eyebrow { margin: 0 0 20px; font: 700 12px/1.2 monospace; letter-spacing: .14em; text-transform: uppercase; }
 .eyebrow > span { width: 7px; height: 7px; border-radius: 50%; display: inline-block; background: var(--accent); margin-right: 8px; }
+.section-eyebrow { display: inline-flex; align-items: center; gap: 9px; }
+.section-eyebrow > .section-icon { display: grid; width: 26px; height: 26px; flex: 0 0 26px; place-items: center; margin: 0; border: 1px solid rgba(166,95,0,.36); border-radius: 8px 3px 8px 3px; background: rgba(255,176,0,.09); }
+.section-icon svg { width: 16px; height: 16px; fill: none; stroke: #a65f00; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
 .hero-name { display: flex; align-items: baseline; gap: 14px; margin: 0 0 18px; color: var(--accent); font-size: 26px; font-weight: 750; letter-spacing: .02em; }
 .hero-name span { color: #9ca5ad; font: 600 13px/1 monospace; letter-spacing: .1em; text-transform: uppercase; }
 .hero h1 { margin: 0; font-size: clamp(4rem, 8.4vw, 7.9rem); line-height: .88; letter-spacing: -.075em; font-weight: 800; }
@@ -74,8 +77,11 @@ button { font: inherit; }
 .hero h1 em { -webkit-text-stroke-color: var(--accent); }
 .hero-lead { max-width: 650px; margin: 38px 0 0; font-size: 18px; color: #a4abb1; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
-.hero-interaction-hint { margin: 14px 0 -12px; color: var(--accent); font: 700 12px/1.45 monospace; letter-spacing: .045em; }
-.hero-interaction-hint span { display: inline-block; margin-right: 8px; padding: 1px 5px; border: 1px solid currentColor; font-size: .9em; line-height: 1.35; }
+.hero-interaction-hint { display: flex; flex-wrap: wrap; align-items: center; margin: 14px 0 -12px; color: var(--accent); font: 700 12px/1.45 monospace; letter-spacing: .045em; }
+.hero-hint-label { display: inline-block; margin-right: 8px; padding: 1px 5px; border: 1px solid currentColor; font-size: .9em; line-height: 1.35; }
+.hero-hint-cursor { display: inline-block; width: 14px; height: 14px; margin: 0 3px 0 2px; vertical-align: -2px; fill: var(--accent); stroke: var(--night); stroke-width: 1.25; stroke-linejoin: round; filter: drop-shadow(0 1px 3px rgba(255,176,0,.28)); transform-origin: 19px 4px; animation: hint-cursor-nudge 2.8s ease-in-out infinite; }
+.hero-hint-copy { min-width: 0; color: inherit; }
+@keyframes hint-cursor-nudge { 0%, 60%, 100% { transform: translate(0,0); } 70% { transform: translate(2px,2px); } 80% { transform: translate(0,0); } }
 .button { min-height: 48px; padding: 0 19px; display: inline-flex; align-items: center; gap: 28px; border: 1px solid var(--ink); font-size: 14px; transition: transform .2s, background .2s, color .2s; }
 .button:hover { transform: translateY(-2px); }
 .hero .button { border-color: rgba(255,255,255,.55); }
@@ -86,6 +92,10 @@ button { font: inherit; }
 .hero-actions .button::after { content: ""; position: absolute; top: 50%; right: 17px; width: 12px; height: 12px; transform: translateY(-50%); background: center / contain no-repeat; }
 .hero-actions .button-primary::after { background-image: url("assets/arrow-up-right-ink.png?v=20260930-1"); }
 .hero-actions .button-ghost::after { background-image: url("assets/arrow-up-right-gold.png?v=20260930-1"); }
+.hero-actions .button-icon-link { gap: 9px; padding-right: 19px; }
+.hero-actions .button-icon-link::after { display: none; }
+.button-inline-icon { width: 16px; height: 16px; flex: 0 0 16px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.hero-actions .button-ghost .button-inline-icon { stroke: var(--accent); }
 .resume-download { position: relative; display: inline-flex; align-items: center; gap: 9px; margin: 12px 0 -14px; padding-right: 18px; color: #87919a; font: 600 10px/1.35 monospace; letter-spacing: .07em; text-decoration: none; transition: color .22s ease; }
 .resume-download::before { content: ""; width: 5px; height: 5px; flex: 0 0 5px; background: var(--accent); }
 .resume-download::after { content: ""; position: absolute; right: 0; top: 50%; width: 10px; height: 10px; transform: translateY(-50%); background: center / contain no-repeat url("assets/arrow-up-right-gold.png?v=20260930-1"); transition: transform .22s ease; }
@@ -143,6 +153,8 @@ button { font: inherit; }
 .project-featured { min-height: 570px; padding: 54px; display: grid; grid-template-columns: 54px 1.2fr .85fr; gap: 38px; position: relative; overflow: hidden; }
 .project-index { font: 700 13px/1 monospace; color: var(--muted); }
 .project-meta { display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font: 600 11px/1.2 monospace; text-transform: uppercase; letter-spacing: .08em; }
+.project-type-label { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.project-type-icon { width: 15px; height: 15px; flex: 0 0 15px; fill: none; stroke: #a65f00; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
 .status-chip, .experience-chip { display: inline-flex; align-items: center; min-height: 30px; padding: 0 11px; border: 1px solid #b77e00; color: #815a00; background: rgba(255,176,0,.1); font: 700 14px/1 monospace; letter-spacing: .05em; white-space: nowrap; }
 .status-chip::before, .experience-chip::before { content: ""; width: 7px; height: 7px; margin-right: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(255,176,0,.14); }
 .status-chip::before { animation: status-pulse 2s ease-out infinite; }
@@ -194,10 +206,10 @@ button { font: inherit; }
 .robot-title-word { white-space: nowrap; }
 .project-media .project-copy.compact h3 { white-space: nowrap; }
 .project-code .project-copy.compact { position: relative; }
-.balance-stroke-fill { position: relative; display: block; width: 78px; height: 18px; margin-top: 1px; }
+.balance-stroke-fill { position: relative; display: block; width: 76px; height: 17px; margin-top: 1px; }
 .balance-stroke-fill::before, .balance-stroke-fill::after { content: ""; position: absolute; left: 0; display: block; height: 3px; border-radius: 999px; background: #929aa0; opacity: .82; }
-.balance-stroke-fill::before { top: 3px; width: 74px; transform: rotate(-1.2deg); }
-.balance-stroke-fill::after { top: 14px; left: 2px; width: 48px; transform: rotate(.8deg); }
+.balance-stroke-fill::before { top: 3px; width: 74px; }
+.balance-stroke-fill::after { top: 12px; width: 52px; }
 .motor-evidence { align-self: start; display: grid; grid-template-columns: 54px repeat(8, minmax(0, 1fr)); gap: 5px; align-items: center; min-width: 0; }
 .motor-evidence-label { position: relative; display: inline-block; width: fit-content; padding-right: 12px; color: #a65f00; font: 800 13px/1.08 sans-serif; letter-spacing: .08em; }
 .motor-evidence-label::after { content: ""; position: absolute; top: 50%; right: 0; width: 6px; height: 6px; border-radius: 50%; background: currentColor; transform: translateY(-50%); }
@@ -222,6 +234,8 @@ button { font: inherit; }
 
 .experience-section { color: white; background: var(--night); padding: 130px 0; }
 .section-heading.light { border-bottom: 1px solid rgba(255,255,255,.14); padding-bottom: 40px; }
+.section-heading.light .section-icon, .contact-section .section-icon { border-color: rgba(255,176,0,.52); background: rgba(255,176,0,.10); }
+.section-heading.light .section-icon svg, .contact-section .section-icon svg { stroke: var(--accent); }
 .section-heading.light > p:last-child { color: #98a0a7; }
 .section-heading.light .experience-chip { margin-right: 8px; color: var(--accent-soft); border-color: rgba(255,176,0,.7); background: rgba(255,176,0,.08); }
 .experience-summary { display: flex; flex-wrap: wrap; align-items: center; gap: 0; }
@@ -327,6 +341,11 @@ button { font: inherit; }
 .coursework-heading h3 { margin: 0; font-size: clamp(2rem, 3.2vw, 3.25rem); line-height: .98; letter-spacing: -.055em; }
 .coursework-course { margin: 13px 0 0; color: #8a6a27; font: 700 11px/1.45 monospace; letter-spacing: .06em; }
 .coursework-lede { margin: 7px 0 0; color: var(--muted); font-size: 14px; line-height: 1.72; }
+.coursework-concepts { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 11px 28px; margin: 20px 0 0; }
+.coursework-concept { position: relative; display: inline-flex; align-items: center; gap: 7px; padding: 8px 11px 8px 8px; color: #525b61; background: rgba(255,255,255,.36); border: 1px solid rgba(16,19,23,.12); border-radius: 14px 4px 14px 4px; box-shadow: 0 5px 12px rgba(16,19,23,.025); font: 800 11px/1 "Microsoft YaHei", sans-serif; letter-spacing: .015em; }
+.coursework-concept + .coursework-concept::before { content: "+"; position: absolute; top: 50%; left: -20px; color: #9aa0a3; font: 600 17px/1 monospace; transform: translateY(-51%); }
+.coursework-concept svg { width: 18px; height: 18px; flex: 0 0 auto; fill: none; stroke: #a65f00; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.coursework-concept b { white-space: nowrap; }
 .coursework-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
 .coursework-card { position: relative; display: flex; min-width: 0; flex-direction: column; padding: 12px; overflow: hidden; color: var(--ink); border: 1px solid var(--line); background: rgba(255,255,255,.38); text-align: left; cursor: zoom-in; transition: transform .32s cubic-bezier(.2,.8,.2,1), background .32s, box-shadow .32s, border-color .32s; }
 .coursework-card::after { content: "↗"; position: absolute; top: 13px; right: 13px; z-index: 2; display: grid; width: 23px; height: 23px; place-items: center; color: #865c00; border: 1px solid var(--accent); border-radius: 5px 2px 5px 2px; background: rgba(255,255,255,.94); font: 700 14px/1 sans-serif; transition: color .25s, background .25s, transform .25s; }
@@ -376,6 +395,8 @@ button { font: inherit; }
 .honor-strip span { display: block; margin-top: 9px; color: var(--muted); font-size: 13px; }
 
 .communication-section { background: var(--accent); padding: 120px 0; }
+.communication-title .section-icon { border-color: rgba(16,19,23,.34); background: rgba(255,255,255,.20); }
+.communication-title .section-icon svg { stroke: var(--ink); }
 .communication-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; }
 .communication-title h2 { margin: 0; font-size: clamp(2.8rem, 5vw, 5.6rem); line-height: 1; letter-spacing: -.06em; }
 .communication-cards { border-top: 1px solid rgba(0,0,0,.35); }
@@ -445,13 +466,15 @@ button { font: inherit; }
 .contact-logo-northeastern img, .contact-logo-wust img { width: 89px; }
 .contact-links { display: grid; grid-template-columns: 1.2fr .8fr; border-top: 1px solid rgba(255,255,255,.38); border-left: 1px solid rgba(255,255,255,.38); }
 .contact-links > * { position: relative; min-height: 116px; padding: 22px 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; border-right: 1px solid rgba(255,255,255,.38); border-bottom: 1px solid rgba(255,255,255,.38); background: linear-gradient(105deg, rgba(5,8,11,.30) 0%, rgba(5,8,11,.18) 62%, rgba(5,8,11,.10) 100%); backdrop-filter: blur(5px) saturate(110%); -webkit-backdrop-filter: blur(5px) saturate(110%); box-shadow: inset 0 1px 0 rgba(255,255,255,.10), 0 8px 22px rgba(0,0,0,.08); transition: color .25s, background .25s, border-color .25s, transform .25s; }
-.contact-links small { color: rgba(239,245,248,.84); font: 700 10px/1 monospace; letter-spacing: .1em; text-shadow: 0 1px 8px rgba(0,0,0,.76); }
+.contact-links small { display: inline-flex; align-items: center; gap: 8px; color: rgba(239,245,248,.84); font: 700 10px/1 monospace; letter-spacing: .1em; text-shadow: 0 1px 8px rgba(0,0,0,.76); }
+.contact-detail-icon { width: 15px; height: 15px; flex: 0 0 15px; fill: none; stroke: var(--accent); stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 1px 3px rgba(0,0,0,.38)); transition: stroke .25s ease; }
 .contact-links strong { color: rgba(255,255,255,.98); font-size: clamp(1rem, 1.8vw, 1.45rem); font-weight: 700; text-shadow: 0 2px 14px rgba(0,0,0,.88), 0 0 3px rgba(0,0,0,.74); }
 .contact-action-label { position: absolute; right: 24px; bottom: 21px; display: grid; width: 17px; height: 17px; place-items: center; border: 1px solid var(--accent); border-radius: 5px 2px 5px 2px; color: var(--accent); background: rgba(255,176,0,.10); box-shadow: 2px 2px 0 rgba(255,176,0,.20); transition: transform .25s, color .25s, border-color .25s, background .25s, box-shadow .25s; }
 .contact-action-label::before { content: ""; width: 10px; height: 10px; background: url("assets/arrow-up-right-gold.png?v=20260930-1") center / contain no-repeat; }
 @media (hover: hover) and (pointer: fine) {
   .contact-links > a:hover { color: var(--ink); background: linear-gradient(105deg, rgba(255,176,0,.98), rgba(255,196,62,.88)); border-color: var(--accent); transform: translateY(-1px); }
   .contact-links > a:hover small { color: rgba(16,19,23,.72); text-shadow: none; }
+  .contact-links > a:hover .contact-detail-icon { stroke: var(--ink); filter: none; }
   .contact-links > a:hover strong { color: var(--ink); text-shadow: none; }
   .contact-links > a:hover .contact-action-label { color: var(--ink); border-color: var(--ink); background: rgba(255,255,255,.28); box-shadow: 2px 2px 0 rgba(16,19,23,.18); transform: translate(1px, -1px); }
   .contact-links > a:hover .contact-action-label::before { background-image: url("assets/arrow-up-right-ink.png?v=20260930-1"); }
@@ -610,6 +633,10 @@ button { font: inherit; }
   .coursework-heading .eyebrow { margin: 0 0 15px; }
   .coursework-heading h3 { font-size: clamp(1.95rem, 9vw, 2.65rem); }
   .coursework-lede { margin-top: 14px; font-size: 14px; }
+  .coursework-concepts { justify-content: flex-start; gap: 8px; margin-top: 17px; }
+  .coursework-concept { gap: 5px; padding: 7px 8px 7px 7px; font-size: 10px; }
+  .coursework-concept + .coursework-concept::before { display: none; }
+  .coursework-concept svg { width: 16px; height: 16px; }
   .coursework-grid { grid-template-columns: 1fr; gap: 13px; margin-top: 23px; }
   .coursework-card:nth-child(3) { grid-column: auto; }
   .coursework-card strong { font-size: 19px; }
