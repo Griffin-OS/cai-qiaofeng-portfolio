@@ -429,6 +429,12 @@ function openDialog(items, initialIndex = 0) {
   if (!dialog.open) dialog.showModal();
 }
 
+function showDialogAdjacent(offset) {
+  if (dialogItems.length < 2) return;
+  dialogIndex = (dialogIndex + offset + dialogItems.length) % dialogItems.length;
+  renderDialogItem();
+}
+
 document.querySelectorAll('.award-card[data-image]').forEach((card) => {
   card.addEventListener('click', () => {
     const sources = (card.dataset.gallery || card.dataset.image).split('|');
@@ -469,14 +475,37 @@ const motorEvidenceGallery = motorEvidenceItems.map((item) => {
 motorEvidenceItems.forEach((item, index) => {
   item.addEventListener('click', () => openDialog(motorEvidenceGallery, index));
 });
-dialogPrevious.addEventListener('click', () => {
-  dialogIndex = (dialogIndex - 1 + dialogItems.length) % dialogItems.length;
-  renderDialogItem();
+const courseworkResultItems = [...document.querySelectorAll('[data-coursework-result]')];
+const courseworkResultGallery = courseworkResultItems.map((item) => {
+  const image = item.querySelector('img');
+  return {
+    src: image?.currentSrc || image?.src || '',
+    alt: item.dataset.courseworkTitle || image?.alt || '机器人算法课程实验结果',
+    rotate: false
+  };
 });
-dialogNext.addEventListener('click', () => {
-  dialogIndex = (dialogIndex + 1) % dialogItems.length;
-  renderDialogItem();
+courseworkResultItems.forEach((item, index) => {
+  item.addEventListener('click', () => openDialog(courseworkResultGallery, index));
 });
+dialogPrevious.addEventListener('click', () => showDialogAdjacent(-1));
+dialogNext.addEventListener('click', () => showDialogAdjacent(1));
+dialog.addEventListener('keydown', (event) => {
+  if (!dialog.open || (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight')) return;
+  event.preventDefault();
+  showDialogAdjacent(event.key === 'ArrowLeft' ? -1 : 1);
+});
+let dialogTouchStartX = null;
+dialog.addEventListener('touchstart', (event) => {
+  if (!dialog.open || !event.touches[0]) return;
+  dialogTouchStartX = event.touches[0].clientX;
+}, { passive: true });
+dialog.addEventListener('touchend', (event) => {
+  if (dialogTouchStartX === null || !event.changedTouches[0]) return;
+  const deltaX = event.changedTouches[0].clientX - dialogTouchStartX;
+  dialogTouchStartX = null;
+  if (Math.abs(deltaX) < 42) return;
+  showDialogAdjacent(deltaX < 0 ? 1 : -1);
+}, { passive: true });
 dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', (event) => {
   if (event.target === dialog) dialog.close();
