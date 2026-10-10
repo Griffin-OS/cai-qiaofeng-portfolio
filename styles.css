@@ -375,7 +375,7 @@ button { font: inherit; }
 .awards-section .section-heading .eyebrow { display: inline-flex; flex-wrap: nowrap; white-space: nowrap; }
 .awards-summary { align-self: end; }
 .awards-summary p { margin: 12px 0 0; color: var(--muted); }
-@media (min-width: 981px) { .awards-section .section-heading { grid-template-columns: .82fr minmax(0, 2.4fr) minmax(210px, 1.05fr); gap: 22px; } .awards-section .section-heading h2 { font-size: clamp(2.8rem, 4vw, 4.55rem); white-space: nowrap; } .awards-section .awards-summary { min-width: 0; } }
+@media (min-width: 981px) { .awards-section .section-heading { grid-template-columns: .82fr minmax(0, 2.4fr) minmax(210px, 1.05fr); gap: 22px; } .awards-section .section-heading h2 { font-size: clamp(2.8rem, 4vw, 4.55rem); white-space: nowrap; } .awards-section .awards-summary { min-width: 0; transform: translateY(12px); } }
 .leadership-marker { display: block; color: #9a6b00; font: 800 12px/1.2 monospace; letter-spacing: .105em; white-space: nowrap; }
 .award-card { padding: 12px 12px 24px; text-align: left; color: var(--ink); background: rgba(255,255,255,.5); border: 1px solid var(--line); cursor: pointer; position: relative; transition: background .25s, transform .25s, box-shadow .25s; }
 .award-card::after { content: ""; position: absolute; top: 13px; right: 13px; z-index: 2; width: 21px; height: 21px; border: 1px solid var(--accent); border-radius: 5px 2px 5px 2px; background: rgba(255,255,255,.94) url("assets/arrow-up-right-gold.png?v=20260930-1") center / 10px 10px no-repeat; box-shadow: 2px 2px 0 rgba(255,176,0,.20); opacity: 1; transition: opacity .25s, transform .25s, border-color .25s, background .25s, box-shadow .25s; }
