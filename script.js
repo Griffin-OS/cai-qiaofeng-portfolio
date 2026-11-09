@@ -24,12 +24,16 @@ languageSwitch?.addEventListener('click', (event) => {
   mark.append(globe, label);
   transition.append(mark);
   document.body.append(transition);
+  try { sessionStorage.setItem('portfolioLanguageArrival', target.pathname); } catch (error) {}
   document.body.classList.add('is-switching-language');
-  window.setTimeout(() => { location.assign(target.href); }, 850);
+  window.setTimeout(() => { location.assign(target.href); }, 940);
 });
 window.addEventListener('pageshow', () => {
   document.body.classList.remove('is-switching-language');
   document.querySelector('.language-transition')?.remove();
+  if (document.documentElement.classList.contains('language-arriving')) {
+    window.setTimeout(() => document.documentElement.classList.remove('language-arriving'), 1300);
+  }
 });
 
 const requestInlineVideoPlayback = (video) => {
