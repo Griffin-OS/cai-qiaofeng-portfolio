@@ -82,7 +82,27 @@ button { font: inherit; }
 .language-en .project-copy.compact h3 { font-size: clamp(1.6rem, 2.6vw, 2.6rem); overflow-wrap: normal; }
 .language-en .robot-title-word { white-space: nowrap; }
 .language-en .award-card h3 { overflow-wrap: normal; }
+.language-en .project-media .project-copy.compact h3 { min-width: 0; white-space: normal; font-size: clamp(1.7rem, 2.2vw, 2.35rem); line-height: 1.1; text-wrap: balance; }
 .language-en .project-featured .project-copy h3 { max-width: 600px; font-size: clamp(2rem, 3vw, 3.3rem); line-height: 1.07; letter-spacing: -.045em; text-wrap: balance; }
+.language-en .school-primary .course-list { grid-auto-rows: minmax(43px, auto); gap: 14px 20px; margin-top: 31px; }
+.language-en .school-primary .course-current { margin-top: 10px; padding-top: 16px; }
+.language-en .coursework-heading { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+.language-en .coursework-heading > div { max-width: 720px; }
+.language-en .coursework-heading .eyebrow, .language-en .coursework-lede { margin: 0; }
+.language-en .coursework-lede { max-width: 660px; }
+.language-en .coursework-concepts { margin-top: 23px; }
+.honors-dashboard { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.honors-metric { position: relative; min-height: 218px; padding: 22px 24px; overflow: hidden; border: 1px solid var(--line); background: rgba(255,255,255,.45); display: flex; flex-direction: column; }
+.honors-metric::before { content: ""; position: absolute; top: 0; left: 0; width: 38%; height: 3px; background: var(--accent); }
+.honors-metric-index { color: #8a6a27; font: 700 10px/1.2 monospace; letter-spacing: .1em; }
+.honors-metric > strong { margin-top: 15px; color: #9a6b00; font: 400 clamp(3rem, 4vw, 4.3rem)/.95 Georgia, serif; }
+.honors-metric h3 { margin: 13px 0 0; font-size: clamp(1rem, 1.2vw, 1.25rem); line-height: 1.2; }
+.honors-metric p { margin: 7px 0 22px; color: var(--muted); font-size: 12px; line-height: 1.45; }
+.honors-pips { display: flex; gap: 6px; margin-top: auto; }
+.honors-pips i { width: 32px; height: 4px; border-radius: 3px; background: var(--accent); }
+@media (max-width: 980px) { .honors-dashboard { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 680px) { .honors-dashboard { gap: 10px; } .honors-metric { min-height: 186px; padding: 17px 15px; } .honors-metric > strong { font-size: 2.8rem; } .honors-metric h3 { font-size: 15px; } .language-en .coursework-heading { align-items: flex-start; text-align: left; } .language-en .coursework-lede { max-width: none; } .language-en .coursework-concepts { justify-content: flex-start; } .language-en .school-primary .course-list { grid-auto-rows: auto; gap: 8px; margin-top: 24px; } .language-en .school-primary .course-current { margin-top: 5px; padding-top: 12px; } }
+@media (max-width: 360px) { .honors-dashboard { grid-template-columns: 1fr; } }
 
 .hero { min-height: calc(100vh - 84px); display: grid; grid-template-columns: 1.02fr .98fr; gap: 70px; align-items: center; padding: 70px 0 90px; color: white; background: var(--night); box-shadow: 0 0 0 100vmax var(--night); clip-path: inset(0 -100vmax); }
 .eyebrow { margin: 0 0 20px; font: 700 12px/1.2 monospace; letter-spacing: .14em; text-transform: uppercase; }
