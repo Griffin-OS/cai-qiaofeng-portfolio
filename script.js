@@ -3,6 +3,10 @@ const photoTrigger = document.querySelector('.interest-trigger');
 const photoGallery = document.querySelector('#photo-gallery');
 const contactVideo = document.querySelector('.contact-video[data-src]');
 const educationVideo = document.querySelector('.education-video[data-src]');
+const languageSwitch = document.querySelector('.lang-switch');
+languageSwitch?.addEventListener('click', () => {
+  if (location.hash) languageSwitch.href = languageSwitch.getAttribute('href').split('#')[0] + location.hash;
+});
 
 const requestInlineVideoPlayback = (video) => {
   if (!video) return;
