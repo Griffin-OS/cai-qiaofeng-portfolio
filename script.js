@@ -4,9 +4,16 @@ const photoGallery = document.querySelector('#photo-gallery');
 const contactVideo = document.querySelector('.contact-video[data-src]');
 const educationVideo = document.querySelector('.education-video[data-src]');
 const languageSwitch = document.querySelector('.lang-switch');
-languageSwitch?.addEventListener('click', () => {
-  if (location.hash) languageSwitch.href = languageSwitch.getAttribute('href').split('#')[0] + location.hash;
+languageSwitch?.addEventListener('click', (event) => {
+  const target = new URL(languageSwitch.getAttribute('href'), location.href);
+  target.hash = location.hash;
+  languageSwitch.href = target.href;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  document.body.classList.add('is-switching-language');
+  window.setTimeout(() => { location.assign(target.href); }, 180);
 });
+window.addEventListener('pageshow', () => document.body.classList.remove('is-switching-language'));
 
 const requestInlineVideoPlayback = (video) => {
   if (!video) return;
