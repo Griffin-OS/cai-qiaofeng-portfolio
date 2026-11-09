@@ -8,12 +8,29 @@ languageSwitch?.addEventListener('click', (event) => {
   const target = new URL(languageSwitch.getAttribute('href'), location.href);
   target.hash = location.hash;
   languageSwitch.href = target.href;
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
   event.preventDefault();
+  if (document.body.classList.contains('is-switching-language')) return;
+  const transition = document.createElement('div');
+  transition.className = 'language-transition';
+  transition.setAttribute('role', 'status');
+  transition.setAttribute('aria-live', 'polite');
+  const mark = document.createElement('div');
+  mark.className = 'language-transition-mark';
+  const globe = languageSwitch.querySelector('svg').cloneNode(true);
+  globe.setAttribute('aria-hidden', 'true');
+  const label = document.createElement('span');
+  label.textContent = document.documentElement.lang.startsWith('zh') ? '英文 / English' : '中文 / Chinese';
+  mark.append(globe, label);
+  transition.append(mark);
+  document.body.append(transition);
   document.body.classList.add('is-switching-language');
-  window.setTimeout(() => { location.assign(target.href); }, 180);
+  window.setTimeout(() => { location.assign(target.href); }, 850);
 });
-window.addEventListener('pageshow', () => document.body.classList.remove('is-switching-language'));
+window.addEventListener('pageshow', () => {
+  document.body.classList.remove('is-switching-language');
+  document.querySelector('.language-transition')?.remove();
+});
 
 const requestInlineVideoPlayback = (video) => {
   if (!video) return;
