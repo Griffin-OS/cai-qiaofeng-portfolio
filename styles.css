@@ -671,6 +671,8 @@ button { font: inherit; }
   .quick-facts { gap: 0; }
   .quick-facts dt { font-size: 25px; }
   .quick-facts dd { line-height: 1.35; }
+  .language-en .quick-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .language-en .quick-facts dt { font-size: clamp(18px, 5vw, 25px); }
   .hero-visual { min-height: 475px; }
   .portrait-stage { width: 95%; height: 455px; }
   .portrait-cutout { width: auto; height: 96%; left: 50%; right: auto; bottom: -1%; transform: translateX(-48.5%); }
