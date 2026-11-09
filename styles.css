@@ -30,38 +30,30 @@ body {
 body main { animation: language-enter .48s ease-out both; }
 body .topbar { animation: language-enter .48s ease-out both; }
 body.is-switching-language main { animation: none; }
-body.is-switching-language .hero-copy { animation: language-split-left .72s cubic-bezier(.4,0,.2,1) both !important; }
-body.is-switching-language .hero-visual { animation: language-split-right .72s cubic-bezier(.4,0,.2,1) both !important; }
-body.is-switching-language .topbar { animation: language-away .56s ease-in both; }
-body.is-switching-language main > section:not(.hero) { animation: language-away .56s ease-in both; }
-.language-transition { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 24px; pointer-events: none; background: rgba(9,12,15,.92); animation: language-veil .84s ease both; }
-.language-transition-mark { display: flex; align-items: center; justify-content: center; gap: clamp(12px, 1.8vw, 22px); color: rgba(255,255,255,.58); font: 500 clamp(1.55rem, 3.6vw, 3.3rem)/1.2 Inter, "Noto Sans SC", sans-serif; letter-spacing: -.025em; text-align: center; animation: language-mark .72s .15s ease-in-out both; }
-.language-transition-mark svg { width: clamp(30px, 3.7vw, 54px); height: clamp(30px, 3.7vw, 54px); flex: 0 0 auto; fill: none; stroke: rgba(255,176,0,.72); stroke-width: 1.4; stroke-linecap: round; }
-html.language-arriving body main { animation: language-page-return .74s ease-out both; }
-html.language-arriving body .topbar { animation: none; }
-html.language-arriving .hero .hero-copy { animation: language-return-left .82s cubic-bezier(.2,.7,.2,1) both !important; }
-html.language-arriving .hero .hero-visual { animation: language-return-right .82s .08s cubic-bezier(.2,.7,.2,1) both !important; }
-html.language-arriving .topbar nav { perspective: 700px; }
-html.language-arriving .topbar nav a { transform-origin: center top; animation: language-nav-reel .48s cubic-bezier(.2,.75,.25,1) both; }
-html.language-arriving .topbar nav a:nth-child(1) { animation-delay: .12s; }
-html.language-arriving .topbar nav a:nth-child(2) { animation-delay: .18s; }
-html.language-arriving .topbar nav a:nth-child(3) { animation-delay: .24s; }
-html.language-arriving .topbar nav a:nth-child(4) { animation-delay: .30s; }
-html.language-arriving .topbar nav a:nth-child(5) { animation-delay: .36s; }
-html.language-arriving .topbar nav a:nth-child(6) { animation-delay: .42s; }
-html.language-arriving .topbar nav a:nth-child(7) { animation-delay: .48s; }
-html.language-arriving .topbar .brand, html.language-arriving .topbar .contact-link { animation: language-page-return .6s ease both; }
-html.language-arriving body::after { content: ""; position: fixed; inset: 0; z-index: 999; pointer-events: none; background: var(--night); animation: language-arrival-veil .68s ease-out both; }
+body.is-switching-language .hero-copy { animation: language-split-left 1.02s cubic-bezier(.4,0,.2,1) both !important; }
+body.is-switching-language .hero-visual { animation: language-split-right 1.02s cubic-bezier(.4,0,.2,1) both !important; }
+body.is-switching-language .topbar { z-index: 1001; animation: none; }
+body.is-switching-language main > section:not(.hero) { animation: language-away .82s ease-in both; }
+.language-transition { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 24px; pointer-events: none; background: rgba(9,12,15,.90); animation: language-veil 1.18s ease both; }
+.language-transition-mark { display: flex; align-items: center; justify-content: center; max-width: calc(100vw - 48px); color: rgba(255,255,255,.84); font: 600 clamp(2rem, 8.5vw, 9rem)/1.1 Inter, "Noto Sans SC", sans-serif; letter-spacing: -.035em; text-align: center; white-space: nowrap; animation: language-mark 1.06s .18s ease-in-out both; }
+@media (max-width: 680px) { .language-transition-mark { font-size: clamp(1.75rem, 8vw, 3.3rem); } }
+html.language-arriving body main { animation: language-page-return 1.02s ease-out both; }
+html.language-arriving body .topbar:not(.language-header-old) { z-index: 1001; animation: language-header-spring 1.08s .18s cubic-bezier(.2,.75,.25,1) both; }
+html.language-arriving body .topbar.language-header-old { position: fixed; top: 0; left: 50%; z-index: 1002; margin: 0; pointer-events: none; animation: language-header-drop .82s .16s ease-in both; }
+html.language-arriving .hero .hero-copy { animation: language-return-left 1.08s cubic-bezier(.2,.7,.2,1) both !important; }
+html.language-arriving .hero .hero-visual { animation: language-return-right 1.08s .09s cubic-bezier(.2,.7,.2,1) both !important; }
+html.language-arriving body::after { content: ""; position: fixed; inset: 0; z-index: 999; pointer-events: none; background: var(--night); animation: language-arrival-veil .92s ease-out both; }
 @keyframes language-enter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @keyframes language-split-left { to { opacity: 0; transform: translateX(-6vw); } }
 @keyframes language-split-right { to { opacity: 0; transform: translateX(6vw); } }
 @keyframes language-away { to { opacity: 0; } }
-@keyframes language-veil { 0%, 28% { background: rgba(9,12,15,0); } 100% { background: rgba(9,12,15,.92); } }
-@keyframes language-mark { 0%, 100% { opacity: 0; transform: scale(.97); } 42%, 64% { opacity: .7; transform: scale(1); } }
+@keyframes language-veil { 0%, 18% { background: rgba(9,12,15,0); } 68% { background: rgba(9,12,15,.86); } 100% { background: rgba(9,12,15,.90); } }
+@keyframes language-mark { 0%, 100% { opacity: 0; transform: scale(.97); } 38%, 68% { opacity: .9; transform: scale(1); } }
 @keyframes language-page-return { from { opacity: 0; } to { opacity: 1; } }
 @keyframes language-return-left { from { opacity: 0; transform: translateX(-6vw); } to { opacity: 1; transform: none; } }
 @keyframes language-return-right { from { opacity: 0; transform: translateX(6vw); } to { opacity: 1; transform: none; } }
-@keyframes language-nav-reel { 0% { opacity: 0; transform: translateY(-9px) rotateX(-76deg); } 64% { opacity: 1; transform: translateY(1px) rotateX(9deg); } 100% { opacity: 1; transform: none; } }
+@keyframes language-header-drop { from { opacity: 1; transform: translate(-50%, 0); } to { opacity: 0; transform: translate(-50%, 92px); } }
+@keyframes language-header-spring { 0% { opacity: 0; transform: translateY(-105%); } 58% { opacity: 1; transform: translateY(10px); } 76% { transform: translateY(-5px); } 90% { transform: translateY(2px); } 100% { opacity: 1; transform: none; } }
 @keyframes language-arrival-veil { from { opacity: .92; } to { opacity: 0; } }
 img, video { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
@@ -99,10 +91,10 @@ button { font: inherit; }
 .topbar nav a.is-active { color: var(--accent); }
 .topbar nav a.is-active::after { right: 0; }
 .contact-link { justify-self: end; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,.65); }
-.language-choice { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
+.language-choice { position: relative; display: flex; flex-direction: column; align-items: flex-start; flex-wrap: nowrap; gap: 7px; height: 40px; margin-bottom: 28px; transform: translateY(-26px); }
 .language-choice-label { color: #9ca5ad; font: 700 11px/1.2 monospace; letter-spacing: .1em; white-space: nowrap; }
-.lang-switch { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 40px; padding: 8px 14px; border: 1px solid var(--accent); border-radius: 3px; color: var(--night); background: var(--accent); font: 700 13px/1.2 monospace; letter-spacing: .01em; white-space: nowrap; transition: color .2s, background .2s, transform .2s; }
-.lang-switch svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
+.lang-switch { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 10px 18px; border: 1px solid var(--accent); border-radius: 3px; color: var(--night); background: var(--accent); font: 700 14px/1.2 monospace; letter-spacing: .01em; white-space: nowrap; transition: color .2s, background .2s, transform .2s; }
+.lang-switch svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
 .lang-switch:hover, .lang-switch:focus-visible { color: var(--accent); background: transparent; transform: translateY(-2px); }
 .language-en .topbar { gap: 14px; }
 .language-en .topbar nav { gap: 12px; font-size: 12px; }
@@ -670,9 +662,10 @@ button { font: inherit; }
   .topbar { min-height: 88px; }
   .contact-link { font-size: 12px; }
   .topbar .contact-link { display: none; }
-  .language-choice { gap: 9px; margin-bottom: 24px; }
+  .language-choice { height: 38px; gap: 6px; margin-bottom: 24px; transform: translateY(-22px); }
   .language-choice-label { font-size: 10px; }
-  .lang-switch { min-height: 38px; padding: 7px 11px; font-size: 12px; }
+  .lang-switch { min-height: 44px; padding: 9px 14px; font-size: 13px; }
+  .lang-switch svg { width: 18px; height: 18px; }
   .language-en .hero h1 { font-size: clamp(2.4rem, 10.5vw, 3.7rem); line-height: 1.03; letter-spacing: -.06em; }
   .language-en .hero h1 em { white-space: normal; font-size: .83em; }
   .language-en .section-heading h2 { font-size: clamp(2.3rem, 9vw, 3.6rem); }

@@ -17,22 +17,43 @@ languageSwitch?.addEventListener('click', (event) => {
   transition.setAttribute('aria-live', 'polite');
   const mark = document.createElement('div');
   mark.className = 'language-transition-mark';
-  const globe = languageSwitch.querySelector('svg').cloneNode(true);
-  globe.setAttribute('aria-hidden', 'true');
   const label = document.createElement('span');
   label.textContent = document.documentElement.lang.startsWith('zh') ? '英文 / English' : '中文 / Chinese';
-  mark.append(globe, label);
+  mark.append(label);
   transition.append(mark);
   document.body.append(transition);
-  try { sessionStorage.setItem('portfolioLanguageArrival', target.pathname); } catch (error) {}
+  try {
+    sessionStorage.setItem('portfolioLanguageArrival', target.pathname);
+    sessionStorage.setItem('portfolioLanguageHeader', document.querySelector('.topbar').outerHTML);
+  } catch (error) {}
   document.body.classList.add('is-switching-language');
-  window.setTimeout(() => { location.assign(target.href); }, 940);
+  window.setTimeout(() => { location.assign(target.href); }, 1350);
 });
+if (document.documentElement.classList.contains('language-arriving')) {
+  try {
+    const previousHeader = sessionStorage.getItem('portfolioLanguageHeader');
+    sessionStorage.removeItem('portfolioLanguageHeader');
+    if (previousHeader) {
+      const holder = document.createElement('template');
+      holder.innerHTML = previousHeader;
+      const oldHeader = holder.content.querySelector('.topbar');
+      if (oldHeader) {
+        oldHeader.classList.add('language-header-old');
+        oldHeader.setAttribute('aria-hidden', 'true');
+        oldHeader.querySelectorAll('a').forEach((link) => { link.tabIndex = -1; });
+        document.body.append(oldHeader);
+      }
+    }
+  } catch (error) {}
+}
 window.addEventListener('pageshow', () => {
   document.body.classList.remove('is-switching-language');
   document.querySelector('.language-transition')?.remove();
   if (document.documentElement.classList.contains('language-arriving')) {
-    window.setTimeout(() => document.documentElement.classList.remove('language-arriving'), 1300);
+    window.setTimeout(() => {
+      document.querySelector('.language-header-old')?.remove();
+      document.documentElement.classList.remove('language-arriving');
+    }, 1800);
   }
 });
 
