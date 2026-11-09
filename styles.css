@@ -66,7 +66,11 @@ button { font: inherit; }
 .topbar-actions { justify-self: end; display: flex; align-items: center; gap: 18px; }
 .lang-switch { display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 5px 10px; border: 1px solid rgba(255,176,0,.7); border-radius: 3px; color: var(--accent); font: 700 11px/1.2 monospace; letter-spacing: .02em; white-space: nowrap; transition: color .2s, background .2s; }
 .lang-switch:hover, .lang-switch:focus-visible { color: var(--night); background: var(--accent); }
-.language-en .hero h1 { font-size: clamp(3.1rem, 5.5vw, 5.7rem); line-height: .98; letter-spacing: -.055em; }
+.language-en .topbar { gap: 14px; }
+.language-en .topbar nav { gap: 12px; font-size: 12px; }
+.language-en .topbar-actions { gap: 10px; }
+.language-en .topbar .contact-link { font-size: 12px; }
+.language-en .hero h1 { font-size: clamp(3.1rem, 5.5vw, 4.9rem); line-height: .98; letter-spacing: -.055em; }
 .language-en .hero h1 em { font-size: .83em; letter-spacing: -.05em; }
 .language-en .section-heading h2 { font-size: clamp(2.7rem, 4vw, 4.8rem); letter-spacing: -.055em; }
 .language-en .awards-section .section-heading h2 { font-size: clamp(2.5rem, 3.5vw, 4rem); white-space: normal; }
@@ -562,6 +566,7 @@ button { font: inherit; }
   .topbar { height: auto; min-height: 84px; grid-template-columns: 1fr auto; grid-template-areas: "brand contact" "nav nav"; padding: 10px 0 9px; row-gap: 8px; }
   .topbar .brand { grid-area: brand; }
   .topbar nav { grid-area: nav; display: flex; width: 100%; overflow-x: auto; gap: 22px; padding: 5px 0 4px; scrollbar-width: none; }
+  .language-en .topbar nav { gap: 22px; font-size: 13px; }
   .topbar nav::-webkit-scrollbar { display: none; }
   .topbar .topbar-actions { grid-area: contact; }
   .hero { grid-template-columns: 1fr; padding-top: 58px; }
