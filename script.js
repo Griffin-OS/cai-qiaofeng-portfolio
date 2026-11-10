@@ -25,14 +25,19 @@ languageSwitch?.addEventListener('click', (event) => {
   try {
     sessionStorage.setItem('portfolioLanguageArrival', target.pathname);
     sessionStorage.setItem('portfolioLanguageHeader', document.querySelector('.topbar').outerHTML);
+    sessionStorage.setItem('portfolioLanguageNavScroll', String(document.querySelector('.topbar nav')?.scrollLeft || 0));
   } catch (error) {}
+  document.documentElement.classList.remove('language-arrived');
   document.body.classList.add('is-switching-language');
   window.setTimeout(() => { location.assign(target.href); }, 1350);
 });
 if (document.documentElement.classList.contains('language-arriving')) {
   try {
     const previousHeader = sessionStorage.getItem('portfolioLanguageHeader');
+    const navScroll = Number(sessionStorage.getItem('portfolioLanguageNavScroll')) || 0;
     sessionStorage.removeItem('portfolioLanguageHeader');
+    sessionStorage.removeItem('portfolioLanguageNavScroll');
+    document.querySelector('.topbar nav').scrollLeft = navScroll;
     if (previousHeader) {
       const holder = document.createElement('template');
       holder.innerHTML = previousHeader;
@@ -42,15 +47,20 @@ if (document.documentElement.classList.contains('language-arriving')) {
         oldHeader.setAttribute('aria-hidden', 'true');
         oldHeader.querySelectorAll('a').forEach((link) => { link.tabIndex = -1; });
         document.body.append(oldHeader);
+        oldHeader.querySelector('nav').scrollLeft = navScroll;
       }
     }
   } catch (error) {}
 }
 window.addEventListener('pageshow', () => {
+  if (document.body.classList.contains('is-switching-language')) {
+    document.documentElement.classList.add('language-arrived');
+  }
   document.body.classList.remove('is-switching-language');
   document.querySelector('.language-transition')?.remove();
   if (document.documentElement.classList.contains('language-arriving')) {
     window.setTimeout(() => {
+      document.documentElement.classList.add('language-arrived');
       document.querySelector('.language-header-old')?.remove();
       document.documentElement.classList.remove('language-arriving');
     }, 1800);
