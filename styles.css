@@ -640,6 +640,7 @@ button { font: inherit; }
 @media (max-width: 980px) {
   .section-shell, .topbar { width: min(100% - 36px, var(--max)); }
   .topbar { height: auto; min-height: 84px; grid-template-columns: 1fr auto; grid-template-areas: "brand contact" "nav nav"; padding: 10px 0 9px; row-gap: 8px; }
+  .language-en .topbar { row-gap: 8px; }
   .topbar .brand { grid-area: brand; }
   .topbar nav { grid-area: nav; display: grid; width: 100%; overflow-x: auto; gap: 6px; padding: 5px 0 4px; scrollbar-width: none; }
   .language-en .topbar nav { gap: 6px; font-size: 13px; }
