@@ -102,6 +102,7 @@ button { font: inherit; }
 .brand small { display: block; margin-top: 4px; color: #6f7880; font: 400 8px/1.1 sans-serif; letter-spacing: .04em; }
 .topbar nav { display: grid; grid-template-columns: 52px 70px 88px 80px 60px 136px 62px; gap: 6px; align-items: center; font-size: 13px; white-space: nowrap; }
 .topbar nav a { position: relative; justify-self: center; }
+.nav-mobile-label { display: none; }
 .topbar nav a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -6px; height: 1px; background: var(--accent); transition: right .25s; }
 .topbar nav a:hover::after { right: 0; }
 .topbar nav a.is-active { color: var(--accent); }
@@ -642,8 +643,10 @@ button { font: inherit; }
   .topbar { height: auto; min-height: 84px; grid-template-columns: 1fr auto; grid-template-areas: "brand contact" "nav nav"; padding: 10px 0 9px; row-gap: 8px; }
   .language-en .topbar { row-gap: 8px; }
   .topbar .brand { grid-area: brand; }
-  .topbar nav { grid-area: nav; display: grid; width: 100%; overflow-x: auto; gap: 6px; padding: 5px 0 4px; scrollbar-width: none; }
-  .language-en .topbar nav { gap: 6px; font-size: 13px; }
+  .topbar nav { grid-area: nav; display: grid; grid-template-columns: 36px 42px 60px 54px 50px 54px 44px; width: 100%; overflow-x: auto; gap: 2px; padding: 5px 0 4px; font-size: 12px; scrollbar-width: none; }
+  .language-en .topbar nav { gap: 2px; font-size: 11px; }
+  .nav-desktop-label { display: none; }
+  .nav-mobile-label { display: inline; }
   .topbar nav::-webkit-scrollbar { display: none; }
   .topbar .contact-link { grid-area: contact; }
   .hero { grid-template-columns: 1fr; padding-top: 58px; }
