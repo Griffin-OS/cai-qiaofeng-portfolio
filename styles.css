@@ -677,6 +677,9 @@ button { font: inherit; }
 }
 
 @media (max-width: 680px) {
+  .topbar nav, .language-en .topbar.language-header-old.lang-from-zh nav { display: flex; flex-wrap: nowrap; justify-content: space-between; gap: 4px; overflow: visible; font-size: 12px; }
+  .language-en .topbar nav, .topbar.language-header-old.lang-from-en nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 0; overflow: visible; font-size: 12px; }
+  .language-en .topbar:not(.language-header-old) nav a, .topbar.language-header-old.lang-from-en nav a { flex: 0 0 25%; text-align: center; }
   body { font-size: 16px; }
   .section-shell, .topbar { width: min(100% - 28px, var(--max)); }
   .topbar { min-height: 88px; }

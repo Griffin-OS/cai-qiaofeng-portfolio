@@ -25,6 +25,7 @@ languageSwitch?.addEventListener('click', (event) => {
   try {
     sessionStorage.setItem('portfolioLanguageArrival', target.pathname);
     sessionStorage.setItem('portfolioLanguageHeader', document.querySelector('.topbar').outerHTML);
+    sessionStorage.setItem('portfolioLanguageHeaderLang', document.documentElement.lang.startsWith('zh') ? 'zh' : 'en');
     sessionStorage.setItem('portfolioLanguageNavScroll', String(document.querySelector('.topbar nav')?.scrollLeft || 0));
   } catch (error) {}
   document.documentElement.classList.remove('language-arrived');
@@ -34,8 +35,10 @@ languageSwitch?.addEventListener('click', (event) => {
 if (document.documentElement.classList.contains('language-arriving')) {
   try {
     const previousHeader = sessionStorage.getItem('portfolioLanguageHeader');
+    const previousHeaderLang = sessionStorage.getItem('portfolioLanguageHeaderLang');
     const navScroll = Number(sessionStorage.getItem('portfolioLanguageNavScroll')) || 0;
     sessionStorage.removeItem('portfolioLanguageHeader');
+    sessionStorage.removeItem('portfolioLanguageHeaderLang');
     sessionStorage.removeItem('portfolioLanguageNavScroll');
     document.querySelector('.topbar nav').scrollLeft = navScroll;
     if (previousHeader) {
@@ -44,6 +47,7 @@ if (document.documentElement.classList.contains('language-arriving')) {
       const oldHeader = holder.content.querySelector('.topbar');
       if (oldHeader) {
         oldHeader.classList.add('language-header-old');
+        oldHeader.classList.add(previousHeaderLang === 'en' ? 'lang-from-en' : 'lang-from-zh');
         oldHeader.setAttribute('aria-hidden', 'true');
         oldHeader.querySelectorAll('a').forEach((link) => { link.tabIndex = -1; });
         document.body.append(oldHeader);
